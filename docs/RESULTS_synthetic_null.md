@@ -1,6 +1,6 @@
 # Measured results - `synthetic_null`
 
-Generated **2026-11-06T18:51:24+00:00** by `scripts/summarise_results.py` directly from `/home/user/Project-SM-Intelligence/data/databases/_synthetic_null`. Nothing here is hand-written.
+Generated **2026-11-06T18:55:38+00:00** by `scripts/summarise_results.py` directly from `/home/user/Project-SM-Intelligence/data/databases/_synthetic_null`. Nothing here is hand-written.
 
 _H0 control: i.i.d. uniform draws. Framework must report NO predictive edge._
 

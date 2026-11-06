@@ -70,10 +70,16 @@ def section_a(config: Config, discovery: dict | None) -> str:
     lines.append("")
     lines.append("### Source reachability")
     lines.append("")
-    if discovery and discovery.get("sources"):
-        rows = [[s.get("source_id"), s.get("reachable"), s.get("status_code"),
-                 (s.get("error") or "")[:90]] for s in discovery["sources"]]
-        lines.append(_table(["Source", "Reachable", "HTTP status", "Error"], rows))
+    observations = (discovery or {}).get("summary", {}).get("observations") or []
+    if observations:
+        rows = [[o.get("source_id"), o.get("base_url"), o.get("reachable"),
+                 (o.get("verdict") or "")[:60]] for o in observations]
+        lines.append(_table(["Source", "URL", "Reachable", "Verdict"], rows))
+        lines.append("")
+        n_reachable = sum(1 for o in observations if o.get("reachable"))
+        lines.append(f"**{n_reachable} of {len(observations)} configured sources responded.** "
+                     "The probe is reproducible with `python -m src.cli.main discover`; the raw "
+                     "report is at `research/extraction/discovery_report.json`.")
     else:
         lines.append("No discovery report was produced in this run. Run "
                      "`python -m src.cli.main discover` to probe the configured sources.")
@@ -121,6 +127,28 @@ def section_b(config: Config) -> tuple[str, dict[str, Any]]:
     lines.append(_table(
         ["Market", "Integrity", "Historical rows", "Coverage", "Missing tables"], rows))
     lines.append("")
+    # Per-table population, so an empty table is visible in the report instead of
+    # being quietly absent from a prose claim.
+    counts: dict[str, dict[str, int]] = {
+        m: st.get("row_counts", {}) for m, st in state.items() if st.get("exists")
+    }
+    if counts:
+        from src.storage.schema import REQUIRED_TABLES
+
+        table_rows = []
+        for table in REQUIRED_TABLES:
+            table_rows.append([table] + [str(counts.get(m, {}).get(table, "-"))
+                                         for m in config.market_order])
+        lines.append(_h(3, "Table population"))
+        lines.append("")
+        lines.append(_table(["Table"] + list(config.market_order), table_rows))
+        lines.append("")
+        lines.append("Empty tables are explained rather than hidden: `market_features` and "
+                     "`cross_market_features` are built in memory at each walk-forward "
+                     "cutoff (persisting them risks re-using a vector computed with later "
+                     "data), and `prediction_outcomes` is filled only once the draw a "
+                     "forecast refers to has actually been published.")
+        lines.append("")
     lines.append(
         "Each market owns a separate SQLite database at "
         "`<dataset root>/<market_id>/<market_id>.db` with the 12 required tables. "

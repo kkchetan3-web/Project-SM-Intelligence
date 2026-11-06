@@ -1,0 +1,486 @@
+{
+  "summary": {
+    "observed_at": "2026-11-06T18:53:44+00:00",
+    "n_sources": 5,
+    "n_reachable": 0,
+    "verdicts": {
+      "dpbossss_kalyan": "unreachable",
+      "dpbossss_main_bazar": "unreachable",
+      "dpbossss_root": "unreachable",
+      "sattamatka_sale": "unreachable",
+      "sattadpbossmatka": "unreachable"
+    },
+    "observations": [
+      {
+        "source_id": "dpbossss_kalyan",
+        "market_id": "kalyan",
+        "kind": "primary",
+        "base_url": "https://dpbossss.com/",
+        "reachable": false,
+        "robots_allows": null,
+        "verdict": "unreachable",
+        "structured_data_blocks": 0,
+        "archive_link_groups": {},
+        "n_archive_links": 0,
+        "asset_links": [],
+        "probes": [
+          {
+            "url": "https://dpbossss.com/jodi-chart-record/kalyan.php",
+            "reachable": false,
+            "http_status": null,
+            "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          },
+          {
+            "url": "https://dpbossss.com/panel-chart-record/kalyan.php",
+            "reachable": false,
+            "http_status": null,
+            "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          },
+          {
+            "url": "https://dpbossss.com/",
+            "reachable": false,
+            "http_status": null,
+            "error": "circuit breaker: 9 consecutive failures",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          }
+        ],
+        "notes": [
+          "no page could be fetched from this environment; errors observed: URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>; circuit breaker: 9 consecutive failures"
+        ]
+      },
+      {
+        "source_id": "dpbossss_main_bazar",
+        "market_id": "main_bazar",
+        "kind": "primary",
+        "base_url": "https://dpbossss.com/",
+        "reachable": false,
+        "robots_allows": null,
+        "verdict": "unreachable",
+        "structured_data_blocks": 0,
+        "archive_link_groups": {},
+        "n_archive_links": 0,
+        "asset_links": [],
+        "probes": [
+          {
+            "url": "https://dpbossss.com/jodi-chart-record/main-bazar.php",
+            "reachable": false,
+            "http_status": null,
+            "error": "circuit breaker: 9 consecutive failures",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          },
+          {
+            "url": "https://dpbossss.com/panel-chart-record/main-bazar.php",
+            "reachable": false,
+            "http_status": null,
+            "error": "circuit breaker: 9 consecutive failures",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          },
+          {
+            "url": "https://dpbossss.com/",
+            "reachable": false,
+            "http_status": null,
+            "error": "circuit breaker: 9 consecutive failures",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          }
+        ],
+        "notes": [
+          "no page could be fetched from this environment; errors observed: circuit breaker: 9 consecutive failures"
+        ]
+      },
+      {
+        "source_id": "dpbossss_root",
+        "market_id": null,
+        "kind": "secondary",
+        "base_url": "https://dpbossss.com/",
+        "reachable": false,
+        "robots_allows": null,
+        "verdict": "unreachable",
+        "structured_data_blocks": 0,
+        "archive_link_groups": {},
+        "n_archive_links": 0,
+        "asset_links": [],
+        "probes": [
+          {
+            "url": "https://dpbossss.com/",
+            "reachable": false,
+            "http_status": null,
+            "error": "circuit breaker: 9 consecutive failures",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          }
+        ],
+        "notes": [
+          "no page could be fetched from this environment; errors observed: circuit breaker: 9 consecutive failures"
+        ]
+      },
+      {
+        "source_id": "sattamatka_sale",
+        "market_id": null,
+        "kind": "secondary",
+        "base_url": "https://www.sattamatka.sale/",
+        "reachable": false,
+        "robots_allows": null,
+        "verdict": "unreachable",
+        "structured_data_blocks": 0,
+        "archive_link_groups": {},
+        "n_archive_links": 0,
+        "asset_links": [],
+        "probes": [
+          {
+            "url": "https://www.sattamatka.sale/",
+            "reachable": false,
+            "http_status": null,
+            "error": "circuit breaker: 9 consecutive failures",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          }
+        ],
+        "notes": [
+          "no page could be fetched from this environment; errors observed: circuit breaker: 9 consecutive failures"
+        ]
+      },
+      {
+        "source_id": "sattadpbossmatka",
+        "market_id": null,
+        "kind": "secondary",
+        "base_url": "https://sattadpbossmatka.com/",
+        "reachable": false,
+        "robots_allows": null,
+        "verdict": "unreachable",
+        "structured_data_blocks": 0,
+        "archive_link_groups": {},
+        "n_archive_links": 0,
+        "asset_links": [],
+        "probes": [
+          {
+            "url": "https://sattadpbossmatka.com/",
+            "reachable": false,
+            "http_status": null,
+            "error": "circuit breaker: 9 consecutive failures",
+            "content_type": null,
+            "byte_size": 0,
+            "is_html": false,
+            "is_json": false,
+            "title": "",
+            "table_count": 0,
+            "row_count": 0,
+            "script_count": 0,
+            "looks_js_rendered": false,
+            "status": "unreachable"
+          }
+        ],
+        "notes": [
+          "no page could be fetched from this environment; errors observed: circuit breaker: 9 consecutive failures"
+        ]
+      }
+    ]
+  },
+  "reports": [
+    {
+      "source_id": "dpbossss_kalyan",
+      "market_id": "kalyan",
+      "kind": "primary",
+      "base_url": "https://dpbossss.com/",
+      "reachable": false,
+      "robots_allows": null,
+      "verdict": "unreachable",
+      "structured_data_blocks": 0,
+      "archive_link_groups": {},
+      "n_archive_links": 0,
+      "asset_links": [],
+      "probes": [
+        {
+          "url": "https://dpbossss.com/jodi-chart-record/kalyan.php",
+          "reachable": false,
+          "http_status": null,
+          "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        },
+        {
+          "url": "https://dpbossss.com/panel-chart-record/kalyan.php",
+          "reachable": false,
+          "http_status": null,
+          "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        },
+        {
+          "url": "https://dpbossss.com/",
+          "reachable": false,
+          "http_status": null,
+          "error": "circuit breaker: 9 consecutive failures",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        }
+      ],
+      "notes": [
+        "no page could be fetched from this environment; errors observed: URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>; circuit breaker: 9 consecutive failures"
+      ]
+    },
+    {
+      "source_id": "dpbossss_main_bazar",
+      "market_id": "main_bazar",
+      "kind": "primary",
+      "base_url": "https://dpbossss.com/",
+      "reachable": false,
+      "robots_allows": null,
+      "verdict": "unreachable",
+      "structured_data_blocks": 0,
+      "archive_link_groups": {},
+      "n_archive_links": 0,
+      "asset_links": [],
+      "probes": [
+        {
+          "url": "https://dpbossss.com/jodi-chart-record/main-bazar.php",
+          "reachable": false,
+          "http_status": null,
+          "error": "circuit breaker: 9 consecutive failures",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        },
+        {
+          "url": "https://dpbossss.com/panel-chart-record/main-bazar.php",
+          "reachable": false,
+          "http_status": null,
+          "error": "circuit breaker: 9 consecutive failures",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        },
+        {
+          "url": "https://dpbossss.com/",
+          "reachable": false,
+          "http_status": null,
+          "error": "circuit breaker: 9 consecutive failures",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        }
+      ],
+      "notes": [
+        "no page could be fetched from this environment; errors observed: circuit breaker: 9 consecutive failures"
+      ]
+    },
+    {
+      "source_id": "dpbossss_root",
+      "market_id": null,
+      "kind": "secondary",
+      "base_url": "https://dpbossss.com/",
+      "reachable": false,
+      "robots_allows": null,
+      "verdict": "unreachable",
+      "structured_data_blocks": 0,
+      "archive_link_groups": {},
+      "n_archive_links": 0,
+      "asset_links": [],
+      "probes": [
+        {
+          "url": "https://dpbossss.com/",
+          "reachable": false,
+          "http_status": null,
+          "error": "circuit breaker: 9 consecutive failures",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        }
+      ],
+      "notes": [
+        "no page could be fetched from this environment; errors observed: circuit breaker: 9 consecutive failures"
+      ]
+    },
+    {
+      "source_id": "sattamatka_sale",
+      "market_id": null,
+      "kind": "secondary",
+      "base_url": "https://www.sattamatka.sale/",
+      "reachable": false,
+      "robots_allows": null,
+      "verdict": "unreachable",
+      "structured_data_blocks": 0,
+      "archive_link_groups": {},
+      "n_archive_links": 0,
+      "asset_links": [],
+      "probes": [
+        {
+          "url": "https://www.sattamatka.sale/",
+          "reachable": false,
+          "http_status": null,
+          "error": "circuit breaker: 9 consecutive failures",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        }
+      ],
+      "notes": [
+        "no page could be fetched from this environment; errors observed: circuit breaker: 9 consecutive failures"
+      ]
+    },
+    {
+      "source_id": "sattadpbossmatka",
+      "market_id": null,
+      "kind": "secondary",
+      "base_url": "https://sattadpbossmatka.com/",
+      "reachable": false,
+      "robots_allows": null,
+      "verdict": "unreachable",
+      "structured_data_blocks": 0,
+      "archive_link_groups": {},
+      "n_archive_links": 0,
+      "asset_links": [],
+      "probes": [
+        {
+          "url": "https://sattadpbossmatka.com/",
+          "reachable": false,
+          "http_status": null,
+          "error": "circuit breaker: 9 consecutive failures",
+          "content_type": null,
+          "byte_size": 0,
+          "is_html": false,
+          "is_json": false,
+          "title": "",
+          "table_count": 0,
+          "row_count": 0,
+          "script_count": 0,
+          "looks_js_rendered": false,
+          "status": "unreachable"
+        }
+      ],
+      "notes": [
+        "no page could be fetched from this environment; errors observed: circuit breaker: 9 consecutive failures"
+      ]
+    }
+  ]
+}

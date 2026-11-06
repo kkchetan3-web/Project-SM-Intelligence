@@ -36,7 +36,7 @@ import numpy as np
 
 from src.core.configuration import Config
 from src.core.logging import get_logger
-from src.core.provenance import utcnow
+from src.core.provenance import ExtractionLedger, content_hash, utcnow
 from src.storage.market_database import MarketDatabase
 
 log = get_logger(__name__)
@@ -208,6 +208,8 @@ def build_dataset(config: Config, spec: ControlSpec, *, rebuild: bool = False) -
         db = MarketDatabase(config, market_id)
         db.manager.initialise(market_id)
         outcome = db.upsert_results(rows)
+        record_generation_provenance(config, market_id, spec, n_rows=len(rows),
+                                     inserted=outcome.inserted)
         db.record_update("synthetic_generation", "ok", utcnow(),
                          new_records=outcome.inserted, new_watermark=rows[-1]["result_date"])
         summary["markets"][market_id] = {
@@ -219,3 +221,46 @@ def build_dataset(config: Config, spec: ControlSpec, *, rebuild: bool = False) -
                  market_id, len(rows), outcome.inserted, outcome.rejected)
     summary["generated_at"] = utcnow()
     return summary
+
+
+def record_generation_provenance(config: Config, market_id: str, spec: ControlSpec, *,
+                                 n_rows: int, inserted: int | None = None,
+                                 when: str | None = None) -> int | None:
+    """Write the generation act into `extraction_runs` / `source_records`.
+
+    The provenance tables exist so every number in a database can be traced to the
+    act that produced it. For a control dataset that act is *generation*, not
+    fetching, and it is recorded as such: one run per market and one source record
+    whose URL is `synthetic://<dataset>/<market>` and whose notes carry the seed and
+    the full generator parameters. Idempotent: a market that already has a
+    successful `synthetic_generator` run is not recorded twice.
+    """
+    db = MarketDatabase(config, market_id)
+    url = f"synthetic://{spec.name}/{market_id}"
+    notes = (
+        f"seed={spec.seed} start={spec.start.isoformat()} end={spec.end.isoformat()} "
+        f"open_persistence={spec.open_persistence} close_persistence={spec.close_persistence} "
+        f"marginal_tilt={spec.marginal_tilt} cross_market_strength={spec.cross_market_strength} "
+        f"generated_by=src.ingestion.synthetic_control.generate"
+    )
+    with db.session() as conn:
+        # Idempotent on the *content* of the record, not just on the source id:
+        # a second backfill of the same spec must not append a second run.
+        existing = conn.execute(
+            "SELECT r.run_id FROM extraction_runs r "
+            "JOIN source_records s ON s.run_id = r.run_id "
+            "WHERE r.market_id = ? AND r.source_id = ? AND r.status = 'ok' AND s.notes = ? "
+            "ORDER BY r.run_id DESC LIMIT 1",
+            (market_id, "synthetic_generator", notes),
+        ).fetchone()
+        if existing is not None:
+            return None
+        with ExtractionLedger(conn, market_id, "synthetic_generator",
+                              config.fingerprint()) as run:
+            run.record_page(url, None, True, byte_size=0, parse_status="generated",
+                            notes=notes, body=notes)
+            run.finish("ok", pages_requested=1, pages_ok=1, pages_failed=0,
+                       records_seen=n_rows, records_inserted=int(inserted or n_rows),
+                       records_revised=0,
+                       error_text="" if when is None else f"backfilled_at={utcnow()} original={when}")
+            return run.run_id

@@ -118,3 +118,45 @@ def test_coverage_reports_span_and_gaps(small_config):
     assert coverage["by_component"]["open_ank"] == coverage["n_records"]
     assert coverage["duplicate_dates"] == 0
     assert 0 < coverage["coverage_pct"] <= 100
+
+
+def test_generation_provenance_is_recorded_and_idempotent(small_config):
+    """The control data's audit trail must say *generated*, and must not duplicate."""
+    from src.ingestion.synthetic_control import NULL_SPEC, record_generation_provenance
+
+    db = MarketDatabase(small_config, "kalyan")
+
+    def counts() -> tuple[int, int]:
+        with db.session(read_only=True) as conn:
+            return (
+                conn.execute("SELECT COUNT(*) FROM extraction_runs "
+                             "WHERE source_id = 'synthetic_generator'").fetchone()[0],
+                conn.execute("SELECT COUNT(*) FROM source_records "
+                             "WHERE source_id = 'synthetic_generator'").fetchone()[0],
+            )
+
+    before = counts()
+    first = record_generation_provenance(small_config, "kalyan", NULL_SPEC,
+                                        n_rows=10, inserted=10, when="2020-01-01T00:00:00Z")
+    assert first is not None
+    second = record_generation_provenance(small_config, "kalyan", NULL_SPEC,
+                                         n_rows=10, inserted=10, when="2020-01-01T00:00:00Z")
+    assert second is None, "a repeated backfill of the same spec must not append a run"
+
+    after = counts()
+    assert after[0] == before[0] + 1, "exactly one new run"
+    assert after[1] == before[1] + 1, "exactly one new source record"
+
+    with db.session(read_only=True) as conn:
+        run = conn.execute(
+            "SELECT status, records_inserted FROM extraction_runs "
+            "WHERE source_id = 'synthetic_generator' "
+            "ORDER BY run_id DESC LIMIT 1").fetchone()
+        page = conn.execute(
+            "SELECT url, parse_status FROM source_records "
+            "WHERE source_id = 'synthetic_generator' "
+            "ORDER BY source_record_id DESC LIMIT 1").fetchone()
+    assert run[0] == "ok"
+    assert run[1] == 10
+    assert page[0].startswith("synthetic://")
+    assert page[1] == "generated"

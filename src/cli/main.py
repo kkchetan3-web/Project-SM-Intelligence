@@ -116,10 +116,11 @@ def cmd_discover(args: argparse.Namespace) -> int:
     summary = summarise(reports)
     _dataset_banner(config)
     for report in reports:
-        probe = report.probe
-        print(f"{report.source_id:22s} reachable={probe.reachable} status={probe.status_code}")
-        if probe.error:
-            print(f"{'':22s} error: {probe.error}")
+        print(f"{report.source_id:22s} reachable={report.reachable} "
+              f"robots_allows={report.robots_allows} verdict={report.verdict}")
+        for probe in report.probes:
+            if probe.error:
+                print(f"{'':22s} {probe.url} -> {probe.error}")
     print()
     _print_json(summary)
     out = config.research_dir("extraction")

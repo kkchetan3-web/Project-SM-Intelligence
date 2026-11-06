@@ -169,3 +169,22 @@ forecast.
 **Why.** An earlier iteration converted a NaN column into all-zero probabilities, which the
 metrics then reported as "uniform", which looked like a calibrated model. Silent failure in a
 backtester is indistinguishable from a null result.
+
+## 12. A control dataset's provenance record says "generated", not "fetched"
+
+The provenance tables (`extraction_runs`, `source_records`) exist so that every row in
+a database can be traced to the act that produced it. When no fetch is possible, the
+temptation is to leave them empty and describe the gap in prose. We record the act
+instead: one `extraction_runs` row per market with `source_id = synthetic_generator`,
+one `source_records` row with URL `synthetic://<dataset>/<market>`, `parse_status =
+generated`, and the seed plus every generator parameter in the notes.
+
+Two consequences that matter. First, a reader of the database alone - without the
+README - can see that the rows were synthesised, and with which seed. Second, the code
+path that writes provenance is exercised by every control run, so it cannot rot while
+waiting for a real extraction that may never be authorised.
+
+The record is idempotent on content, not on source id: a repeated backfill of the same
+spec is a no-op rather than a second run, and
+`scripts/record_synthetic_provenance.py` refuses to stamp a database whose row count
+and distinct-date count disagree.

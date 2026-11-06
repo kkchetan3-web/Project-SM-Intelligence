@@ -1,17 +1,17 @@
 {
   "dataset": "synthetic_null",
-  "generated_at": "2026-11-06T18:52:12+00:00",
+  "generated_at": "2026-11-06T19:00:15+00:00",
   "config_fingerprint": "b73fc8be2b9e1c5b",
   "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_synthetic_null.md",
-  "report_sha256": "bfe2422965fdff078d24afce7f5e286b9332d39faf078c02099fd05ac0fa786f",
+  "report_sha256": "68f841e21b463911df10e48eda6ff6adfbc357099f460d05751a2c11143220fd",
   "databases": {
     "kalyan": {
       "exists": true,
       "integrity": "ok",
       "row_counts": {
         "historical_results": 3131,
-        "source_records": 0,
-        "extraction_runs": 0,
+        "source_records": 1,
+        "extraction_runs": 1,
         "data_quality": 32,
         "market_features": 0,
         "method_results": 1084,
@@ -64,8 +64,8 @@
       "integrity": "ok",
       "row_counts": {
         "historical_results": 3131,
-        "source_records": 0,
-        "extraction_runs": 0,
+        "source_records": 1,
+        "extraction_runs": 1,
         "data_quality": 32,
         "market_features": 0,
         "method_results": 1084,

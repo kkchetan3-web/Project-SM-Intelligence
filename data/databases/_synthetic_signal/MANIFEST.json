@@ -1,7 +1,7 @@
 {
   "dataset": "synthetic_signal",
   "description": "H1 control: planted first-order Markov dependence. Framework must DETECT edge.",
-  "generated_at": "2026-11-06T18:51:27+00:00",
+  "generated_at": "2026-11-06T19:00:17+00:00",
   "config_fingerprint": "263ce938d3e5cfd4",
   "databases": [
     {
@@ -9,16 +9,16 @@
       "path": "data/databases/_synthetic_signal/kalyan/kalyan.db",
       "present": true,
       "bytes": 3137536,
-      "modified": "2026-11-06T18:51:27+00:00",
-      "sha256": "5488ee376d68cfd73326752b993589f5e5524af3d5f5d0610a55acda180364e6"
+      "modified": "2026-11-06T19:00:17+00:00",
+      "sha256": "8a81206ba37ebf1245d4b867d3c997f2001510730a3e877de803bfad50f0e79c"
     },
     {
       "market": "main_bazar",
       "path": "data/databases/_synthetic_signal/main_bazar/main_bazar.db",
       "present": true,
       "bytes": 3182592,
-      "modified": "2026-11-06T18:51:27+00:00",
-      "sha256": "c8ff9d72311b414bc7263dec366ca94a4b82b4d54222940f7311a29b787fe9a8"
+      "modified": "2026-11-06T19:00:17+00:00",
+      "sha256": "fe4b5407afe38e5dfad849b7f227592c570c912a85f56b6642b0130997717c73"
     }
   ],
   "note": "All rows in a synthetic dataset were produced by src/ingestion/synthetic_control.py and are not market history."

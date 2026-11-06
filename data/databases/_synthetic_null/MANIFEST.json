@@ -1,7 +1,7 @@
 {
   "dataset": "synthetic_null",
   "description": "H0 control: i.i.d. uniform draws. Framework must report NO predictive edge.",
-  "generated_at": "2026-11-06T18:51:24+00:00",
+  "generated_at": "2026-11-06T19:00:15+00:00",
   "config_fingerprint": "b73fc8be2b9e1c5b",
   "databases": [
     {
@@ -9,16 +9,16 @@
       "path": "data/databases/_synthetic_null/kalyan/kalyan.db",
       "present": true,
       "bytes": 2875392,
-      "modified": "2026-11-06T18:51:24+00:00",
-      "sha256": "55be4df14060286a74427a2decc2e04dd2290833d8e49a319ef3da1bc4c7bc76"
+      "modified": "2026-11-06T19:00:15+00:00",
+      "sha256": "315c220bf0c606d187675c6b04ad4da5db9a65de5a07e9d20c7340a0fe1aaa7c"
     },
     {
       "market": "main_bazar",
       "path": "data/databases/_synthetic_null/main_bazar/main_bazar.db",
       "present": true,
       "bytes": 3162112,
-      "modified": "2026-11-06T18:51:24+00:00",
-      "sha256": "5cc02d6c3f4e0f01aede47b9dbbf675fdf0fded49eedcbf87427f7d7e9963f38"
+      "modified": "2026-11-06T19:00:15+00:00",
+      "sha256": "5dc6e891e39a27c8fd845cd636b6ab955e717fa60424d41e85900ad790c4367a"
     }
   ],
   "note": "All rows in a synthetic dataset were produced by src/ingestion/synthetic_control.py and are not market history."

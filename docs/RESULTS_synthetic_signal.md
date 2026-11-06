@@ -1,6 +1,6 @@
 # Measured results - `synthetic_signal`
 
-Generated **2026-11-06T18:51:26+00:00** by `scripts/summarise_results.py` directly from `/home/user/Project-SM-Intelligence/data/databases/_synthetic_signal`. Nothing here is hand-written.
+Generated **2026-11-06T18:55:41+00:00** by `scripts/summarise_results.py` directly from `/home/user/Project-SM-Intelligence/data/databases/_synthetic_signal`. Nothing here is hand-written.
 
 _H1 control: planted first-order Markov dependence. Framework must DETECT edge._
 

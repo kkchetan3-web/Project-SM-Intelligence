@@ -3,7 +3,7 @@
 
 **Dataset:** `synthetic_signal` - H1 control: planted first-order Markov dependence. Framework must DETECT edge.
 
-**Generated:** 2026-11-06T18:52:13+00:00
+**Generated:** 2026-11-06T19:00:16+00:00
 
 > **Read this first.** The configured market-web sources were unreachable from the build environment, so **no real market history was extracted**. Every number below is computed on synthetic control data that is labelled as such in the databases and cannot be presented as a live market report. The value of this work is that the analytical pipeline is complete, leakage-audited and demonstrably able to separate a null world from a world with planted structure. It is not, and does not claim to be, evidence that these draws are predictable.
 
@@ -18,11 +18,19 @@
 | Dataset | `synthetic_signal` |
 | Dataset root | `/home/user/Project-SM-Intelligence/data/databases/_synthetic_signal` |
 | Schema version | 3 |
-| Generated at (UTC) | 2026-11-06T18:52:12+00:00 |
+| Generated at (UTC) | 2026-11-06T19:00:15+00:00 |
 
 ### Source reachability
 
-No discovery report was produced in this run. Run `python -m src.cli.main discover` to probe the configured sources.
+| Source | URL | Reachable | Verdict |
+|---|---|---|---|
+| dpbossss_kalyan | https://dpbossss.com/ | False | unreachable |
+| dpbossss_main_bazar | https://dpbossss.com/ | False | unreachable |
+| dpbossss_root | https://dpbossss.com/ | False | unreachable |
+| sattamatka_sale | https://www.sattamatka.sale/ | False | unreachable |
+| sattadpbossmatka | https://sattadpbossmatka.com/ | False | unreachable |
+
+**0 of 5 configured sources responded.** The probe is reproducible with `python -m src.cli.main discover`; the raw report is at `research/extraction/discovery_report.json`.
 
 ### What this means for the data
 
@@ -36,6 +44,28 @@ Two control worlds exist by design: `synthetic_null` (independent uniform draws 
 |---|---|---|---|---|
 | kalyan | ok | 3131 | 2016-01-01 .. 2025-12-31 | none |
 | main_bazar | ok | 3131 | 2016-01-01 .. 2025-12-31 | none |
+
+### Table population
+
+| Table | kalyan | main_bazar |
+|---|---|---|
+| historical_results | 3131 | 3131 |
+| source_records | 1 | 1 |
+| extraction_runs | 1 | 1 |
+| data_quality | 32 | 32 |
+| market_features | 0 | 0 |
+| method_results | 1084 | 1084 |
+| model_registry | 20 | 20 |
+| backtest_results | 20 | 20 |
+| predictions | 2 | 2 |
+| prediction_outcomes | 0 | 0 |
+| cross_market_features | 0 | 0 |
+| cross_market_tests | 28 | 28 |
+| result_revisions | 0 | 0 |
+| update_history | 1 | 1 |
+| database_migrations | 3 | 3 |
+
+Empty tables are explained rather than hidden: `market_features` and `cross_market_features` are built in memory at each walk-forward cutoff (persisting them risks re-using a vector computed with later data), and `prediction_outcomes` is filled only once the draw a forecast refers to has actually been published.
 
 Each market owns a separate SQLite database at `<dataset root>/<market_id>/<market_id>.db` with the 12 required tables. Raw payloads are stored alongside the cleaned rows; revisions are appended to `result_revisions` rather than overwriting history.
 
@@ -266,6 +296,7 @@ Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0
 
 ### What was genuinely executed
 
+- Source discovery probe executed for all configured sources (0 sources).
 - `kalyan` database initialised (schema 3) with 3131 historical rows.
 - `main_bazar` database initialised (schema 3) with 3131 historical rows.
 - Data-quality checks executed per market.
