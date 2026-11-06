@@ -3,7 +3,7 @@
 
 **Dataset:** `synthetic_signal` - H1 control: planted first-order Markov dependence. Framework must DETECT edge.
 
-**Generated:** 2026-11-06T19:00:16+00:00
+**Generated:** 2026-11-06T19:00:38+00:00
 
 > **Read this first.** The configured market-web sources were unreachable from the build environment, so **no real market history was extracted**. Every number below is computed on synthetic control data that is labelled as such in the databases and cannot be presented as a live market report. The value of this work is that the analytical pipeline is complete, leakage-audited and demonstrably able to separate a null world from a world with planted structure. It is not, and does not claim to be, evidence that these draws are predictable.
 
@@ -18,7 +18,7 @@
 | Dataset | `synthetic_signal` |
 | Dataset root | `/home/user/Project-SM-Intelligence/data/databases/_synthetic_signal` |
 | Schema version | 3 |
-| Generated at (UTC) | 2026-11-06T19:00:15+00:00 |
+| Generated at (UTC) | 2026-11-06T19:00:37+00:00 |
 
 ### Source reachability
 
@@ -312,8 +312,8 @@ Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0
 
 ### Negative results that must not be quietly dropped
 
-- `kalyan`: 69 finding(s) survive FDR control at alpha=0.05 (0 is the correct answer on the null control).
-- `main_bazar`: 71 finding(s) survive FDR control at alpha=0.05 (0 is the correct answer on the null control).
+- `kalyan`: 69 finding(s) survive FDR control at alpha=0.05 (the planted dependence is real here, so a non-empty survivor set is the right direction - but which tests fire matters, and section D names them).
+- `main_bazar`: 71 finding(s) survive FDR control at alpha=0.05 (the planted dependence is real here, so a non-empty survivor set is the right direction - but which tests fire matters, and section D names them).
 - Cross-market: 3 of 28 lag tests survive Holm correction; 1 conditional-model test(s) showed a demonstrated out-of-sample improvement.
 - The planted dependence in the signal control was recovered by the methods that should recover it (goodness-of-fit, transition, mutual-information and cross-market tests), which validates the framework rather than the market.
 

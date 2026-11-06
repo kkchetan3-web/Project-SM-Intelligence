@@ -548,11 +548,18 @@ def build_report(config: Config, markets: list[str] | None = None,
     ]
 
     negative = []
+    # What counts as the *correct* number of survivors depends on which control world
+    # this is: silence on H0, and a non-empty, well-attributed set on H1.
+    is_signal = "signal" in config.dataset.name.lower()
+    expectation = ("the planted dependence is real here, so a non-empty survivor set is "
+                   "the right direction - but which tests fire matters, and section D names them"
+                   if is_signal else
+                   "0 is the correct answer on this H0 control, so any survivor is a defect")
     if method_state["per_market"]:
         for market_id, state in method_state["per_market"].items():
             negative.append(
                 f"`{market_id}`: {state['n_significant_fdr']} finding(s) survive FDR control at "
-                "alpha=0.05 (0 is the correct answer on the null control).")
+                f"alpha=0.05 ({expectation}).")
     if cross_state:
         headline = cross_state.get("headline", {})
         negative.append(

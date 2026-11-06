@@ -1,9 +1,9 @@
 {
   "dataset": "synthetic_signal",
-  "generated_at": "2026-11-06T19:00:16+00:00",
+  "generated_at": "2026-11-06T19:00:38+00:00",
   "config_fingerprint": "263ce938d3e5cfd4",
   "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_synthetic_signal.md",
-  "report_sha256": "90232351bfd9be257d7764582e93ea9bb4b150e1f7e3c5f9b15c4989d97170e3",
+  "report_sha256": "e20f453ee119c1c10481254248ad31fcfd0ec6b1935c95ab50ea3837ea0e75c9",
   "databases": {
     "kalyan": {
       "exists": true,
