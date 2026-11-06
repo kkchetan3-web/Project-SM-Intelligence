@@ -1,0 +1,65 @@
+# =============================================================================
+# Market registry
+# =============================================================================
+# Each market is a first-class entity with its own database, features, models,
+# backtests, ledgers and reports. Nothing here merges one market into another.
+#
+# `components` declares which result fields the market publishes. The analysis
+# engine derives the categorical outcome space from this at runtime; it is never
+# hard-coded, because different markets publish different components.
+# =============================================================================
+
+defaults:
+  # Result components in publication order. `open` is published before `close`
+  # in every supplied market, which is what makes same-day open usable as a
+  # Close-model feature (subject to the cutoff rules in src/backtesting).
+  publication_order: ["open", "close"]
+  outcomes:
+    ank: {type: "categorical", support: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], description: "single digit 0-9"}
+    jodi: {type: "categorical", support: "00-99", description: "two digit open+close ank"}
+    panna: {type: "string", description: "three digit open/close panel (000-999)"}
+  timezone: "Asia/Kolkata"
+  draw_frequency: "daily"
+
+markets:
+  - market_id: "kalyan"
+    display_name: "Kalyan"
+    status: "configured"
+    components: ["open", "close", "jodi", "panna"]
+    targets:
+      open: {field: "open_ank", space: "ank"}
+      close: {field: "close_ank", space: "ank"}
+      jodi: {field: "jodi", space: "jodi"}
+    primary_source: "dpbossss_kalyan"
+    secondary_sources: ["sattamatka_sale", "sattadpbossmatka"]
+    notes: "Configured from user-supplied URLs. No live data ingested in this environment (egress blocked)."
+
+  - market_id: "main_bazar"
+    display_name: "Main Bazar"
+    status: "configured"
+    components: ["open", "close", "jodi", "panna"]
+    targets:
+      open: {field: "open_ank", space: "ank"}
+      close: {field: "close_ank", space: "ank"}
+      jodi: {field: "jodi", space: "jodi"}
+    primary_source: "dpbossss_main_bazar"
+    secondary_sources: ["sattamatka_sale", "sattadpbossmatka"]
+    notes: "Configured from user-supplied URLs. No live data ingested in this environment (egress blocked)."
+
+# Cross-market pairs that the dependency engine is permitted to investigate.
+# Adding a market above requires adding its pairs here explicitly: relationships
+# are never inferred automatically.
+cross_market_pairs:
+  - ["kalyan", "main_bazar"]
+
+# Cross-market publication precedence, declared as an ASSUMPTION.
+#
+# `cross_open_precedence: [[A, B]]` states that market A's Open is published
+# before market B's Close on the same day, which makes A's same-day Open an
+# admissible feature for B's Close model. This is NOT verified from source
+# timestamps - it rests on conventional draw times (Kalyan draws earlier in the
+# day than the night markets). It is listed here rather than hard-coded so that
+# it can be audited, changed, or switched off, and every model frame records
+# whether the channel was used. Remove this entry and the channel disappears.
+cross_open_precedence:
+  - ["kalyan", "main_bazar"]

@@ -1,0 +1,83 @@
+# =============================================================================
+# Source registry
+# =============================================================================
+# `authority` decides conflict resolution when two sources disagree on a date.
+# The primary source always wins unless a documented resolution rule says
+# otherwise; disagreements are stored, never silently overwritten.
+#
+# `reachability` records what THIS environment observed. It is written by
+# `python -m src.cli.main discover` and must never be edited by hand to claim
+# success that did not happen.
+# =============================================================================
+
+http:
+  user_agent: "sm-intel-research/0.3 (+academic reproducibility; contact via repo)"
+  timeout_seconds: 20
+  max_retries: 3
+  backoff_base_seconds: 1.5
+  backoff_max_seconds: 30
+  # Politeness: never hammer a volunteer-run site.
+  min_delay_seconds: 1.2
+  respect_robots_txt: true
+  # Hard safety rails.
+  max_pages_per_run: 5000
+  max_consecutive_failures: 8
+
+sources:
+  - source_id: "dpbossss_kalyan"
+    market_id: "kalyan"
+    authority: 10            # higher wins
+    kind: "primary"
+    base_url: "https://dpbossss.com/"
+    pages:
+      jodi_chart: "https://dpbossss.com/jodi-chart-record/kalyan.php"
+      panel_chart: "https://dpbossss.com/panel-chart-record/kalyan.php"
+    expected_format: "html_table"
+    parser: "dpbossss_jodi_chart"
+
+  - source_id: "dpbossss_main_bazar"
+    market_id: "main_bazar"
+    authority: 10
+    kind: "primary"
+    base_url: "https://dpbossss.com/"
+    pages:
+      jodi_chart: "https://dpbossss.com/jodi-chart-record/main-bazar.php"
+      panel_chart: "https://dpbossss.com/panel-chart-record/main-bazar.php"
+    expected_format: "html_table"
+    parser: "dpbossss_jodi_chart"
+
+  - source_id: "dpbossss_root"
+    market_id: null
+    authority: 9
+    kind: "secondary"
+    base_url: "https://dpbossss.com/"
+    pages:
+      home: "https://dpbossss.com/"
+    expected_format: "html"
+    parser: "index_links"
+    notes: "Discovered as a link hub; used only for archive discovery, not for record values."
+
+  - source_id: "sattamatka_sale"
+    market_id: null
+    authority: 5
+    kind: "secondary"
+    base_url: "https://www.sattamatka.sale/"
+    pages:
+      home: "https://www.sattamatka.sale/"
+    expected_format: "html"
+    parser: "index_links"
+
+  - source_id: "sattadpbossmatka"
+    market_id: null
+    authority: 5
+    kind: "secondary"
+    base_url: "https://sattadpbossmatka.com/"
+    pages:
+      home: "https://sattadpbossmatka.com/"
+    expected_format: "html"
+    parser: "index_links"
+
+# Populated by `discover`; initialised here to the truth at scaffold time.
+reachability:
+  observed_at: null
+  observations: []

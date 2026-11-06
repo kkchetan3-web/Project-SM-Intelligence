@@ -1,0 +1,181 @@
+{
+  "dataset": "synthetic_signal",
+  "generated_at": "2026-11-06T18:52:13+00:00",
+  "config_fingerprint": "263ce938d3e5cfd4",
+  "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_synthetic_signal.md",
+  "report_sha256": "4d13574230f71f1a2c92271bb943482a9c70f37723bf1d919ab298090cbfd53a",
+  "databases": {
+    "kalyan": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 3131,
+        "source_records": 0,
+        "extraction_runs": 0,
+        "data_quality": 32,
+        "market_features": 0,
+        "method_results": 1084,
+        "model_registry": 20,
+        "backtest_results": 20,
+        "predictions": 2,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 28,
+        "result_revisions": 0,
+        "update_history": 1,
+        "database_migrations": 3
+      },
+      "coverage": {
+        "market_id": "kalyan",
+        "n_records": 3131,
+        "oldest": "2016-01-01",
+        "newest": "2025-12-31",
+        "span_days": 3653,
+        "missing_dates": 522,
+        "duplicate_dates": 0,
+        "coverage_pct": 85.71,
+        "by_year": {
+          "2016": 314,
+          "2017": 312,
+          "2018": 313,
+          "2019": 313,
+          "2020": 314,
+          "2021": 313,
+          "2022": 313,
+          "2023": 312,
+          "2024": 314,
+          "2025": 313
+        },
+        "by_component": {
+          "open_ank": 3131,
+          "close_ank": 3131,
+          "jodi": 3131,
+          "open_panna": 3131,
+          "close_panna": 3131
+        },
+        "distinct_verification_status": [
+          "synthetic_control"
+        ],
+        "dataset": "synthetic_signal"
+      }
+    },
+    "main_bazar": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 3131,
+        "source_records": 0,
+        "extraction_runs": 0,
+        "data_quality": 32,
+        "market_features": 0,
+        "method_results": 1084,
+        "model_registry": 20,
+        "backtest_results": 20,
+        "predictions": 2,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 28,
+        "result_revisions": 0,
+        "update_history": 1,
+        "database_migrations": 3
+      },
+      "coverage": {
+        "market_id": "main_bazar",
+        "n_records": 3131,
+        "oldest": "2016-01-01",
+        "newest": "2025-12-31",
+        "span_days": 3653,
+        "missing_dates": 522,
+        "duplicate_dates": 0,
+        "coverage_pct": 85.71,
+        "by_year": {
+          "2016": 314,
+          "2017": 312,
+          "2018": 313,
+          "2019": 313,
+          "2020": 314,
+          "2021": 313,
+          "2022": 313,
+          "2023": 312,
+          "2024": 314,
+          "2025": 313
+        },
+        "by_component": {
+          "open_ank": 3131,
+          "close_ank": 3131,
+          "jodi": 3131,
+          "open_panna": 3131,
+          "close_panna": 3131
+        },
+        "distinct_verification_status": [
+          "synthetic_control"
+        ],
+        "dataset": "synthetic_signal"
+      }
+    }
+  },
+  "methods": {
+    "per_market": {
+      "kalyan": {
+        "n_methods": 100,
+        "n_rows": 1084,
+        "n_significant_fdr": 69
+      },
+      "main_bazar": {
+        "n_methods": 100,
+        "n_rows": 1084,
+        "n_significant_fdr": 71
+      }
+    }
+  },
+  "cross_market": {
+    "headline": {
+      "n_lag_tests": 28,
+      "n_significant_after_holm": 3,
+      "n_conditional_tests": 4,
+      "n_demonstrated_predictive_improvements": 1,
+      "strongest_association": {
+        "pair": [
+          "kalyan",
+          "main_bazar"
+        ],
+        "components": [
+          "open",
+          "close"
+        ],
+        "lag": 0,
+        "cramers_v": 0.18442614931844134,
+        "p_adjusted": 1.3527471736980569e-148,
+        "verdict": "statistically supported; the same-date association is admissible ONLY because markets.yaml declares kalyan.open published before main_bazar.close - an assumption, not a verified timestamp"
+      },
+      "conclusion": "1 conditional-model tests showed a demonstrated out-of-sample improvement; those features are eligible for the prediction engine subject to re-confirmation on untouched periods."
+    }
+  },
+  "backtests": {
+    "kalyan": {
+      "backtest_rows": 20,
+      "ledger": {
+        "market": "kalyan",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    },
+    "main_bazar": {
+      "backtest_rows": 20,
+      "ledger": {
+        "market": "main_bazar",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    }
+  },
+  "synthetic_notice": "All records in this dataset were produced by src/ingestion/synthetic_control.py and are not market history."
+}

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Testing / typing / linting caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# DATA POLICY
+# ---------------------------------------------------------------------------
+# The research platform is reproducible from source + a data manifest.
+# Raw scrapes and binary databases are NOT committed by default because:
+#   (a) they can be large,
+#   (b) they are re-derivable via `python -m src.cli.main extract-all`,
+#   (c) they may carry redistribution restrictions from the source site.
+# A SHA-256 manifest of what was extracted IS committed so that every
+# reported number is traceable to a specific data snapshot.
+data/raw/**/*.html
+data/raw/**/*.gz
+data/databases/**/*.db
+data/databases/**/*.db-wal
+data/databases/**/*.db-shm
+data/processed/**/*.parquet
+data/exports/**/*.csv
+artifacts/**/*.joblib
+
+# Keep the fixture generator + manifests tracked (see data/fixtures/.keep)
+!data/fixtures/**
+!data/**/MANIFEST.json
+!data/**/.keep
+
+# Pipeline logs (regenerated on every run)
+data/logs/
+
+# Local run logs written by the pipeline harness
+artifacts/*.log

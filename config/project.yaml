@@ -1,0 +1,57 @@
+# =============================================================================
+# Project-level configuration
+# =============================================================================
+project:
+  name: "Satta Matka Quantitative Research Platform"
+  slug: "sm-intel"
+  version: "0.3.0"
+  # Every computed artefact is stamped with this so results are traceable to code.
+  code_version: "0.3.0"
+
+paths:
+  data_root: "data"
+  raw_root: "data/raw"
+  processed_root: "data/processed"
+  # Root under which one directory per market lives, each holding <market>.db
+  database_root: "data/databases"
+  export_root: "data/exports"
+  fixture_root: "data/fixtures"
+  research_root: "research"
+  artifacts_root: "artifacts"
+
+databases:
+  engine: "sqlite"
+  journal_mode: "WAL"
+  synchronous: "NORMAL"
+  busy_timeout_ms: 15000
+  # One file per market. Never a single shared results table.
+  filename_template: "{market_id}.db"
+  # Surrogate-dataset roots. `dataset` selects which tree the CLI operates on so
+  # that synthetic control data can NEVER be confused with real market data.
+  datasets:
+    live:
+      root: "data/databases"
+      description: "Real extracted market records. Populated only by the ingestion pipeline."
+    synthetic_null:
+      root: "data/databases/_synthetic_null"
+      description: "H0 control: i.i.d. uniform draws. Framework must report NO predictive edge."
+    synthetic_signal:
+      root: "data/databases/_synthetic_signal"
+      description: "H1 control: planted first-order Markov dependence. Framework must DETECT edge."
+
+provenance:
+  # Rows written by the synthetic fixture generator carry this verification status
+  # and are hard-blocked from any report labelled as a live market report.
+  synthetic_status: "synthetic_control"
+  live_status: "unverified_scrape"
+  require_source_url_for_live: true
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s | %(levelname)-7s | %(name)s | %(message)s"
+  file: "artifacts/run.log"
+
+research:
+  random_seed: 20250101
+  n_jobs: 1
+  float_precision: 10

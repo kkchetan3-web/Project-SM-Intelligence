@@ -1,0 +1,181 @@
+{
+  "dataset": "synthetic_null",
+  "generated_at": "2026-11-06T18:52:12+00:00",
+  "config_fingerprint": "b73fc8be2b9e1c5b",
+  "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_synthetic_null.md",
+  "report_sha256": "bfe2422965fdff078d24afce7f5e286b9332d39faf078c02099fd05ac0fa786f",
+  "databases": {
+    "kalyan": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 3131,
+        "source_records": 0,
+        "extraction_runs": 0,
+        "data_quality": 32,
+        "market_features": 0,
+        "method_results": 1084,
+        "model_registry": 20,
+        "backtest_results": 20,
+        "predictions": 2,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 28,
+        "result_revisions": 0,
+        "update_history": 1,
+        "database_migrations": 3
+      },
+      "coverage": {
+        "market_id": "kalyan",
+        "n_records": 3131,
+        "oldest": "2016-01-01",
+        "newest": "2025-12-31",
+        "span_days": 3653,
+        "missing_dates": 522,
+        "duplicate_dates": 0,
+        "coverage_pct": 85.71,
+        "by_year": {
+          "2016": 314,
+          "2017": 312,
+          "2018": 313,
+          "2019": 313,
+          "2020": 314,
+          "2021": 313,
+          "2022": 313,
+          "2023": 312,
+          "2024": 314,
+          "2025": 313
+        },
+        "by_component": {
+          "open_ank": 3131,
+          "close_ank": 3131,
+          "jodi": 3131,
+          "open_panna": 3131,
+          "close_panna": 3131
+        },
+        "distinct_verification_status": [
+          "synthetic_control"
+        ],
+        "dataset": "synthetic_null"
+      }
+    },
+    "main_bazar": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 3131,
+        "source_records": 0,
+        "extraction_runs": 0,
+        "data_quality": 32,
+        "market_features": 0,
+        "method_results": 1084,
+        "model_registry": 20,
+        "backtest_results": 20,
+        "predictions": 2,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 28,
+        "result_revisions": 0,
+        "update_history": 1,
+        "database_migrations": 3
+      },
+      "coverage": {
+        "market_id": "main_bazar",
+        "n_records": 3131,
+        "oldest": "2016-01-01",
+        "newest": "2025-12-31",
+        "span_days": 3653,
+        "missing_dates": 522,
+        "duplicate_dates": 0,
+        "coverage_pct": 85.71,
+        "by_year": {
+          "2016": 314,
+          "2017": 312,
+          "2018": 313,
+          "2019": 313,
+          "2020": 314,
+          "2021": 313,
+          "2022": 313,
+          "2023": 312,
+          "2024": 314,
+          "2025": 313
+        },
+        "by_component": {
+          "open_ank": 3131,
+          "close_ank": 3131,
+          "jodi": 3131,
+          "open_panna": 3131,
+          "close_panna": 3131
+        },
+        "distinct_verification_status": [
+          "synthetic_control"
+        ],
+        "dataset": "synthetic_null"
+      }
+    }
+  },
+  "methods": {
+    "per_market": {
+      "kalyan": {
+        "n_methods": 100,
+        "n_rows": 1084,
+        "n_significant_fdr": 0
+      },
+      "main_bazar": {
+        "n_methods": 100,
+        "n_rows": 1084,
+        "n_significant_fdr": 0
+      }
+    }
+  },
+  "cross_market": {
+    "headline": {
+      "n_lag_tests": 28,
+      "n_significant_after_holm": 0,
+      "n_conditional_tests": 4,
+      "n_demonstrated_predictive_improvements": 0,
+      "strongest_association": {
+        "pair": [
+          "kalyan",
+          "main_bazar"
+        ],
+        "components": [
+          "close",
+          "close"
+        ],
+        "lag": 0,
+        "cramers_v": 0.05931473592454964,
+        "p_adjusted": 1.0,
+        "verdict": "no meaningful evidence detected"
+      },
+      "conclusion": "No cross-market relationship produced a demonstrable out-of-sample predictive improvement for either market. Markets are therefore modelled independently, and the cross-market layer remains an analytical overlay rather than an input to prediction."
+    }
+  },
+  "backtests": {
+    "kalyan": {
+      "backtest_rows": 20,
+      "ledger": {
+        "market": "kalyan",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    },
+    "main_bazar": {
+      "backtest_rows": 20,
+      "ledger": {
+        "market": "main_bazar",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    }
+  },
+  "synthetic_notice": "All records in this dataset were produced by src/ingestion/synthetic_control.py and are not market history."
+}
