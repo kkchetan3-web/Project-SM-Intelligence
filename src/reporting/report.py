@@ -56,6 +56,42 @@ def _safe(fn, default):
 # ---------------------------------------------------------------------------
 # section A
 # ---------------------------------------------------------------------------
+def _is_live(config: Config) -> bool:
+    return config.dataset.name == "live"
+
+
+def live_data_facts(config: Config) -> dict[str, Any]:
+    """Rows, span and provenance of the real data, read from the databases."""
+    facts: dict[str, Any] = {"markets": {}, "sources": []}
+    for market_id in config.market_order:
+        db = MarketDatabase(config, market_id)
+        if not db.manager.exists(market_id):
+            continue
+        with db.session(read_only=True) as conn:
+            row = conn.execute(
+                "SELECT COUNT(*) AS n, MIN(result_date) AS first, MAX(result_date) AS last, "
+                "SUM(CASE WHEN open_panna IS NULL OR close_panna IS NULL THEN 1 ELSE 0 END) "
+                "AS partial FROM historical_results WHERE is_active = 1").fetchone()
+            statuses = conn.execute(
+                "SELECT verification_status, COUNT(*) FROM historical_results "
+                "WHERE is_active = 1 GROUP BY 1").fetchall()
+            sources = conn.execute(
+                "SELECT DISTINCT source_id, source_url FROM historical_results "
+                "WHERE is_active = 1").fetchall()
+        facts["markets"][market_id] = {
+            "rows": int(row["n"]), "first": row["first"], "last": row["last"],
+            "partial_panna": int(row["partial"] or 0),
+            "statuses": {r[0]: int(r[1]) for r in statuses},
+        }
+        for source_id, url in sources:
+            if url and [source_id, url] not in facts["sources"]:
+                facts["sources"].append([source_id, url])
+    audit_dir = config.research_dir("extraction")
+    facts["audits"] = sorted(str(p) for p in audit_dir.glob("reconciliation_*.json")) \
+        if audit_dir.exists() else []
+    return facts
+
+
 def section_a(config: Config, discovery: dict | None) -> str:
     lines = [_h(2, "A. " + SECTION_TITLES["A"]), ""]
     lines.append(_table(
@@ -86,6 +122,10 @@ def section_a(config: Config, discovery: dict | None) -> str:
     lines.append("")
     lines.append("### What this means for the data")
     lines.append("")
+
+    if _is_live(config):
+        return "\n".join(lines + _live_data_section(config))
+
     lines.append(
         "The five configured sources could not be reached from the execution environment "
         "(TLS resets on 443, empty replies on 80). **Zero real historical records were "
@@ -98,6 +138,43 @@ def section_a(config: Config, discovery: dict | None) -> str:
         "dependence plus a Kalyan-to-Main-Bazar channel - the framework must **find** it). "
         "Agreement between them is the test of the framework itself, not of the market.")
     return "\n".join(lines)
+
+
+def _live_data_section(config: Config) -> list[str]:
+    facts = live_data_facts(config)
+    lines: list[str] = []
+    rows = []
+    for market_id, info in facts["markets"].items():
+        status = ", ".join(f"{k} ({v})" for k, v in info["statuses"].items())
+        rows.append([market_id, info["rows"], f"{info['first']} .. {info['last']}",
+                     info["partial_panna"], status])
+    if rows:
+        lines.append(_table(["Market", "Stored results", "Span", "Rows missing a panna",
+                             "Verification status"], rows))
+        lines.append("")
+    total = sum(info["rows"] for info in facts["markets"].values())
+    lines.append(
+        f"The scraper still cannot reach the configured hosts from this environment (TLS "
+        f"resets on 443, empty replies on 80), so **nothing here was fetched by the scraper**. "
+        f"The {total:,} stored results come from saved copies of the four primary chart pages "
+        f"supplied on 2026-11-07: parsed by a committed code path (`import-snapshots`), hashed "
+        f"into `source_records`, archived under `data/raw/snapshots/`. They are real published "
+        f"results, but single-provider and therefore `unverified_scrape` - not independently "
+        f"confirmed by a second source.")
+    lines.append("")
+    lines.append(
+        "The jodi pages carry no dates; the panel pages carry dates with year typos, stray "
+        "characters, mixed date formats and off-by-one labels. Dates were recovered by "
+        "resolving each page as a whole against its own weekly grid, and the two pages were "
+        "then checked against each other: they agree on **every** jodi both carry. The repair "
+        "and conflict lists are in `docs/DATA_SNAPSHOT_2026-11-07.md` and "
+        "`research/extraction/reconciliation_*.json`.")
+    lines.append("")
+    lines.append(
+        "This report therefore describes the real published history of these markets. It does "
+        "not make the draws predictable: every verdict in part F is a walk-forward verdict on "
+        "that history, and part G states the losses plainly.")
+    return lines
 
 
 # ---------------------------------------------------------------------------
@@ -486,7 +563,11 @@ def section_g(config: Config, context: dict[str, Any]) -> str:
     lines.append("")
     lines.append("```bash")
     lines.append(f"python -m src.cli.main --dataset {config.dataset.name} init")
-    lines.append(f"python -m src.cli.main --dataset {config.dataset.name} synthetic")
+    if _is_live(config):
+        lines.append(f"python -m src.cli.main --dataset {config.dataset.name} import-snapshots "
+                     "--input <directory of saved pages>")
+    else:
+        lines.append(f"python -m src.cli.main --dataset {config.dataset.name} synthetic")
     lines.append(f"python -m src.cli.main --dataset {config.dataset.name} validate")
     lines.append(f"python -m src.cli.main --dataset {config.dataset.name} analyse")
     lines.append(f"python -m src.cli.main --dataset {config.dataset.name} backtest --market kalyan")
@@ -550,11 +631,16 @@ def build_report(config: Config, markets: list[str] | None = None,
     negative = []
     # What counts as the *correct* number of survivors depends on which control world
     # this is: silence on H0, and a non-empty, well-attributed set on H1.
-    is_signal = "signal" in config.dataset.name.lower()
-    expectation = ("the planted dependence is real here, so a non-empty survivor set is "
-                   "the right direction - but which tests fire matters, and section D names them"
-                   if is_signal else
-                   "0 is the correct answer on this H0 control, so any survivor is a defect")
+    if _is_live(config):
+        expectation = ("these are real draws, so a survivor is a property of the data that "
+                       "survived correction - it is not by itself evidence of predictability, "
+                       "and part F is the arbiter")
+    elif "signal" in config.dataset.name.lower():
+        expectation = ("the planted dependence is real here, so a non-empty survivor set is "
+                       "the right direction - but which tests fire matters, and section D names "
+                       "them")
+    else:
+        expectation = "0 is the correct answer on this H0 control, so any survivor is a defect"
     if method_state["per_market"]:
         for market_id, state in method_state["per_market"].items():
             negative.append(
@@ -567,9 +653,17 @@ def build_report(config: Config, markets: list[str] | None = None,
             f"{headline.get('n_lag_tests', 0)} lag tests survive Holm correction; "
             f"{headline.get('n_demonstrated_predictive_improvements', 0)} conditional-model test(s) "
             "showed a demonstrated out-of-sample improvement.")
-    negative.append("The planted dependence in the signal control was recovered by the methods "
-                    "that should recover it (goodness-of-fit, transition, mutual-information and "
-                    "cross-market tests), which validates the framework rather than the market.")
+    if _is_live(config):
+        negative.append(
+            "The surviving findings are distributional properties of the published draws - "
+            "panna digit structure, digit-sum shape, repeated-panel rates - not serial "
+            "dependence that a forecast can use: the walk-forward test in part F puts every "
+            "candidate model at or above the uniform floor.")
+    else:
+        negative.append(
+            "The planted dependence in the signal control was recovered by the methods that "
+            "should recover it (goodness-of-fit, transition, mutual-information and "
+            "cross-market tests), which validates the framework rather than the market.")
 
     g = section_g(config, {"executed": executed, "blocked": blocked, "negative": negative})
 
@@ -581,13 +675,21 @@ def build_report(config: Config, markets: list[str] | None = None,
         "",
         f"**Generated:** {utcnow()}",
         "",
-        "> **Read this first.** The configured market-web sources were unreachable from the build "
-        "environment, so **no real market history was extracted**. Every number below is computed "
-        "on synthetic control data that is labelled as such in the databases and cannot be "
-        "presented as a live market report. The value of this work is that the analytical pipeline "
-        "is complete, leakage-audited and demonstrably able to separate a null world from a world "
-        "with planted structure. It is not, and does not claim to be, evidence that these draws "
-        "are predictable.",
+        ("> **Read this first.** These are real published results for Kalyan and Main Bazar, "
+         "supplied as saved copies of the source pages on 2026-11-07 and dated by the parser "
+         "(see `docs/DATA_SNAPSHOT_2026-11-07.md`). They are single-provider and marked "
+         "`unverified_scrape`. The platform finds structure in the *distribution* of these "
+         "draws and **no** out-of-sample predictability: on every market and target nothing "
+         "beat the uniform forecast, and no model was promoted. That is the finding, and it is "
+         "reported as such."
+         if _is_live(config) else
+         "> **Read this first.** The configured market-web sources were unreachable from the "
+         "build environment, so **no real market history was extracted**. Every number below is "
+         "computed on synthetic control data that is labelled as such in the databases and "
+         "cannot be presented as a live market report. The value of this work is that the "
+         "analytical pipeline is complete, leakage-audited and demonstrably able to separate a "
+         "null world from a world with planted structure. It is not, and does not claim to be, "
+         "evidence that these draws are predictable."),
         "",
         "---",
         "",

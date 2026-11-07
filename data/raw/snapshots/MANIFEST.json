@@ -1,0 +1,26 @@
+{
+ "generated_at": "2026-11-07T15:02:08+00:00",
+ "note": "Raw snapshots supplied by the user (saved pages of dpbossss.com). They are kept out of version control by the data policy; this manifest is committed so every stored row can be traced to the exact file that produced it.",
+ "files": [
+  {
+   "path": "raw/snapshots/kalyan/jodi_45ddc5dd7a1e.mhtml",
+   "bytes": 237532,
+   "sha256": "45ddc5dd7a1ec8ae5f546ede7e1ee5129a7ec7d50bdf436337cd0fcaa3505e17"
+  },
+  {
+   "path": "raw/snapshots/kalyan/panel_21770b4553ad.mhtml",
+   "bytes": 393375,
+   "sha256": "21770b4553adfa504f732c5d425390fa414f7b11467b67a8e9aa4741b888924e"
+  },
+  {
+   "path": "raw/snapshots/main_bazar/jodi_13ebe7b5643a.mhtml",
+   "bytes": 166062,
+   "sha256": "13ebe7b5643af8327aa350489886920fe7fd29529f44a8f032a1bcc97a227c7a"
+  },
+  {
+   "path": "raw/snapshots/main_bazar/panel_9bd9ac1335f2.mhtml",
+   "bytes": 470548,
+   "sha256": "9bd9ac1335f2981c8e0b4ffd63a7854d670ec8cb7f9e0b4f75b05c8da5ea74e5"
+  }
+ ]
+}

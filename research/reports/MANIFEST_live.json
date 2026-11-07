@@ -1,0 +1,85 @@
+{
+  "dataset": "live",
+  "generated_at": "2026-11-07T15:04:54+00:00",
+  "config_fingerprint": "de460bd3e53ea409",
+  "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_live.md",
+  "report_sha256": "0ba4a275c4be3a300c1ff77d43200710682b9570777bc3831557370f99f521a6",
+  "databases": {
+    "kalyan": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 2,
+        "source_records": 2,
+        "extraction_runs": 2,
+        "data_quality": 5,
+        "market_features": 0,
+        "method_results": 0,
+        "model_registry": 0,
+        "backtest_results": 0,
+        "predictions": 0,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 0,
+        "result_revisions": 0,
+        "update_history": 1,
+        "database_migrations": 3
+      },
+      "coverage": {
+        "market_id": "kalyan",
+        "n_records": 2,
+        "oldest": "2026-11-02",
+        "newest": "2026-11-03",
+        "span_days": 2,
+        "missing_dates": 0,
+        "duplicate_dates": 0,
+        "coverage_pct": 100.0,
+        "by_year": {
+          "2026": 2
+        },
+        "by_component": {
+          "open_ank": 2,
+          "close_ank": 2,
+          "jodi": 2,
+          "open_panna": 2,
+          "close_panna": 2
+        },
+        "distinct_verification_status": [
+          "unverified_scrape"
+        ],
+        "dataset": "live"
+      }
+    },
+    "main_bazar": {
+      "exists": false
+    }
+  },
+  "methods": {
+    "per_market": {}
+  },
+  "cross_market": {
+    "headline": {
+      "n_lag_tests": 28,
+      "n_significant_after_holm": 0,
+      "n_conditional_tests": 4,
+      "n_demonstrated_predictive_improvements": 0,
+      "strongest_association": {
+        "pair": [
+          "kalyan",
+          "main_bazar"
+        ],
+        "components": [
+          "close",
+          "close"
+        ],
+        "lag": 0,
+        "cramers_v": 0.06652548264106707,
+        "p_adjusted": 0.9815940759299747,
+        "verdict": "no meaningful evidence detected"
+      },
+      "conclusion": "No cross-market relationship produced a demonstrable out-of-sample predictive improvement for either market. Markets are therefore modelled independently, and the cross-market layer remains an analytical overlay rather than an input to prediction."
+    }
+  },
+  "backtests": {},
+  "synthetic_notice": "All records in this dataset were produced by src/ingestion/synthetic_control.py and are not market history."
+}

@@ -1,5 +1,16 @@
 # Data sources: what was attempted, what happened, what to do next
 
+> **Update, 2026-11-07 — real data is now in the databases.** The user supplied saved
+> pages (MHTML snapshots) of the four primary dpboss chart URLs, taken on the morning of
+> 7 November 2026. They were parsed, dated, cross-checked against each other and loaded:
+> **Kalyan 4,143 results (2012-12-31 → 2026-11-05)** and **Main Bazar 2,660 results
+> (2015-12-28 → 2026-11-05)**. The whole dating and reconciliation story — including the
+> five year-typo week labels the site itself contains and the 40 days where a printed
+> jodi contradicts its own pannas — is in
+> [`DATA_SNAPSHOT_2026-11-07.md`](DATA_SNAPSHOT_2026-11-07.md). The remaining sections of
+> this file describe the automated fetch path, which is still blocked from this
+> environment.
+
 ## Summary
 
 | Source | Role | Result in the build environment |
@@ -12,9 +23,15 @@
 | `https://www.sattamatka.sale/` | Secondary corroboration | **Unreachable** |
 | `https://sattadpbossmatka.com/` | Secondary corroboration | **Unreachable** |
 
-**Zero records were extracted from any of them.** No partial page, cached HTML or
-third-party copy of these charts was used to fill the gap, because a record whose
-provenance cannot be demonstrated is not research data.
+**Zero records were extracted from any of them by the live scraper.** No partial page,
+cached HTML or third-party copy of these charts was used to fill the gap, because a record
+whose provenance cannot be demonstrated is not research data.
+
+The data that *is* loaded came from the user's own saved copies of the four pages listed
+above (same host, same URLs, saved 2026-11-07 03:38–03:39 GMT). They are treated as a
+first-class source: hashed, archived under `data/raw/snapshots/`, recorded in
+`extraction_runs` / `source_records`, and imported by a committed code path
+(`python -m src.cli.main --dataset live import-snapshots --input <dir>`), not by hand.
 
 ## Exact failure modes
 

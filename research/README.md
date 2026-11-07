@@ -9,7 +9,7 @@ large artefacts):
 | `methods/<dataset>/` | `python -m src.cli.main methods --write --market <m>` | One sixteen-section dossier per method per control world (100 files each), populated with the numbers actually stored in that market's database |
 | `cross_market/` | `cross-market` | Lead-lag sweep, dependency battery, leakage validation and the conditional-model comparison |
 | `backtests/` | `backtest --market <m>` | Full model-vs-baseline tables with promotion verdicts |
-| `extraction/` | `discover` | Per-source reachability report (all sources were unreachable here) |
+| `extraction/` | `discover`, `import-snapshots` | Per-source reachability report, plus the snapshot reconciliation audit (`reconciliation_<market>.json`) and the import summary. The audit is the record of every date repair, every panna/jodi contradiction and every blank day. |
 | `runs/` | `scripts/run_full_pipeline.py`, `update-all` | Stage-by-stage run records with timings, status counts and failures |
 | `reports/` | `report` | `SECTION_22_REPORT_<dataset>.md` (parts A–G) and `MANIFEST_<dataset>.json` |
 
@@ -47,6 +47,14 @@ report ("Table population").
 
 ## A note on the numbers
 
-All figures derive from the synthetic control datasets (`synthetic_null`,
-`synthetic_signal`) unless the dataset banner says `live`. No real market history
-was obtained - see `../docs/DATA_SOURCES.md`.
+Three datasets live side by side, and every artefact names the one it came from:
+
+| Dataset | Rows | Source | File naming |
+|---|---|---|---|
+| `live` | Kalyan 4,143 · Main Bazar 2,660 (2012-12-31 / 2015-12-28 → 2026-11-05) | real chart pages saved on 2026-11-07, imported by `import-snapshots` | `*_live.*` |
+| `synthetic_null` | 3,131 per market | generator, H0 (i.i.d. uniform) | `*_synthetic_null.*` |
+| `synthetic_signal` | 3,131 per market | generator, H1 (planted persistence) | `*_synthetic_signal.*` |
+
+The live numbers come from the user's saved copies of the source pages - see
+`../docs/DATA_SNAPSHOT_2026-11-07.md` for how they were dated and reconciled, and
+`../docs/DATA_SOURCES.md` for why the automated scraper has never touched the live site.

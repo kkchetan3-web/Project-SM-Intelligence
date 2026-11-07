@@ -11,5 +11,13 @@ beautifulsoup4==4.15.0
 lxml==6.1.3
 pyarrow==26.0.1
 
+# Optional model libraries. Without them methods M077-M079 and M094 report
+# `dependency_unavailable` / `failed` instead of quietly substituting a different
+# model - see docs/METHOD_CATALOGUE.md.
+xgboost==3.2.0
+lightgbm==4.7.0
+catboost==1.2.10
+shap==0.51.0
+
 # Development / CI
 pytest==9.2.0

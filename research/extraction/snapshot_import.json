@@ -1,0 +1,48 @@
+{
+  "dataset": "live",
+  "input": "/tmp/arena-coding-uploads",
+  "markets": [
+    {
+      "market_id": "kalyan",
+      "dataset": "live",
+      "rows_built": 4143,
+      "inserted": 4143,
+      "revised": 0,
+      "unchanged": 0,
+      "rejected": 0,
+      "errors": [],
+      "missing_days": 133,
+      "jodi_conflicts": 35,
+      "audit_path": "/home/user/Project-SM-Intelligence/research/extraction/reconciliation_kalyan.json",
+      "raw_paths": [
+        "data/raw/snapshots/kalyan/panel_21770b4553ad.mhtml",
+        "data/raw/snapshots/kalyan/jodi_45ddc5dd7a1e.mhtml"
+      ],
+      "run_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "market_id": "main_bazar",
+      "dataset": "live",
+      "rows_built": 2660,
+      "inserted": 2660,
+      "revised": 0,
+      "unchanged": 0,
+      "rejected": 0,
+      "errors": [],
+      "missing_days": 143,
+      "jodi_conflicts": 5,
+      "audit_path": "/home/user/Project-SM-Intelligence/research/extraction/reconciliation_main_bazar.json",
+      "raw_paths": [
+        "data/raw/snapshots/main_bazar/panel_9bd9ac1335f2.mhtml",
+        "data/raw/snapshots/main_bazar/jodi_13ebe7b5643a.mhtml"
+      ],
+      "run_ids": [
+        1,
+        2
+      ]
+    }
+  ]
+}

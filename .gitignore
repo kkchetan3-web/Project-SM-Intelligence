@@ -51,3 +51,7 @@ data/logs/
 
 # Local run logs written by the pipeline harness
 artifacts/*.log
+
+# Raw snapshot archives (see docs/DATA_SNAPSHOT_2026-11-07.md)
+data/raw/**/*.mhtml
+data/raw/**/*.mht

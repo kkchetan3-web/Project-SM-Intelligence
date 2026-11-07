@@ -52,6 +52,9 @@ def main(argv: list[str] | None = None) -> int:
                         choices=["live", "synthetic_null", "synthetic_signal"])
     parser.add_argument("--markets", nargs="+", default=None)
     parser.add_argument("--skip-synthetic", action="store_true")
+    parser.add_argument("--snapshot-dir", default=None,
+                        help="for --dataset live: directory of saved chart pages to import "
+                             "before analysis")
     parser.add_argument("--skip-cross-market", action="store_true")
     parser.add_argument("--out", default=None)
     args = parser.parse_args(argv)
@@ -86,6 +89,35 @@ def main(argv: list[str] | None = None) -> int:
             return {m: summary["markets"][m] for m in markets}
 
         _stage("synthetic", synthetic, results)
+
+    # -- 2b. user-supplied snapshots (live only) ---------------------------
+    if args.snapshot_dir:
+        def snapshots():
+            from src.ingestion.snapshot_loading import (
+                discover_snapshots,
+                import_market,
+                write_snapshot_manifest,
+            )
+
+            found = discover_snapshots(args.snapshot_dir)
+            out = {}
+            for market_id in markets:
+                paths = found.get(market_id)
+                if not paths or not {"jodi", "panel"} <= set(paths):
+                    out[market_id] = {"status": "no snapshots found"}
+                    continue
+                report = import_market(
+                    config, market_id, jodi_path=paths["jodi"], panel_path=paths["panel"],
+                    raw_dir=Path("data/raw/snapshots"),
+                    audit_dir=config.research_dir("extraction"))
+                out[market_id] = report.as_dict()
+                print(f"    {market_id}: {report.rows_built} dated days stored "
+                      f"({report.missing_days} blank, {report.conflicts} jodi conflicts)",
+                      flush=True)
+            write_snapshot_manifest(Path("data/raw/snapshots"))
+            return out
+
+        _stage("snapshots", snapshots, results)
 
     # -- 3. validation ------------------------------------------------------
     def validate():

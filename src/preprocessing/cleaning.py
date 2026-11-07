@@ -85,9 +85,12 @@ def clean_results(config: Config, market_id: str) -> pd.DataFrame:
         df.drop(columns=[column + "_c"], inplace=True)
 
     # Consistency: ank must equal digit sum of panna when both are present.
+    # A panna may legitimately be missing while its ank is known (the jodi carries
+    # both anks), and pandas turns those NULLs into NaN, so the guard is `isna`,
+    # not `is None`.
     if {"open_panna", "open_ank"} <= set(df.columns):
         derived = df["open_panna"].map(
-            lambda p: None if p is None else sum(int(c) for c in p) % 10
+            lambda p: None if pd.isna(p) else sum(int(c) for c in str(p)) % 10
         )
         mismatch = (derived.notna() & df["open_ank"].notna() & (derived != df["open_ank"]))
         if mismatch.any():

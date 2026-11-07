@@ -1,0 +1,525 @@
+{
+ "market_id": "kalyan",
+ "panel_weeks": 713,
+ "panel_cells": 4276,
+ "jodi_rows": 713,
+ "panel_problems": [],
+ "jodi_problems": [],
+ "week_repairs": [
+  {
+   "label": "11/11/2013 to 16/11/2013",
+   "start": "2013-11-11",
+   "repairs": [
+    "label '11/11/2013 to 16/11/2013': 14-day gap after 2013-10-28 - the page skips 1 whole week(s) here"
+   ]
+  },
+  {
+   "label": "27/10/2014 to 01/01/2014",
+   "start": "2014-10-27",
+   "repairs": [
+    "label '27/10/2014 to 01/01/2014': 14-day gap after 2014-10-13 - the page skips 1 whole week(s) here"
+   ]
+  },
+  {
+   "label": "16/11/2015 to 22/11/2015",
+   "start": "2015-11-16",
+   "repairs": [
+    "label '16/11/2015 to 22/11/2015': 14-day gap after 2015-11-02 - the page skips 1 whole week(s) here"
+   ]
+  },
+  {
+   "label": "07/01/2018 to 12/01/2018",
+   "start": "2019-01-07",
+   "repairs": [
+    "label '07/01/2018 to 12/01/2018': read 2019-01-07 (day-first year+1)"
+   ]
+  },
+  {
+   "label": "14/01/2018 to 19/01/2019",
+   "start": "2019-01-14",
+   "repairs": [
+    "label '14/01/2018 to 19/01/2019': read 2019-01-14 (day-first year+1)"
+   ]
+  },
+  {
+   "label": "22/04/2018 to 27/04/2018",
+   "start": "2019-04-22",
+   "repairs": [
+    "label '22/04/2018 to 27/04/2018': read 2019-04-22 (day-first year+1)"
+   ]
+  },
+  {
+   "label": "27/10/2019 to 26/10/2019",
+   "start": "2019-10-28",
+   "repairs": [
+    "label '27/10/2019 to 26/10/2019': 14-day gap after 2019-10-14 - the page skips 1 whole week(s) here"
+   ]
+  },
+  {
+   "label": "11/05/2020 to 16/05/2020",
+   "start": "2020-05-11",
+   "repairs": [
+    "label '11/05/2020 to 16/05/2020': 49-day gap after 2020-03-23 - the page skips 6 whole week(s) here"
+   ]
+  },
+  {
+   "label": "04/01/2020 to 09/01/2021",
+   "start": "2021-01-04",
+   "repairs": [
+    "label '04/01/2020 to 09/01/2021': read 2021-01-04 (day-first year+1)"
+   ]
+  },
+  {
+   "label": "20/06/2020 to 26/06/2022",
+   "start": "2022-06-20",
+   "repairs": [
+    "label '20/06/2020 to 26/06/2022': read 2022-06-20 (day-first year+2)"
+   ]
+  }
+ ],
+ "alignment": {
+  "matched_by": "index",
+  "panel_weeks": 713,
+  "jodi_rows": 713
+ },
+ "status_counts": {
+  "agrees": 4094,
+  "single_source": 133,
+  "panel_internal_mismatch": 35,
+  "partial_panna_recovered": 14
+ },
+ "conflicts": [
+  {
+   "date": "2013-02-11",
+   "panel_jodi": "79",
+   "jodi_chart": "79",
+   "panna_arithmetic": "75",
+   "used": "75",
+   "notes": [
+    "printed jodi 79 != panna arithmetic 75",
+    "jodi chart 79 != panna arithmetic 75"
+   ]
+  },
+  {
+   "date": "2013-08-10",
+   "panel_jodi": "78",
+   "jodi_chart": "78",
+   "panna_arithmetic": "70",
+   "used": "70",
+   "notes": [
+    "printed jodi 78 != panna arithmetic 70",
+    "jodi chart 78 != panna arithmetic 70"
+   ]
+  },
+  {
+   "date": "2013-08-28",
+   "panel_jodi": "39",
+   "jodi_chart": "39",
+   "panna_arithmetic": "34",
+   "used": "34",
+   "notes": [
+    "printed jodi 39 != panna arithmetic 34",
+    "jodi chart 39 != panna arithmetic 34"
+   ]
+  },
+  {
+   "date": "2013-09-04",
+   "panel_jodi": "28",
+   "jodi_chart": "28",
+   "panna_arithmetic": "48",
+   "used": "48",
+   "notes": [
+    "printed jodi 28 != panna arithmetic 48",
+    "jodi chart 28 != panna arithmetic 48"
+   ]
+  },
+  {
+   "date": "2014-06-28",
+   "panel_jodi": "95",
+   "jodi_chart": "95",
+   "panna_arithmetic": "98",
+   "used": "98",
+   "notes": [
+    "printed jodi 95 != panna arithmetic 98",
+    "jodi chart 95 != panna arithmetic 98"
+   ]
+  },
+  {
+   "date": "2014-07-21",
+   "panel_jodi": "37",
+   "jodi_chart": "37",
+   "panna_arithmetic": "36",
+   "used": "36",
+   "notes": [
+    "printed jodi 37 != panna arithmetic 36",
+    "jodi chart 37 != panna arithmetic 36"
+   ]
+  },
+  {
+   "date": "2014-07-28",
+   "panel_jodi": "49",
+   "jodi_chart": "49",
+   "panna_arithmetic": "79",
+   "used": "79",
+   "notes": [
+    "printed jodi 49 != panna arithmetic 79",
+    "jodi chart 49 != panna arithmetic 79"
+   ]
+  },
+  {
+   "date": "2014-08-07",
+   "panel_jodi": "14",
+   "jodi_chart": "14",
+   "panna_arithmetic": "12",
+   "used": "12",
+   "notes": [
+    "printed jodi 14 != panna arithmetic 12",
+    "jodi chart 14 != panna arithmetic 12"
+   ]
+  },
+  {
+   "date": "2014-09-12",
+   "panel_jodi": "08",
+   "jodi_chart": "08",
+   "panna_arithmetic": "18",
+   "used": "18",
+   "notes": [
+    "printed jodi 08 != panna arithmetic 18",
+    "jodi chart 08 != panna arithmetic 18"
+   ]
+  },
+  {
+   "date": "2014-09-17",
+   "panel_jodi": "81",
+   "jodi_chart": "81",
+   "panna_arithmetic": "71",
+   "used": "71",
+   "notes": [
+    "printed jodi 81 != panna arithmetic 71",
+    "jodi chart 81 != panna arithmetic 71"
+   ]
+  },
+  {
+   "date": "2014-09-20",
+   "panel_jodi": "82",
+   "jodi_chart": "82",
+   "panna_arithmetic": "81",
+   "used": "81",
+   "notes": [
+    "printed jodi 82 != panna arithmetic 81",
+    "jodi chart 82 != panna arithmetic 81"
+   ]
+  },
+  {
+   "date": "2014-09-24",
+   "panel_jodi": "07",
+   "jodi_chart": "07",
+   "panna_arithmetic": "09",
+   "used": "09",
+   "notes": [
+    "printed jodi 07 != panna arithmetic 09",
+    "jodi chart 07 != panna arithmetic 09"
+   ]
+  },
+  {
+   "date": "2014-10-11",
+   "panel_jodi": "50",
+   "jodi_chart": "50",
+   "panna_arithmetic": "58",
+   "used": "58",
+   "notes": [
+    "printed jodi 50 != panna arithmetic 58",
+    "jodi chart 50 != panna arithmetic 58"
+   ]
+  },
+  {
+   "date": "2014-11-20",
+   "panel_jodi": "02",
+   "jodi_chart": "02",
+   "panna_arithmetic": "52",
+   "used": "52",
+   "notes": [
+    "printed jodi 02 != panna arithmetic 52",
+    "jodi chart 02 != panna arithmetic 52"
+   ]
+  },
+  {
+   "date": "2014-12-22",
+   "panel_jodi": "47",
+   "jodi_chart": "47",
+   "panna_arithmetic": "27",
+   "used": "27",
+   "notes": [
+    "printed jodi 47 != panna arithmetic 27",
+    "jodi chart 47 != panna arithmetic 27"
+   ]
+  },
+  {
+   "date": "2015-02-07",
+   "panel_jodi": "81",
+   "jodi_chart": "81",
+   "panna_arithmetic": "71",
+   "used": "71",
+   "notes": [
+    "printed jodi 81 != panna arithmetic 71",
+    "jodi chart 81 != panna arithmetic 71"
+   ]
+  },
+  {
+   "date": "2016-09-27",
+   "panel_jodi": "16",
+   "jodi_chart": "16",
+   "panna_arithmetic": "15",
+   "used": "15",
+   "notes": [
+    "printed jodi 16 != panna arithmetic 15",
+    "jodi chart 16 != panna arithmetic 15"
+   ]
+  },
+  {
+   "date": "2016-11-08",
+   "panel_jodi": "62",
+   "jodi_chart": "62",
+   "panna_arithmetic": "60",
+   "used": "60",
+   "notes": [
+    "printed jodi 62 != panna arithmetic 60",
+    "jodi chart 62 != panna arithmetic 60"
+   ]
+  },
+  {
+   "date": "2017-05-05",
+   "panel_jodi": "38",
+   "jodi_chart": "38",
+   "panna_arithmetic": "33",
+   "used": "33",
+   "notes": [
+    "printed jodi 38 != panna arithmetic 33",
+    "jodi chart 38 != panna arithmetic 33"
+   ]
+  },
+  {
+   "date": "2017-06-08",
+   "panel_jodi": "15",
+   "jodi_chart": "15",
+   "panna_arithmetic": "10",
+   "used": "10",
+   "notes": [
+    "printed jodi 15 != panna arithmetic 10",
+    "jodi chart 15 != panna arithmetic 10"
+   ]
+  },
+  {
+   "date": "2017-06-14",
+   "panel_jodi": "41",
+   "jodi_chart": "41",
+   "panna_arithmetic": "46",
+   "used": "46",
+   "notes": [
+    "printed jodi 41 != panna arithmetic 46",
+    "jodi chart 41 != panna arithmetic 46"
+   ]
+  },
+  {
+   "date": "2017-08-14",
+   "panel_jodi": "86",
+   "jodi_chart": "86",
+   "panna_arithmetic": "96",
+   "used": "96",
+   "notes": [
+    "printed jodi 86 != panna arithmetic 96",
+    "jodi chart 86 != panna arithmetic 96"
+   ]
+  },
+  {
+   "date": "2018-04-17",
+   "panel_jodi": "47",
+   "jodi_chart": "47",
+   "panna_arithmetic": "48",
+   "used": "48",
+   "notes": [
+    "printed jodi 47 != panna arithmetic 48",
+    "jodi chart 47 != panna arithmetic 48"
+   ]
+  },
+  {
+   "date": "2018-05-15",
+   "panel_jodi": "47",
+   "jodi_chart": "47",
+   "panna_arithmetic": "97",
+   "used": "97",
+   "notes": [
+    "printed jodi 47 != panna arithmetic 97",
+    "jodi chart 47 != panna arithmetic 97"
+   ]
+  },
+  {
+   "date": "2018-08-23",
+   "panel_jodi": "43",
+   "jodi_chart": "43",
+   "panna_arithmetic": "23",
+   "used": "23",
+   "notes": [
+    "printed jodi 43 != panna arithmetic 23",
+    "jodi chart 43 != panna arithmetic 23"
+   ]
+  },
+  {
+   "date": "2018-11-24",
+   "panel_jodi": "09",
+   "jodi_chart": "09",
+   "panna_arithmetic": "99",
+   "used": "99",
+   "notes": [
+    "printed jodi 09 != panna arithmetic 99",
+    "jodi chart 09 != panna arithmetic 99"
+   ]
+  },
+  {
+   "date": "2018-12-20",
+   "panel_jodi": "84",
+   "jodi_chart": "84",
+   "panna_arithmetic": "74",
+   "used": "74",
+   "notes": [
+    "printed jodi 84 != panna arithmetic 74",
+    "jodi chart 84 != panna arithmetic 74"
+   ]
+  },
+  {
+   "date": "2019-03-23",
+   "panel_jodi": "56",
+   "jodi_chart": "56",
+   "panna_arithmetic": "55",
+   "used": "55",
+   "notes": [
+    "printed jodi 56 != panna arithmetic 55",
+    "jodi chart 56 != panna arithmetic 55"
+   ]
+  },
+  {
+   "date": "2019-04-13",
+   "panel_jodi": "89",
+   "jodi_chart": "89",
+   "panna_arithmetic": "86",
+   "used": "86",
+   "notes": [
+    "printed jodi 89 != panna arithmetic 86",
+    "jodi chart 89 != panna arithmetic 86"
+   ]
+  },
+  {
+   "date": "2019-07-24",
+   "panel_jodi": "71",
+   "jodi_chart": "71",
+   "panna_arithmetic": "41",
+   "used": "41",
+   "notes": [
+    "printed jodi 71 != panna arithmetic 41",
+    "jodi chart 71 != panna arithmetic 41"
+   ]
+  },
+  {
+   "date": "2019-08-05",
+   "panel_jodi": "75",
+   "jodi_chart": "75",
+   "panna_arithmetic": "55",
+   "used": "55",
+   "notes": [
+    "printed jodi 75 != panna arithmetic 55",
+    "jodi chart 75 != panna arithmetic 55"
+   ]
+  },
+  {
+   "date": "2019-08-24",
+   "panel_jodi": "97",
+   "jodi_chart": "97",
+   "panna_arithmetic": "96",
+   "used": "96",
+   "notes": [
+    "printed jodi 97 != panna arithmetic 96",
+    "jodi chart 97 != panna arithmetic 96"
+   ]
+  },
+  {
+   "date": "2019-10-17",
+   "panel_jodi": "59",
+   "jodi_chart": "59",
+   "panna_arithmetic": "49",
+   "used": "49",
+   "notes": [
+    "printed jodi 59 != panna arithmetic 49",
+    "jodi chart 59 != panna arithmetic 49"
+   ]
+  },
+  {
+   "date": "2020-02-29",
+   "panel_jodi": "06",
+   "jodi_chart": "06",
+   "panna_arithmetic": "66",
+   "used": "66",
+   "notes": [
+    "printed jodi 06 != panna arithmetic 66",
+    "jodi chart 06 != panna arithmetic 66"
+   ]
+  },
+  {
+   "date": "2021-02-09",
+   "panel_jodi": "98",
+   "jodi_chart": "98",
+   "panna_arithmetic": "18",
+   "used": "18",
+   "notes": [
+    "printed jodi 98 != panna arithmetic 18",
+    "jodi chart 98 != panna arithmetic 18"
+   ]
+  }
+ ],
+ "duplicate_dates": [],
+ "weekday_mismatch": [],
+ "n_days": 4276,
+ "n_usable": 4143,
+ "n_missing": 133,
+ "first_date": "2012-12-31",
+ "last_date": "2026-11-05",
+ "n_open_panna": 4135,
+ "n_close_panna": 4136,
+ "n_conflicts": 35,
+ "sources": [
+  {
+   "kind": "panel",
+   "path": "/tmp/arena-coding-uploads/Kalyan Panel Chart _ Live Kalyan Matka Records (2012-2026).txt",
+   "url": "https://dpbossss.com/panel-chart-record/kalyan.php?full_chart",
+   "saved_at": "Sat, 07 Nov 2026 03:38:42 GMT",
+   "sha256": "21770b4553adfa504f732c5d425390fa414f7b11467b67a8e9aa4741b888924e",
+   "byte_size": 393375,
+   "title": "Kalyan Panel Chart | Live Kalyan Matka Records (2012-2026)"
+  },
+  {
+   "kind": "jodi",
+   "path": "/tmp/arena-coding-uploads/Kalyan Jodi Chart _ Historical Jodi Number Records.txt",
+   "url": "https://dpbossss.com/jodi-chart-record/kalyan.php",
+   "saved_at": "Sat, 07 Nov 2026 03:38:33 GMT",
+   "sha256": "45ddc5dd7a1ec8ae5f546ede7e1ee5129a7ec7d50bdf436337cd0fcaa3505e17",
+   "byte_size": 237532,
+   "title": "Kalyan Jodi Chart | Historical Jodi Number Records"
+  }
+ ],
+ "import": {
+  "rows_built": 4143,
+  "inserted": 4143,
+  "revised": 0,
+  "rejected": 0,
+  "rejected_examples": [],
+  "source_id": "dpbossss_kalyan",
+  "raw_paths": [
+   "data/raw/snapshots/kalyan/panel_21770b4553ad.mhtml",
+   "data/raw/snapshots/kalyan/jodi_45ddc5dd7a1e.mhtml"
+  ],
+  "run_ids": [
+   1,
+   2
+  ],
+  "at": "2026-11-07T15:02:06+00:00"
+ }
+}

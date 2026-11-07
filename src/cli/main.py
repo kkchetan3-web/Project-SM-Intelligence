@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from pathlib import Path
 from typing import Any
 
 from src.core.configuration import Config, ConfigurationError, load_config
@@ -131,6 +132,67 @@ def cmd_discover(args: argparse.Namespace) -> int:
                                indent=2, default=str))
     print(f"\nWritten: {path}")
     return 0
+
+
+def cmd_import_snapshots(args: argparse.Namespace) -> int:
+    """Load saved chart pages (user-supplied snapshots) into the live databases."""
+    config = _load(args)
+    from src.ingestion.snapshot_loading import (
+        discover_snapshots,
+        import_market,
+        write_snapshot_manifest,
+    )
+
+    if config.dataset.name != "live":
+        print(f"refusing: snapshots hold real records, but --dataset is "
+              f"'{config.dataset.name}'. Use --dataset live.")
+        return 2
+
+    found = discover_snapshots(args.input)
+    if not found:
+        print(f"no snapshots found in {args.input} "
+              f"(expected filenames containing 'jodi'/'panel' and the market name)")
+        return 2
+
+    _dataset_banner(config)
+    raw_dir = Path(args.raw_dir) if args.raw_dir else Path("data/raw/snapshots")
+    audit_dir = config.research_dir("extraction")
+    reports = []
+    failures = 0
+    for market_id, paths in found.items():
+        if market_id not in config.market_order:
+            print(f"skipping {market_id}: not a configured market")
+            continue
+        if not {"jodi", "panel"} <= set(paths):
+            print(f"skipping {market_id}: need both a jodi and a panel snapshot, got "
+                  f"{sorted(paths)}")
+            failures += 1
+            continue
+        print(f"--- importing {market_id}")
+        print(f"    panel: {paths['panel'].name}")
+        print(f"    jodi : {paths['jodi'].name}")
+        result = import_market(config, market_id, jodi_path=paths["jodi"],
+                               panel_path=paths["panel"], raw_dir=raw_dir,
+                               audit_dir=audit_dir, rebuild=args.rebuild)
+        print(f"    dated days={result.rows_built} inserted={result.inserted} "
+              f"revised={result.revised} rejected={result.rejected} "
+              f"blank days={result.missing_days} jodi-vs-panna conflicts={result.conflicts}")
+        if result.errors:
+            for error in result.errors[:5]:
+                print(f"    rejected: {error}")
+        if result.audit_path:
+            print(f"    audit: {result.audit_path}")
+        reports.append(result.as_dict())
+
+    if reports:
+        manifest = write_snapshot_manifest(raw_dir)
+        print(f"\nsnapshot manifest: {manifest}")
+        out = config.research_dir("extraction") / "snapshot_import.json"
+        out.write_text(json.dumps({"dataset": config.dataset.name,
+                                   "input": str(args.input), "markets": reports},
+                                  indent=2, default=str))
+        print(f"import summary: {out}")
+    return 1 if failures else 0
 
 
 def cmd_extract(args: argparse.Namespace) -> int:
@@ -497,6 +559,16 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("discover", help="probe the configured sources for structure")
     p.set_defaults(func=cmd_discover)
+
+    p = sub.add_parser("import-snapshots",
+                       help="load saved chart pages (MHTML/HTML) into the live databases")
+    p.add_argument("--input", required=True,
+                   help="directory holding the saved jodi and panel pages")
+    p.add_argument("--raw-dir", default=None,
+                   help="where to archive the raw snapshots (default data/raw/snapshots)")
+    p.add_argument("--rebuild", action="store_true",
+                   help="recreate the market database before importing")
+    p.set_defaults(func=cmd_import_snapshots)
 
     p = sub.add_parser("extract", help="extract historical records for one or more markets")
     p.add_argument("--market", dest="markets", nargs="+")

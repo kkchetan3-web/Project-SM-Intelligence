@@ -11,27 +11,36 @@ baselines under a pre-committed promotion rule.
 
 > ## Read this before anything else
 >
-> **1. No real market data was obtained.** All five configured sources were unreachable from
-> the environment this platform was built in (TLS resets on port 443, empty replies on port 80).
-> Every number in this repository is computed on **synthetic control data** that is labelled
-> `verification_status='synthetic_control'` in the database and cannot be reported as live
-> history. This is not a limitation of the analysis — it is the honest state of the extraction
-> pipeline: it has never seen a real page.
+> **1. The databases now hold real market history.** Kalyan **4,143** published results
+> (2012-12-31 → 2026-11-05) and Main Bazar **2,660** (2015-12-28 → 2026-11-05), imported from
+> saved copies of the four primary chart pages supplied on 2026-11-07. The pages were
+> undated or mis-dated at source; how the dates were recovered, which week labels had to be
+> repaired and which 40 days carry a jodi that contradicts their own pannas is documented in
+> [`docs/DATA_SNAPSHOT_2026-11-07.md`](docs/DATA_SNAPSHOT_2026-11-07.md). They are
+> single-provider records, marked `unverified_scrape`.
 >
-> **2. No predictive edge was found.** Under the stated promotion rule, no candidate model beat
-> the best naive baseline out of sample, on any market, target or dataset. The platform forecasts
-> from baselines and labels every such forecast as carrying no demonstrated information.
+> **2. Real data did not make these draws predictable.** On every market and target, across
+> 3,743 (Kalyan) and 2,260 (Main Bazar) walk-forward predictions, **no model beat the uniform
+> forecast** — the best was 2.30624 against a floor of 2.30259 — and no model was promoted.
+> The live run also finds real distributional structure (17 Kalyan / 8 Main Bazar findings
+> survive FDR control: panna digit patterns, digit-sum shape, repeat rates) that carries **no**
+> next-draw information. Structure in the distribution is not the same as predictability of
+> the next draw, and this repository keeps the two separate.
 >
-> **3. This is not gambling advice.** Nothing here should be used to stake money. Historical
+> **3. The synthetic control worlds remain.** They are what proves the framework can still
+> tell a null world from a world with planted structure, and they are kept as a regression
+> test on the analytics, not as market history.
+>
+> **4. This is not gambling advice.** Nothing here should be used to stake money. Historical
 > frequencies do not become future probabilities, "hot" and "cold" numbers carry no obligation
 > to reverse, and chasing losses is never rational.
 
 ---
 
-## Why the data is synthetic, and why that is still worth something
+## The synthetic control worlds, and why they are still worth something
 
-The platform ships two **control worlds** with known ground truth. They are the only honest way
-to test a forecasting framework whose real data source is unavailable:
+The platform ships two **control worlds** with known ground truth. They are how the analytics
+are tested: a framework that cannot separate them is not trustworthy on real data either.
 
 | World | Data-generating process | Correct answer | Purpose |
 |---|---|---|---|
@@ -44,6 +53,37 @@ that only the dependence structure differs. Parameters are recorded in each row'
 A framework that "finds" structure in the null world is broken. A framework that finds nothing
 in the signal world is too weak to be trusted. Both directions are tested in CI and in
 `docs/RESULTS_*.md`.
+
+## Measured results on the real data
+
+Read straight from the live databases by `python scripts/summarise_results.py --dataset live --write`
+into [`docs/RESULTS_live.md`](docs/RESULTS_live.md); the full A-G narrative is
+[`research/reports/SECTION_22_REPORT_live.md`](research/reports/SECTION_22_REPORT_live.md).
+
+| Quantity | Kalyan (4,143 draws) | Main Bazar (2,660 draws) |
+|---|---|---|
+| Findings surviving BH-FDR at 0.05 (open / close) | 17 (open 15, close 8, overlapping) | 8 |
+| Strongest surviving effects | panna digit-position dependence (Cramér's V ≈ 0.26-0.29), digit-sum shape, Hamming overlap, repeat rate 0.1147 vs 0.10 expected | same family, weaker |
+| Best baseline log loss | `uniform` 2.30259 (frequency 2.30388, markov1 2.32902) | `uniform` 2.30259 |
+| Best candidate model | `svm` 2.30624 (open 2.30733) | `svm` 2.30910 (open 2.30619) |
+| Walk-forward predictions per target | 3,743 | 2,260 |
+| Models promoted | **none** | **none** |
+| Cross-market lag tests significant after Holm | 0 of 28 | |
+| Conditional-model improvement from the other market | **none** — foreign features made all four targets worse (+0.011 to +0.020 log loss) | |
+
+What that says, in plain terms:
+
+- **The panna structure is real and detectable.** Digit positions inside a three-digit panel are
+  far from independent (`V ≈ 0.27`), the digit-sum distribution is not uniform, and repeated
+  panels occur more often than chance. Those are properties of how the panels are constructed,
+  and the 100-method sweep finds them, survives correction, and reports them.
+- **None of it helps predict the next draw.** Every learned model lands *above* the uniform
+  floor; the frequency baseline is also above it, which is the signature of a series whose
+  empirical distribution is so close to uniform that estimating it only adds variance. The
+  first-order Markov baseline is clearly worse (2.329), so there is no usable serial signal.
+- **The two markets are not a channel.** 0 of 28 lead-lag tests survive Holm correction, and
+  adding foreign features made every target worse. The markets are modelled independently,
+  and the cross-market layer stays an analytical overlay.
 
 ## Measured results: the framework against both controls
 
@@ -89,6 +129,14 @@ no exploitable edge, and the platform says so.**
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt && pip install -e . --no-deps
 
+# --- the real data (what the numbers in this README come from) --------------
+# saved copies of the four chart pages, one directory, filenames containing
+# 'jodi'/'panel' and the market name
+python -m src.cli.main --dataset live import-snapshots --input /path/to/saved/pages
+python scripts/run_full_pipeline.py --dataset live      # ~27 min: 100 methods x 2 markets x 2 targets
+python scripts/summarise_results.py --dataset live --write
+
+# --- or the synthetic control world, for the analytics regression test ------
 # 1. Build the control world and its per-market databases
 python -m src.cli.main --dataset synthetic_null init
 python -m src.cli.main --dataset synthetic_null synthetic
@@ -230,6 +278,7 @@ Jeffreys), recency-weighted, first-order Markov.
 python -m src.cli.main [--dataset live|synthetic_null|synthetic_signal] <command>
 
   init          [--market ...] [--rebuild]      create/migrate each market's database
+  import-snapshots --input DIR [--raw-dir D]    load saved chart pages into `live`
   synthetic     [--rebuild]                     regenerate the control world
   discover                                      probe the configured sources
   extract       [--market ...] / extract-all    crawl historical charts
@@ -253,6 +302,11 @@ python -m src.cli.main [--dataset live|synthetic_null|synthetic_signal] <command
 
 **Executed and verified in this repository:**
 
+- **Real data imported:** 4,143 Kalyan + 2,660 Main Bazar results, dated from undated/mis-dated
+  source pages, cross-checked page-against-page (100% jodi agreement) and stored with full
+  provenance (`import-snapshots`);
+- the full pipeline executed on that data: 100 methods × 2 targets × 2 markets, walk-forward
+  backtests, cross-market analysis, forecasts, ledger and the A-G report;
 - 100/100 methods documented, implemented and executed against all markets and targets;
 - `validate_registry()` → `ok: True`, 100 documented, 100 implemented, zero problems;
 - per-market schema v3 with all required tables, integrity `ok`, provenance and revision logs;
@@ -266,9 +320,13 @@ python -m src.cli.main [--dataset live|synthetic_null|synthetic_signal] <command
 
 **Not executed, and not claimed:**
 
-- **No live extraction.** Zero real records were retrieved; the extraction code path is exercised
-  only against HTML fixtures.
-- **No live incremental update** has ever run against a source.
+- **No live extraction by the scraper.** The live data arrived as saved pages, not through
+  `extract`; the automated fetch path is still blocked from this environment and is exercised
+  only against fixtures.
+- **No live incremental update** has ever run against a source, so a second snapshot has not
+  been diffed against the first. The revision machinery itself is tested.
+- **No independent provider check.** Everything rests on one provider, hence
+  `unverified_scrape`.
 - **No model was promoted**, so no forecast in this repository has demonstrated predictive value.
 
 See [`docs/RESULTS_synthetic_null.md`](docs/RESULTS_synthetic_null.md) and

@@ -1,0 +1,133 @@
+{
+ "market_id": "main_bazar",
+ "panel_weeks": 561,
+ "panel_cells": 2803,
+ "jodi_rows": 561,
+ "panel_problems": [],
+ "jodi_problems": [
+  "row 185: 4 cells for 5 weekdays"
+ ],
+ "week_repairs": [
+  {
+   "label": "11/05/2020 to 15/05/2020",
+   "start": "2020-05-11",
+   "repairs": [
+    "label '11/05/2020 to 15/05/2020': 49-day gap after 2020-03-23 - the page skips 6 whole week(s) here"
+   ]
+  }
+ ],
+ "alignment": {
+  "matched_by": "index",
+  "panel_weeks": 561,
+  "jodi_rows": 561
+ },
+ "status_counts": {
+  "agrees": 2655,
+  "single_source": 143,
+  "panel_internal_mismatch": 5
+ },
+ "conflicts": [
+  {
+   "date": "2016-08-10",
+   "panel_jodi": "01",
+   "jodi_chart": "01",
+   "panna_arithmetic": "71",
+   "used": "71",
+   "notes": [
+    "printed jodi 01 != panna arithmetic 71",
+    "jodi chart 01 != panna arithmetic 71"
+   ]
+  },
+  {
+   "date": "2016-12-29",
+   "panel_jodi": "51",
+   "jodi_chart": "51",
+   "panna_arithmetic": "52",
+   "used": "52",
+   "notes": [
+    "printed jodi 51 != panna arithmetic 52",
+    "jodi chart 51 != panna arithmetic 52"
+   ]
+  },
+  {
+   "date": "2017-01-19",
+   "panel_jodi": "24",
+   "jodi_chart": "24",
+   "panna_arithmetic": "21",
+   "used": "21",
+   "notes": [
+    "printed jodi 24 != panna arithmetic 21",
+    "jodi chart 24 != panna arithmetic 21"
+   ]
+  },
+  {
+   "date": "2017-02-06",
+   "panel_jodi": "72",
+   "jodi_chart": "72",
+   "panna_arithmetic": "79",
+   "used": "79",
+   "notes": [
+    "printed jodi 72 != panna arithmetic 79",
+    "jodi chart 72 != panna arithmetic 79"
+   ]
+  },
+  {
+   "date": "2021-11-08",
+   "panel_jodi": "94",
+   "jodi_chart": "94",
+   "panna_arithmetic": "91",
+   "used": "91",
+   "notes": [
+    "printed jodi 94 != panna arithmetic 91",
+    "jodi chart 94 != panna arithmetic 91"
+   ]
+  }
+ ],
+ "duplicate_dates": [],
+ "weekday_mismatch": [],
+ "n_days": 2803,
+ "n_usable": 2660,
+ "n_missing": 143,
+ "first_date": "2015-12-28",
+ "last_date": "2026-11-05",
+ "n_open_panna": 2661,
+ "n_close_panna": 2660,
+ "n_conflicts": 5,
+ "sources": [
+  {
+   "kind": "panel",
+   "path": "/tmp/arena-coding-uploads/Main Bazar Panel Chart _ Complete Old Panel Records.txt",
+   "url": "https://dpbossss.com/panel-chart-record/main-bazar.php?full_chart",
+   "saved_at": "Sat, 07 Nov 2026 03:39:02 GMT",
+   "sha256": "9bd9ac1335f2981c8e0b4ffd63a7854d670ec8cb7f9e0b4f75b05c8da5ea74e5",
+   "byte_size": 470548,
+   "title": "Main Bazar Panel Chart | Complete Old Panel Records"
+  },
+  {
+   "kind": "jodi",
+   "path": "/tmp/arena-coding-uploads/Main Bazar Jodi Chart _ Old Jodi Result Data.txt",
+   "url": "https://dpbossss.com/jodi-chart-record/main-bazar.php",
+   "saved_at": "Sat, 07 Nov 2026 03:38:54 GMT",
+   "sha256": "13ebe7b5643af8327aa350489886920fe7fd29529f44a8f032a1bcc97a227c7a",
+   "byte_size": 166062,
+   "title": "Main Bazar Jodi Chart | Old Jodi Result Data"
+  }
+ ],
+ "import": {
+  "rows_built": 2660,
+  "inserted": 2660,
+  "revised": 0,
+  "rejected": 0,
+  "rejected_examples": [],
+  "source_id": "dpbossss_main_bazar",
+  "raw_paths": [
+   "data/raw/snapshots/main_bazar/panel_9bd9ac1335f2.mhtml",
+   "data/raw/snapshots/main_bazar/jodi_13ebe7b5643a.mhtml"
+  ],
+  "run_ids": [
+   1,
+   2
+  ],
+  "at": "2026-11-07T15:02:08+00:00"
+ }
+}

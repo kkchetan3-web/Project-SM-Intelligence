@@ -188,3 +188,50 @@ The record is idempotent on content, not on source id: a repeated backfill of th
 spec is a no-op rather than a second run, and
 `scripts/record_synthetic_provenance.py` refuses to stamp a database whose row count
 and distinct-date count disagree.
+
+## 13. Dates are recovered globally, not row by row
+
+The jodi pages carry no dates at all, and the panel pages carry dates that are wrong in
+at least seven distinct ways (year typos, a stray `v`, `tp` for `to`, one month-first
+token, off-by-one labels, wrong end dates, duplicated weeks). A parser that reads one
+label at a time has to guess; a greedy pass over the page was tried and drifted **ten
+weeks** before the end of the Kalyan history, silently mis-dating ~10% of the data.
+
+So the page is resolved as one problem: every label yields candidate readings with costs,
+the grid contributes constraints of its own (the week starts on the weekday named by the
+first column; consecutive weeks are a whole number of weeks apart; time only moves
+forward), and a shortest-path pass picks the set of dates with minimum total cost. Label
+faithfulness and grid coherence are then both satisfied, and every deviation is reported
+in the reconciliation audit rather than absorbed.
+
+Verification is not "the parse ran". It is: zero weekday mismatches, zero duplicate dates,
+zero out-of-order rows, and - the strongest check available - the *two independent pages*
+agree cell-for-cell on all 6,803 jodis once dating is applied. A single misplaced week
+would break that agreement.
+
+## 14. When the source contradicts itself, keep the arithmetic and flag the row
+
+On 40 of 6,803 days the printed jodi is not `digit_sum(open) · digit_sum(close)`
+(Kalyan 35, Main Bazar 5). Both pages print the same wrong jodi, so it is a source
+transcription error, not a parsing artefact, and the pages cannot say which of the three
+numbers is wrong.
+
+The pannas win and the anks are arithmetic. Reasons: both analysis targets are defined on
+anks, and every panna-derived feature (digit sums, panel type, pair patterns, M047-M060)
+requires the pannas to be consistent with the anks they sit next to. Trusting the printed
+jodi would produce 40 rows whose pannas contradict their own anks - an inconsistency that
+would then silently propagate into features, while 40 wrong anks out of 13,606 are a
+0.3% perturbation of a 10-way categorical series.
+
+The contradiction is not swallowed: the affected rows carry a `notes` flag, a `warning`
+lands in `data_quality`, and the full list is in
+`research/extraction/reconciliation_<market>.json`.
+
+## 15. Blank days stay blank
+
+147 Kalyan cell-days and 143 Main Bazar cell-days carry no result on either page
+(`* * *`). They are not interpolated, forward-filled or dropped-and-forgotten: no row is
+written, the count is recorded, and the reconciliation audit lists them. A draw that did
+not happen is a real gap in a time series whose lags, transition counts and walk-forward
+folds all depend on calendar order; inventing a value would be the single easiest way to
+manufacture a spurious result.
