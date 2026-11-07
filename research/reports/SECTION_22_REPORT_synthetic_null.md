@@ -3,7 +3,7 @@
 
 **Dataset:** `synthetic_null` - H0 control: i.i.d. uniform draws. Framework must report NO predictive edge.
 
-**Generated:** 2026-11-06T19:00:36+00:00
+**Generated:** 2026-11-07T15:31:59+00:00
 
 > **Read this first.** The configured market-web sources were unreachable from the build environment, so **no real market history was extracted**. Every number below is computed on synthetic control data that is labelled as such in the databases and cannot be presented as a live market report. The value of this work is that the analytical pipeline is complete, leakage-audited and demonstrably able to separate a null world from a world with planted structure. It is not, and does not claim to be, evidence that these draws are predictable.
 
@@ -18,7 +18,7 @@
 | Dataset | `synthetic_null` |
 | Dataset root | `/home/user/Project-SM-Intelligence/data/databases/_synthetic_null` |
 | Schema version | 3 |
-| Generated at (UTC) | 2026-11-06T19:00:35+00:00 |
+| Generated at (UTC) | 2026-11-07T15:31:59+00:00 |
 
 ### Source reachability
 
@@ -42,30 +42,8 @@ Two control worlds exist by design: `synthetic_null` (independent uniform draws 
 
 | Market | Integrity | Historical rows | Coverage | Missing tables |
 |---|---|---|---|---|
-| kalyan | ok | 3131 | 2016-01-01 .. 2025-12-31 | none |
-| main_bazar | ok | 3131 | 2016-01-01 .. 2025-12-31 | none |
-
-### Table population
-
-| Table | kalyan | main_bazar |
-|---|---|---|
-| historical_results | 3131 | 3131 |
-| source_records | 1 | 1 |
-| extraction_runs | 1 | 1 |
-| data_quality | 32 | 32 |
-| market_features | 0 | 0 |
-| method_results | 1084 | 1084 |
-| model_registry | 20 | 20 |
-| backtest_results | 20 | 20 |
-| predictions | 2 | 2 |
-| prediction_outcomes | 0 | 0 |
-| cross_market_features | 0 | 0 |
-| cross_market_tests | 28 | 28 |
-| result_revisions | 0 | 0 |
-| update_history | 1 | 1 |
-| database_migrations | 3 | 3 |
-
-Empty tables are explained rather than hidden: `market_features` and `cross_market_features` are built in memory at each walk-forward cutoff (persisting them risks re-using a vector computed with later data), and `prediction_outcomes` is filled only once the draw a forecast refers to has actually been published.
+| kalyan | missing | - | - | run `init` |
+| main_bazar | missing | - | - | run `init` |
 
 Each market owns a separate SQLite database at `<dataset root>/<market_id>/<market_id>.db` with the 12 required tables. Raw payloads are stored alongside the cleaned rows; revisions are appended to `result_revisions` rather than overwriting history.
 
@@ -73,8 +51,8 @@ Each market owns a separate SQLite database at `<dataset root>/<market_id>/<mark
 
 | Market | Records | Gate | Errors | Warnings |
 |---|---|---|---|---|
-| kalyan | 3131 | PASS | 0 | 0 |
-| main_bazar | 3131 | PASS | 0 | 0 |
+| kalyan | - | - | - | database missing |
+| main_bazar | - | - | - | database missing |
 
 Checks cover record-level completeness, duplicate dates, calendar gaps, panna-to-ank consistency (digit sum mod 10), impossible values, and the provenance requirement that no live-labelled row lacks a source URL.
 
@@ -84,43 +62,7 @@ Checks cover record-level completeness, duplicate dates, calendar gaps, panna-to
 
 Multiple-testing control is applied **per market and target** across every p-value that actually tests a null hypothesis of *no structure*. Bootstrap p-values for "this difference is not zero", unit-root tests and continuous-distribution tests on discrete data are excluded by name from that family (they are reported, with the exclusion reason, rather than deleted), because including them would make any reliably-worse-than-baseline model look like a discovery.
 
-### kalyan
-
-- Methods with stored results: **100**
-- Stored metric rows: **1084**
-- (method, target) computations at full sample: **199**
-
-| Cat | Name | Methods | With results |
-|---|---|---|---|
-| A | Frequency and Probability | 12 | 12 |
-| B | Recency and Occurrence | 10 | 10 |
-| C | Transitions and Dependencies | 12 | 12 |
-| D | Time Series | 12 | 12 |
-| E | Number Theory and Transformations | 14 | 14 |
-| F | Randomness and Statistical Structure | 12 | 12 |
-| G | Machine Learning | 12 | 12 |
-| H | Advanced Probability, Ensembles and Validation | 16 | 16 |
-
-No finding survives Benjamini-Hochberg control at alpha=0.05 in this market. On the null control dataset that is the correct answer.
-
-### main_bazar
-
-- Methods with stored results: **100**
-- Stored metric rows: **1084**
-- (method, target) computations at full sample: **199**
-
-| Cat | Name | Methods | With results |
-|---|---|---|---|
-| A | Frequency and Probability | 12 | 12 |
-| B | Recency and Occurrence | 10 | 10 |
-| C | Transitions and Dependencies | 12 | 12 |
-| D | Time Series | 12 | 12 |
-| E | Number Theory and Transformations | 14 | 14 |
-| F | Randomness and Statistical Structure | 12 | 12 |
-| G | Machine Learning | 12 | 12 |
-| H | Advanced Probability, Ensembles and Validation | 16 | 16 |
-
-No finding survives Benjamini-Hochberg control at alpha=0.05 in this market. On the null control dataset that is the correct answer.
+**No method results were found in any market database.** The 100 methods are implemented but were not executed for this dataset.
 
 
 ## E. Cross-market intelligence
@@ -151,118 +93,15 @@ No finding survives Benjamini-Hochberg control at alpha=0.05 in this market. On 
 
 ## F. Backtesting, calibration and prediction performance
 
-### kalyan
-
-| Target | Models | Best log loss | Predictions evaluated |
-|---|---|---|---|
-| close | 10 | 2.30862 | 2731 |
-| open | 10 | 2.30782 | 2731 |
-
-**close: best 5 configurations by log loss**
-
-| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
-|---|---|---|---|---|---|
-| svm | 2.30862 | 0.90118 | 0.1022 | 0.3017 | 0.5020 |
-| catboost | 2.32478 | 0.90452 | 0.1000 | 0.2966 | 0.4943 |
-| random_forest | 2.33121 | 0.90578 | 0.0996 | 0.3017 | 0.5104 |
-| knn | 2.39049 | 0.91246 | 0.0978 | 0.3025 | 0.5020 |
-| xgboost | 2.47149 | 0.93940 | 0.1000 | 0.3006 | 0.4965 |
-
-**open: best 5 configurations by log loss**
-
-| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
-|---|---|---|---|---|---|
-| svm | 2.30782 | 0.90102 | 0.1080 | 0.2871 | 0.4936 |
-| catboost | 2.32676 | 0.90503 | 0.1040 | 0.2922 | 0.5068 |
-| random_forest | 2.33282 | 0.90580 | 0.0970 | 0.3090 | 0.5060 |
-| knn | 2.39723 | 0.91076 | 0.0981 | 0.3142 | 0.5016 |
-| xgboost | 2.46695 | 0.93957 | 0.0919 | 0.2962 | 0.5060 |
-
-**Baselines on the identical evaluation window**
-
-| Target | Baseline | Log loss | Brier |
-|---|---|---|---|
-| close | uniform | 2.30259 | 0.90000 |
-| close | frequency | 2.30607 | 0.90070 |
-| close | bayes | 2.30607 | 0.90070 |
-| close | bayes_jeffreys | 2.30611 | 0.90070 |
-| close | markov1 | 2.33056 | 0.90530 |
-| close | rolling | 2.37293 | 0.91256 |
-| close | recency | 2.44041 | 0.92234 |
-| open | uniform | 2.30259 | 0.90000 |
-| open | frequency | 2.30600 | 0.90069 |
-| open | bayes | 2.30600 | 0.90069 |
-| open | bayes_jeffreys | 2.30604 | 0.90069 |
-| open | markov1 | 2.33032 | 0.90533 |
-| open | rolling | 2.36671 | 0.91128 |
-| open | recency | 2.43656 | 0.92134 |
-
-Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0.5. Any model above those numbers has removed signal, not added it. A candidate that only matches the uniform floor has learned nothing; a candidate below it would be the first genuine finding in this project.
-
-**Prediction ledger:** forecasts exist but none has been resolved yet.
-
-### main_bazar
-
-| Target | Models | Best log loss | Predictions evaluated |
-|---|---|---|---|
-| close | 10 | 2.30827 | 2731 |
-| open | 10 | 2.30875 | 2731 |
-
-**close: best 5 configurations by log loss**
-
-| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
-|---|---|---|---|---|---|
-| svm | 2.30827 | 0.90111 | 0.1047 | 0.2984 | 0.4881 |
-| catboost | 2.32573 | 0.90494 | 0.0948 | 0.3010 | 0.5152 |
-| random_forest | 2.32706 | 0.90494 | 0.1047 | 0.2951 | 0.4954 |
-| knn | 2.36054 | 0.91019 | 0.1047 | 0.3112 | 0.5108 |
-| xgboost | 2.45800 | 0.93658 | 0.1047 | 0.3054 | 0.5163 |
-
-**open: best 5 configurations by log loss**
-
-| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
-|---|---|---|---|---|---|
-| svm | 2.30875 | 0.90125 | 0.0992 | 0.3043 | 0.5156 |
-| catboost | 2.33055 | 0.90589 | 0.0952 | 0.2926 | 0.5035 |
-| random_forest | 2.33540 | 0.90657 | 0.0996 | 0.3079 | 0.4976 |
-| knn | 2.38572 | 0.91124 | 0.1055 | 0.3032 | 0.4910 |
-| xgboost | 2.47905 | 0.93996 | 0.0959 | 0.2922 | 0.4932 |
-
-**Baselines on the identical evaluation window**
-
-| Target | Baseline | Log loss | Brier |
-|---|---|---|---|
-| close | uniform | 2.30259 | 0.90000 |
-| close | frequency | 2.30522 | 0.90052 |
-| close | bayes | 2.30522 | 0.90052 |
-| close | bayes_jeffreys | 2.30525 | 0.90052 |
-| close | markov1 | 2.33096 | 0.90535 |
-| close | rolling | 2.37127 | 0.91204 |
-| close | recency | 2.44367 | 0.92314 |
-| open | uniform | 2.30259 | 0.90000 |
-| open | frequency | 2.30609 | 0.90070 |
-| open | bayes | 2.30609 | 0.90070 |
-| open | bayes_jeffreys | 2.30612 | 0.90071 |
-| open | markov1 | 2.33217 | 0.90563 |
-| open | rolling | 2.37645 | 0.91301 |
-| open | recency | 2.43871 | 0.92210 |
-
-Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0.5. Any model above those numbers has removed signal, not added it. A candidate that only matches the uniform floor has learned nothing; a candidate below it would be the first genuine finding in this project.
-
-**Prediction ledger:** forecasts exist but none has been resolved yet.
-
+**No backtest results were stored for this dataset.**
 
 ## G. Limitations, negative results and honest conclusions
 
 ### What was genuinely executed
 
 - Source discovery probe executed for all configured sources (0 sources).
-- `kalyan` database initialised (schema 3) with 3131 historical rows.
-- `main_bazar` database initialised (schema 3) with 3131 historical rows.
 - Data-quality checks executed per market.
-- The 100-method suite executed; `kalyan` 100 methods / 1084 metric rows, `main_bazar` 100 methods / 1084 metric rows.
 - Cross-market lead-lag sweep, dependency battery, leakage validation and conditional-model test executed.
-- Walk-forward backtests executed and stored per market and target.
 - Next-draw forecasts generated and stored in the prediction ledger.
 
 ### What was blocked, and why
@@ -272,8 +111,6 @@ Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0
 
 ### Negative results that must not be quietly dropped
 
-- `kalyan`: 0 finding(s) survive FDR control at alpha=0.05 (0 is the correct answer on this H0 control, so any survivor is a defect).
-- `main_bazar`: 0 finding(s) survive FDR control at alpha=0.05 (0 is the correct answer on this H0 control, so any survivor is a defect).
 - Cross-market: 0 of 28 lag tests survive Holm correction; 0 conditional-model test(s) showed a demonstrated out-of-sample improvement.
 - The planted dependence in the signal control was recovered by the methods that should recover it (goodness-of-fit, transition, mutual-information and cross-market tests), which validates the framework rather than the market.
 

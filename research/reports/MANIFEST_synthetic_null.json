@@ -1,132 +1,19 @@
 {
   "dataset": "synthetic_null",
-  "generated_at": "2026-11-06T19:00:36+00:00",
+  "generated_at": "2026-11-07T15:31:59+00:00",
   "config_fingerprint": "b73fc8be2b9e1c5b",
   "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_synthetic_null.md",
-  "report_sha256": "6110d291da1d5ac5848124fa88378da94e09a4bf2e1542d975d8dd58fe5ab8a0",
+  "report_sha256": "88a062f4dea10eac1bbc1bd5cde4157a9a55523239d82aeb75c8a2b090ad41a7",
   "databases": {
     "kalyan": {
-      "exists": true,
-      "integrity": "ok",
-      "row_counts": {
-        "historical_results": 3131,
-        "source_records": 1,
-        "extraction_runs": 1,
-        "data_quality": 32,
-        "market_features": 0,
-        "method_results": 1084,
-        "model_registry": 20,
-        "backtest_results": 20,
-        "predictions": 2,
-        "prediction_outcomes": 0,
-        "cross_market_features": 0,
-        "cross_market_tests": 28,
-        "result_revisions": 0,
-        "update_history": 1,
-        "database_migrations": 3
-      },
-      "coverage": {
-        "market_id": "kalyan",
-        "n_records": 3131,
-        "oldest": "2016-01-01",
-        "newest": "2025-12-31",
-        "span_days": 3653,
-        "missing_dates": 522,
-        "duplicate_dates": 0,
-        "coverage_pct": 85.71,
-        "by_year": {
-          "2016": 314,
-          "2017": 312,
-          "2018": 313,
-          "2019": 313,
-          "2020": 314,
-          "2021": 313,
-          "2022": 313,
-          "2023": 312,
-          "2024": 314,
-          "2025": 313
-        },
-        "by_component": {
-          "open_ank": 3131,
-          "close_ank": 3131,
-          "jodi": 3131,
-          "open_panna": 3131,
-          "close_panna": 3131
-        },
-        "distinct_verification_status": [
-          "synthetic_control"
-        ],
-        "dataset": "synthetic_null"
-      }
+      "exists": false
     },
     "main_bazar": {
-      "exists": true,
-      "integrity": "ok",
-      "row_counts": {
-        "historical_results": 3131,
-        "source_records": 1,
-        "extraction_runs": 1,
-        "data_quality": 32,
-        "market_features": 0,
-        "method_results": 1084,
-        "model_registry": 20,
-        "backtest_results": 20,
-        "predictions": 2,
-        "prediction_outcomes": 0,
-        "cross_market_features": 0,
-        "cross_market_tests": 28,
-        "result_revisions": 0,
-        "update_history": 1,
-        "database_migrations": 3
-      },
-      "coverage": {
-        "market_id": "main_bazar",
-        "n_records": 3131,
-        "oldest": "2016-01-01",
-        "newest": "2025-12-31",
-        "span_days": 3653,
-        "missing_dates": 522,
-        "duplicate_dates": 0,
-        "coverage_pct": 85.71,
-        "by_year": {
-          "2016": 314,
-          "2017": 312,
-          "2018": 313,
-          "2019": 313,
-          "2020": 314,
-          "2021": 313,
-          "2022": 313,
-          "2023": 312,
-          "2024": 314,
-          "2025": 313
-        },
-        "by_component": {
-          "open_ank": 3131,
-          "close_ank": 3131,
-          "jodi": 3131,
-          "open_panna": 3131,
-          "close_panna": 3131
-        },
-        "distinct_verification_status": [
-          "synthetic_control"
-        ],
-        "dataset": "synthetic_null"
-      }
+      "exists": false
     }
   },
   "methods": {
-    "per_market": {
-      "kalyan": {
-        "n_methods": 100,
-        "n_rows": 1084,
-        "n_significant_fdr": 0
-      },
-      "main_bazar": {
-        "n_methods": 100,
-        "n_rows": 1084,
-        "n_significant_fdr": 0
-      }
-    }
+    "per_market": {}
   },
   "cross_market": {
     "headline": {
@@ -151,31 +38,6 @@
       "conclusion": "No cross-market relationship produced a demonstrable out-of-sample predictive improvement for either market. Markets are therefore modelled independently, and the cross-market layer remains an analytical overlay rather than an input to prediction."
     }
   },
-  "backtests": {
-    "kalyan": {
-      "backtest_rows": 20,
-      "ledger": {
-        "market": "kalyan",
-        "available": true,
-        "target": "all",
-        "n_forecasts": 2,
-        "n_resolved": 0,
-        "n_pending": 2,
-        "reason": "forecasts exist but none has been resolved yet"
-      }
-    },
-    "main_bazar": {
-      "backtest_rows": 20,
-      "ledger": {
-        "market": "main_bazar",
-        "available": true,
-        "target": "all",
-        "n_forecasts": 2,
-        "n_resolved": 0,
-        "n_pending": 2,
-        "reason": "forecasts exist but none has been resolved yet"
-      }
-    }
-  },
+  "backtests": {},
   "synthetic_notice": "All records in this dataset were produced by src/ingestion/synthetic_control.py and are not market history."
 }

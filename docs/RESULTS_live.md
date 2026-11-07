@@ -1,6 +1,6 @@
 # Measured results - `live`
 
-Generated **2026-11-07T04:31:26+00:00** by `scripts/summarise_results.py` directly from `/home/user/Project-SM-Intelligence/data/databases`. Nothing here is hand-written.
+Generated **2026-11-07T15:31:30+00:00** by `scripts/summarise_results.py` directly from `/home/user/Project-SM-Intelligence/data/databases`. Nothing here is hand-written.
 
 _Real extracted market records. Populated only by the ingestion pipeline._
 

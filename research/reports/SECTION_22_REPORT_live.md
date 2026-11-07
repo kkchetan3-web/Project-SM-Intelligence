@@ -3,7 +3,7 @@
 
 **Dataset:** `live` - Real extracted market records. Populated only by the ingestion pipeline.
 
-**Generated:** 2026-11-07T15:04:54+00:00
+**Generated:** 2026-11-07T15:32:08+00:00
 
 > **Read this first.** These are real published results for Kalyan and Main Bazar, supplied as saved copies of the source pages on 2026-11-07 and dated by the parser (see `docs/DATA_SNAPSHOT_2026-11-07.md`). They are single-provider and marked `unverified_scrape`. The platform finds structure in the *distribution* of these draws and **no** out-of-sample predictability: on every market and target nothing beat the uniform forecast, and no model was promoted. That is the finding, and it is reported as such.
 
@@ -16,9 +16,9 @@
 | Python | 3.11.2 |
 | Platform | Linux-6.1.158+-x86_64-with-glibc2.36 |
 | Dataset | `live` |
-| Dataset root | `/tmp/pytest-of-user/pytest-1/test_report_uses_the_live_word0/dbs` |
+| Dataset root | `/tmp/pytest-of-user/pytest-2/test_report_uses_the_live_word0/dbs` |
 | Schema version | 3 |
-| Generated at (UTC) | 2026-11-07T15:04:54+00:00 |
+| Generated at (UTC) | 2026-11-07T15:32:08+00:00 |
 
 ### Source reachability
 
@@ -141,8 +141,10 @@ No walk-forward backtest results are stored for this market.
 
 ### What was blocked, and why
 
-- Historical extraction from all five configured sources: network unreachable from the execution environment (TLS reset / empty reply). No live market data was obtained, and nothing in this repository should be read as real historical results.
-- Live incremental updates have therefore never been exercised against a real source; the code path is implemented and unit-tested against fixtures only.
+- The scraper cannot reach any of the five configured sources from this environment (TLS reset on 443, empty reply on 80). The real history in this report therefore arrived as saved copies of the four primary pages supplied on 2026-11-07 - parsed, dated and cross-checked by `import-snapshots`, not fetched.
+- Single provider. Nothing here has been confirmed against a second source, so every row is `unverified_scrape` rather than verified.
+- The snapshot ends at the last published result it contains (2026-11-05). It cannot report draws published after it was saved, and no later page has been compared against it yet.
+- 40 days (Kalyan 35, Main Bazar 5) print a jodi that contradicts their own pannas. The pannas were kept and the rows flagged; which of the three printed numbers is mistyped cannot be recovered from the page.
 
 ### Negative results that must not be quietly dropped
 
@@ -151,10 +153,11 @@ No walk-forward backtest results are stored for this market.
 
 ### Standing caveats
 
-- **The data is synthetic.** No conclusion here transfers to a real market. The synthetic worlds test the framework: that it stays silent on the null and fires on the signal.
+- **The data is real but single-source.** Kalyan and Main Bazar results as published by dpbossss.com, saved on 2026-11-07 and dated by the parser; `unverified_scrape`, because no second provider has ever been reachable to confirm them.
 - **A frequency is not a probability.** Historical imbalance in a fair draw does not raise the chance of any outcome.
 - **Significance is not predictability.** With 100 methods and many tests, some p-values will be small by construction; the FDR control and the walk-forward backtest exist for that reason, and both are applied before any claim is made.
 - **No model was promoted.** Under the stated rule (beat the best baseline by at least 0.002 log loss, bootstrap CI excluding zero, stable across folds, calibrated) no candidate qualified on any market, target or dataset. The platform therefore forecasts from baselines and says so in every output.
+- **The uniform forecast won.** On this real history the best baseline is `uniform` (log loss 2.30259) and every learned model scored above it - the empirical statement that these draws carry no exploitable next-draw information.
 - **This is not gambling advice.** These draws are not known to be predictable. Nothing here should be used to stake money, and chasing losses is never rational.
 
 ### Reproduction

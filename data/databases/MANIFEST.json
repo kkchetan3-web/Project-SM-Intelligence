@@ -1,0 +1,25 @@
+{
+  "dataset": "live",
+  "description": "Real extracted market records. Populated only by the ingestion pipeline.",
+  "generated_at": "2026-11-07T15:32:01+00:00",
+  "config_fingerprint": "de460bd3e53ea409",
+  "databases": [
+    {
+      "market": "kalyan",
+      "path": "data/databases/kalyan/kalyan.db",
+      "present": true,
+      "bytes": 5603328,
+      "modified": "2026-11-07T15:32:01+00:00",
+      "sha256": "efbf15b1a5566762a33b1038a701c34e266ef490e1640496f9e56ad2a28d0d85"
+    },
+    {
+      "market": "main_bazar",
+      "path": "data/databases/main_bazar/main_bazar.db",
+      "present": true,
+      "bytes": 4009984,
+      "modified": "2026-11-07T15:32:01+00:00",
+      "sha256": "22d7f0ad1370dc68f879c6bfbe579eace0e3915bd645ea2bfefbf991c6362168"
+    }
+  ],
+  "note": "Live dataset: populated only by the ingestion pipeline."
+}

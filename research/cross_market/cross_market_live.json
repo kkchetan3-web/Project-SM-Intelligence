@@ -1,8 +1,8 @@
 {
   "dataset": "live",
-  "generated_at": "2026-11-07T04:30:24+00:00",
+  "generated_at": "2026-11-07T15:28:41+00:00",
   "leakage_validation": {
-    "checked_at": "2026-11-07T04:26:45+00:00",
+    "checked_at": "2026-11-07T15:24:59+00:00",
     "feature_checks": [
       {
         "market": "kalyan",
@@ -900,7 +900,7 @@
           "verdict": "no improvement: foreign features do not help this market"
         }
       ],
-      "finished_at": "2026-11-07T04:30:24+00:00",
+      "finished_at": "2026-11-07T15:28:41+00:00",
       "rows_persisted": 56
     }
   ],

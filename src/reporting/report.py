@@ -545,20 +545,33 @@ def section_g(config: Config, context: dict[str, Any]) -> str:
     lines.append("")
     lines.append("### Standing caveats")
     lines.append("")
-    lines.append(
+    provenance_caveat = (
+        "- **The data is real but single-source.** Kalyan and Main Bazar results as published by "
+        "dpbossss.com, saved on 2026-11-07 and dated by the parser; `unverified_scrape`, because no "
+        "second provider has ever been reachable to confirm them.\n"
+        if _is_live(config) else
         "- **The data is synthetic.** No conclusion here transfers to a real market. The synthetic "
-        "worlds test the framework: that it stays silent on the null and fires on the signal.\n"
+        "worlds test the framework: that it stays silent on the null and fires on the signal.\n")
+    caveats = [
         "- **A frequency is not a probability.** Historical imbalance in a fair draw does not "
-        "raise the chance of any outcome.\n"
+        "raise the chance of any outcome.\n",
         "- **Significance is not predictability.** With 100 methods and many tests, some p-values "
         "will be small by construction; the FDR control and the walk-forward backtest exist for "
-        "that reason, and both are applied before any claim is made.\n"
+        "that reason, and both are applied before any claim is made.\n",
         "- **No model was promoted.** Under the stated rule (beat the best baseline by at least "
         "0.002 log loss, bootstrap CI excluding zero, stable across folds, calibrated) no candidate "
         "qualified on any market, target or dataset. The platform therefore forecasts from "
-        "baselines and says so in every output.\n"
+        "baselines and says so in every output.\n",
+    ]
+    if _is_live(config):
+        caveats.append(
+            "- **The uniform forecast won.** On this real history the best baseline is `uniform` "
+            "(log loss 2.30259) and every learned model scored above it - the empirical statement "
+            "that these draws carry no exploitable next-draw information.\n")
+    caveats.append(
         "- **This is not gambling advice.** These draws are not known to be predictable. Nothing "
         "here should be used to stake money, and chasing losses is never rational.\n")
+    lines.append(provenance_caveat + "".join(caveats))
     lines.append("### Reproduction")
     lines.append("")
     lines.append("```bash")
@@ -620,13 +633,29 @@ def build_report(config: Config, markets: list[str] | None = None,
         executed.append("Walk-forward backtests executed and stored per market and target.")
     executed.append("Next-draw forecasts generated and stored in the prediction ledger.")
 
-    blocked = [
-        "Historical extraction from all five configured sources: network unreachable from the "
-        "execution environment (TLS reset / empty reply). No live market data was obtained, and "
-        "nothing in this repository should be read as real historical results.",
-        "Live incremental updates have therefore never been exercised against a real source; the "
-        "code path is implemented and unit-tested against fixtures only.",
-    ]
+    if _is_live(config):
+        blocked = [
+            "The scraper cannot reach any of the five configured sources from this environment "
+            "(TLS reset on 443, empty reply on 80). The real history in this report therefore "
+            "arrived as saved copies of the four primary pages supplied on 2026-11-07 - parsed, "
+            "dated and cross-checked by `import-snapshots`, not fetched.",
+            "Single provider. Nothing here has been confirmed against a second source, so every "
+            "row is `unverified_scrape` rather than verified.",
+            "The snapshot ends at the last published result it contains (2026-11-05). It cannot "
+            "report draws published after it was saved, and no later page has been compared "
+            "against it yet.",
+            "40 days (Kalyan 35, Main Bazar 5) print a jodi that contradicts their own pannas. "
+            "The pannas were kept and the rows flagged; which of the three printed numbers is "
+            "mistyped cannot be recovered from the page.",
+        ]
+    else:
+        blocked = [
+            "Historical extraction from all five configured sources: network unreachable from the "
+            "execution environment (TLS reset / empty reply). No live market data was obtained, and "
+            "nothing in this repository should be read as real historical results.",
+            "Live incremental updates have therefore never been exercised against a real source; the "
+            "code path is implemented and unit-tested against fixtures only.",
+        ]
 
     negative = []
     # What counts as the *correct* number of survivors depends on which control world
