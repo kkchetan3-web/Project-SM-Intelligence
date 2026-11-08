@@ -151,7 +151,8 @@ def select_model(config: Config, market_id: str, target: str, *,
 # ---------------------------------------------------------------------------
 def build_extended(config: Config, market_id: str, target: str, *,
                    next_open: int | None = None,
-                   next_foreign_open: int | None = None) -> dict[str, Any]:
+                   next_foreign_open: int | None = None,
+                   target_date: date | None = None) -> dict[str, Any]:
     """Build the feature matrix for ``n`` observed draws plus one forecast row.
 
     Both parts come from a single call to ``build_features`` on the extended
@@ -165,6 +166,10 @@ def build_extended(config: Config, market_id: str, target: str, *,
     * a foreign same-day Open is used only if the caller supplies it and the
       configuration declares the precedence.
 
+    ``target_date`` overrides the sentinel date (default: the automatic next
+    draw). It matters for calendar features (day-of-week, day-of-year) and for
+    the label; a holiday or a suspension is the usual reason to pass one.
+
     Any channel that is not available is *removed from the whole matrix*, not
     imputed, so training and forecasting stay consistent.
     """
@@ -177,7 +182,7 @@ def build_extended(config: Config, market_id: str, target: str, *,
     result = clean_target(config, market_id, target)
     dates = pd.DatetimeIndex(result.frame["result_date"])
     y = encode_categorical(result.frame["y"].tolist(), list(range(10)))
-    next_date = next_draw_date(config, market_id, target)
+    next_date = target_date or next_draw_date(config, market_id, target)
     dates_ext = dates.append(pd.DatetimeIndex([pd.Timestamp(next_date)]))
     y_ext = np.concatenate([y, [0]])  # sentinel; build_features never reads y[t]
 
@@ -235,6 +240,7 @@ def generate(config: Config, market_id: str, target: str, *,
              panel: Any | None = None,
              next_open: int | None = None,
              next_foreign_open: int | None = None,
+             target_date: date | None = None,
              persist: bool = True) -> Forecast:
     """Produce the next-draw probability vector for one market and one target."""
     config.market(market_id)  # validates the id
@@ -253,16 +259,29 @@ def generate(config: Config, market_id: str, target: str, *,
 
     selection = select_model(config, market_id, target, panel=panel)
     model_name = selection["model"]
-    target_date = next_draw_date(config, market_id, target, after=last)
-
-    notes: list[str] = [
-        f"history through {last.isoformat()} ({n_history} draws); "
-        f"forecast for {target_date.isoformat()}",
-    ]
+    auto_next = next_draw_date(config, market_id, target, after=last)
+    if target_date is not None:
+        if target_date <= last:
+            raise ValueError(
+                f"target date {target_date.isoformat()} is not after the last result "
+                f"({last.isoformat()}); nothing to forecast")
+        forecast_date = target_date
+        notes = [
+            f"history through {last.isoformat()} ({n_history} draws); "
+            f"forecast for {forecast_date.isoformat()} "
+            f"(explicit target date; the automatic next draw is {auto_next.isoformat()})",
+        ]
+    else:
+        forecast_date = auto_next
+        notes = [
+            f"history through {last.isoformat()} ({n_history} draws); "
+            f"forecast for {forecast_date.isoformat()}",
+        ]
 
     if selection["mode"] == "promoted_model":
         built = build_extended(config, market_id, target, next_open=next_open,
-                               next_foreign_open=next_foreign_open)
+                               next_foreign_open=next_foreign_open,
+                               target_date=forecast_date)
         model = build_model(model_name)
         model.fit(built["X_train"], built["y"])
         raw = np.asarray(model.predict_proba(built["X_next"]))[0]
@@ -299,7 +318,7 @@ def generate(config: Config, market_id: str, target: str, *,
                     key=lambda t: -t[1])
     forecast = Forecast(
         market_id=market_id, target=target,
-        target_date=target_date.isoformat(), cutoff_date=last.isoformat(),
+        target_date=forecast_date.isoformat(), cutoff_date=last.isoformat(),
         model_name=model_name,
         model_version=f"{model_name}-{meta['feature_version']}-{config.fingerprint()[:8]}",
         mode=mode, probs={lbl: float(probs[i]) for i, lbl in enumerate(OUTCOME_LABELS)},

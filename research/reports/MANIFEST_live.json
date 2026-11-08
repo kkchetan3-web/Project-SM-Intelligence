@@ -1,9 +1,9 @@
 {
   "dataset": "live",
-  "generated_at": "2026-11-07T15:32:08+00:00",
+  "generated_at": "2026-11-08T14:43:28+00:00",
   "config_fingerprint": "de460bd3e53ea409",
   "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_live.md",
-  "report_sha256": "ff8b679a8d13bc27b35b7aa248016abecb24e1e8329dbb7409f55260d4e00bee",
+  "report_sha256": "ca2ab89fa84d32f42379d0d7040ef92ef3168751c38acfa2bba97aab201b4729",
   "databases": {
     "kalyan": {
       "exists": true,

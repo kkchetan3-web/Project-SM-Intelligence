@@ -385,16 +385,26 @@ def cmd_backtest(args: argparse.Namespace) -> int:
 
 def cmd_predict(args: argparse.Namespace) -> int:
     config = _load(args)
+    from datetime import date as _date
+
     from src.predictions import reporting
     from src.predictions.prediction_engine import generate
 
     market_id = _market(config, args.market)
     _require_database(config, market_id)
+    target_date = None
+    if args.target_date:
+        try:
+            target_date = _date.fromisoformat(args.target_date)
+        except ValueError as exc:
+            print(f"invalid --target-date {args.target_date!r}: {exc}")
+            return 2
     if args.compare:
         # Explicit multi-market request only.
         market_ids = [market_id] + [config.market(m).market_id for m in args.compare]
         forecasts = [generate(config, m, args.target, next_open=args.open_ank,
                               next_foreign_open=args.foreign_open_ank,
+                              target_date=target_date,
                               persist=not args.no_persist)
                      for m in market_ids]
         print(reporting.render_comparison(forecasts))
@@ -402,6 +412,7 @@ def cmd_predict(args: argparse.Namespace) -> int:
 
     forecast = generate(config, market_id, args.target, next_open=args.open_ank,
                         next_foreign_open=args.foreign_open_ank,
+                        target_date=target_date,
                         persist=not args.no_persist)
     print(reporting.render_forecast(forecast))
     if not args.no_persist:
@@ -604,6 +615,10 @@ def build_parser() -> argparse.ArgumentParser:
                    help="same-day Open, once published (close forecasts only)")
     p.add_argument("--foreign-open-ank", type=int, default=None,
                    help="paired market's same-day Open, once published")
+    p.add_argument("--target-date", default=None,
+                   help="explicit forecast date (YYYY-MM-DD) instead of the automatic "
+                        "next draw; use it when a holiday or suspension pushes the "
+                        "next draw past the calendar's automatic date")
     p.add_argument("--compare", nargs="+", default=None,
                    help="explicitly request a multi-market comparison")
     p.add_argument("--no-persist", action="store_true")
