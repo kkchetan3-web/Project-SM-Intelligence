@@ -1,9 +1,9 @@
 {
   "dataset": "live",
-  "generated_at": "2026-11-08T14:43:28+00:00",
+  "generated_at": "2026-11-08T18:38:09+00:00",
   "config_fingerprint": "de460bd3e53ea409",
   "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_live.md",
-  "report_sha256": "ca2ab89fa84d32f42379d0d7040ef92ef3168751c38acfa2bba97aab201b4729",
+  "report_sha256": "f8e4e4e1954091621c2ef24e2ba807697e4d5111bfdd6ee3a566a2ff2999687c",
   "databases": {
     "kalyan": {
       "exists": true,
@@ -23,7 +23,8 @@
         "cross_market_tests": 0,
         "result_revisions": 0,
         "update_history": 1,
-        "database_migrations": 3
+        "bidding_quotes": 0,
+        "database_migrations": 4
       },
       "coverage": {
         "market_id": "kalyan",

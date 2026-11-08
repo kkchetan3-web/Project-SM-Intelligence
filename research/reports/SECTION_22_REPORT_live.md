@@ -3,7 +3,7 @@
 
 **Dataset:** `live` - Real extracted market records. Populated only by the ingestion pipeline.
 
-**Generated:** 2026-11-08T14:43:28+00:00
+**Generated:** 2026-11-08T18:38:09+00:00
 
 > **Read this first.** These are real published results for Kalyan and Main Bazar, supplied as saved copies of the source pages on 2026-11-07 and dated by the parser (see `docs/DATA_SNAPSHOT_2026-11-07.md`). They are single-provider and marked `unverified_scrape`. The platform finds structure in the *distribution* of these draws and **no** out-of-sample predictability: on every market and target nothing beat the uniform forecast, and no model was promoted. That is the finding, and it is reported as such.
 
@@ -16,9 +16,9 @@
 | Python | 3.11.2 |
 | Platform | Linux-6.1.158+-x86_64-with-glibc2.36 |
 | Dataset | `live` |
-| Dataset root | `/tmp/pytest-of-user/pytest-0/test_report_uses_the_live_word0/dbs` |
+| Dataset root | `/tmp/pytest-of-user/pytest-4/test_report_uses_the_live_word0/dbs` |
 | Schema version | 3 |
-| Generated at (UTC) | 2026-11-08T14:43:28+00:00 |
+| Generated at (UTC) | 2026-11-08T18:38:09+00:00 |
 
 ### Source reachability
 
@@ -69,7 +69,8 @@ This report therefore describes the real published history of these markets. It 
 | cross_market_tests | 0 | - |
 | result_revisions | 0 | - |
 | update_history | 1 | - |
-| database_migrations | 3 | - |
+| bidding_quotes | 0 | - |
+| database_migrations | 4 | - |
 
 Empty tables are explained rather than hidden: `market_features` and `cross_market_features` are built in memory at each walk-forward cutoff (persisting them risks re-using a vector computed with later data), and `prediction_outcomes` is filled only once the draw a forecast refers to has actually been published.
 

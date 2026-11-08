@@ -234,7 +234,67 @@ class MarketDatabase:
         )
         return int(cur.lastrowid)
 
-    # ------------------------------------------------------------------
+    def save_bidding_quotes(self, rows: Sequence[Mapping[str, Any]]) -> int:
+        """Upsert bidding quotes (market-side prices, not results).
+
+        One row per (date, side, ank); a revised quote updates the stored row.
+        The feed itself is audited through ``bidding_feed_runs`` by the caller.
+        """
+        if not rows:
+            return 0
+        with self.session() as conn:
+            conn.executemany(
+                """
+                INSERT INTO bidding_quotes
+                    (market_id, result_date, quote_side, ank, rate, volume,
+                     source_id, source_url, source_timestamp, extraction_timestamp,
+                     dataset, raw_payload, notes)
+                VALUES (:market_id, :result_date, :quote_side, :ank, :rate, :volume,
+                        :source_id, :source_url, :source_timestamp, :extraction_timestamp,
+                        :dataset, :raw_payload, :notes)
+                ON CONFLICT (market_id, result_date, quote_side, ank) DO UPDATE SET
+                    rate = excluded.rate,
+                    volume = excluded.volume,
+                    source_id = excluded.source_id,
+                    source_url = excluded.source_url,
+                    source_timestamp = excluded.source_timestamp,
+                    extraction_timestamp = excluded.extraction_timestamp,
+                    raw_payload = excluded.raw_payload,
+                    notes = excluded.notes
+                """,
+                [
+                    {
+                        "market_id": self.market_id,
+                        "result_date": r["result_date"],
+                        "quote_side": r["quote_side"],
+                        "ank": int(r["ank"]),
+                        "rate": float(r["rate"]),
+                        "volume": r.get("volume"),
+                        "source_id": r.get("source_id", ""),
+                        "source_url": r.get("source_url"),
+                        "source_timestamp": r.get("source_timestamp"),
+                        "extraction_timestamp": r.get("extraction_timestamp", utcnow()),
+                        "dataset": self.dataset,
+                        "raw_payload": r.get("raw_payload"),
+                        "notes": r.get("notes"),
+                    }
+                    for r in rows
+                ],
+            )
+            conn.commit()
+        return len(rows)
+
+    def bidding_quotes(self) -> pd.DataFrame:
+        with self.session(read_only=True) as conn:
+            df = pd.read_sql_query(
+                "SELECT * FROM bidding_quotes ORDER BY result_date, quote_side, ank",
+                conn,
+            )
+        if df.empty:
+            return df
+        df["result_date"] = pd.to_datetime(df["result_date"])
+        return df
+
     # reads
     # ------------------------------------------------------------------
     def results(self, *, active_only: bool = True) -> pd.DataFrame:

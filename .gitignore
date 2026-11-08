@@ -55,3 +55,4 @@ artifacts/*.log
 # Raw snapshot archives (see docs/DATA_SNAPSHOT_2026-11-07.md)
 data/raw/**/*.mhtml
 data/raw/**/*.mht
+research/*.log

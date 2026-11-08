@@ -14,7 +14,7 @@ a genuine leakage test rather than a comment.
 from __future__ import annotations
 
 import warnings
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Sequence
 
 import numpy as np
@@ -22,6 +22,7 @@ import pandas as pd
 
 from src.core.logging import get_logger
 from src.preprocessing.normalization import ANK_SUPPORT
+from src.preprocessing.psychology import PsychologyConfig, psychology_features
 
 log = get_logger(__name__)
 
@@ -41,6 +42,11 @@ class FeatureConfig:
     #: Admit a *same-day* foreign Open for Close targets, but only where
     #: markets.yaml explicitly declares that the foreign Open is published first.
     include_cross_same_day_open: bool = True
+    #: Side channel: player-psychology proxies (recent heat, cold streaks,
+    #: coverage). Off by default so existing results stay reproducible; on
+    #: only when a run explicitly asks for it.
+    include_psychology: bool = False
+    psychology: "PsychologyConfig" = field(default_factory=lambda: PsychologyConfig())
     feature_version: str = FEATURE_VERSION
 
 
@@ -182,6 +188,13 @@ def build_features(
         trans = _transition_rows(shifted, k)
         for c in range(k):
             cols[f"trans_{c}"] = trans[:, c] - 1.0 / k
+
+    # Player-psychology side channel (opt-in). Same shifted history, so the
+    # causality of every column is inherited from the shifted series.
+    if cfg.include_psychology:
+        psy = psychology_features(shifted, cfg.psychology)
+        for col in psy.columns:
+            cols[col] = psy[col].to_numpy()
 
     # Scalar summaries of the latest outcome (already shifted => previous draw).
     prev = np.concatenate([[np.nan], y[:-1]]).astype(float)

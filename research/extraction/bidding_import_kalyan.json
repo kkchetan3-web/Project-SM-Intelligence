@@ -1,0 +1,13 @@
+{
+  "market_id": "kalyan",
+  "dataset": "live",
+  "source_id": "dpbossss_kalyan_bidding",
+  "source_url": "https://dpbossss.com/kalyan-rates",
+  "rows_read": 8,
+  "inserted": 8,
+  "updated": 0,
+  "rejected": 0,
+  "errors": [],
+  "run_id": 1,
+  "quotes_path": "/home/user/Project-SM-Intelligence/research/extraction/bidding_import_kalyan.json"
+}

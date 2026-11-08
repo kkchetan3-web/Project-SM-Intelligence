@@ -195,6 +195,29 @@ def cmd_import_snapshots(args: argparse.Namespace) -> int:
     return 1 if failures else 0
 
 
+def cmd_import_bidding(args: argparse.Namespace) -> int:
+    """Load market-side bidding quotes (player money) into the databases."""
+    config = _load(args)
+    from src.ingestion.bidding import import_bidding
+
+    _dataset_banner(config)
+    audit_dir = config.research_dir("extraction")
+    report = import_bidding(config, args.market, args.input,
+                            source_id=args.source_id, source_url=args.source_url,
+                            source_timestamp=args.source_timestamp,
+                            audit_dir=audit_dir, rebuild=args.rebuild)
+    print(f"bidding feed for {report.market_id}: rows_read={report.rows_read} "
+          f"inserted={report.inserted} updated={report.updated} "
+          f"rejected={report.rejected}")
+    if report.errors:
+        for error in report.errors[:5]:
+            print(f"    rejected: {error}")
+    print(f"source: {report.source_id} ({report.source_url or 'no url'})")
+    if report.quotes_path:
+        print(f"audit: {report.quotes_path}")
+    return 0
+
+
 def cmd_extract(args: argparse.Namespace) -> int:
     config = _load(args)
     from src.ingestion.historical_archive import extract_market
@@ -580,6 +603,20 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--rebuild", action="store_true",
                    help="recreate the market database before importing")
     p.set_defaults(func=cmd_import_snapshots)
+
+    p = sub.add_parser("import-bidding",
+                       help="load market-side bidding quotes (CSV/JSON) into the databases")
+    p.add_argument("--market", required=True)
+    p.add_argument("--input", required=True,
+                   help="bidding feed file (CSV long format or JSON)")
+    p.add_argument("--source-id", default=None,
+                   help="provenance id for the feed (default: <primary_source>_bidding)")
+    p.add_argument("--source-url", default=None)
+    p.add_argument("--source-timestamp", default=None,
+                   help="when the feed was captured (ISO-8601)")
+    p.add_argument("--rebuild", action="store_true",
+                   help="recreate the market database before importing")
+    p.set_defaults(func=cmd_import_bidding)
 
     p = sub.add_parser("extract", help="extract historical records for one or more markets")
     p.add_argument("--market", dest="markets", nargs="+")

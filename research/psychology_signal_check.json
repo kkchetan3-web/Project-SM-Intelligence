@@ -1,0 +1,209 @@
+{
+  "kalyan/open": {
+    "n_draws": 4143,
+    "features_checked": 39,
+    "best_by_p": [
+      {
+        "feature": "heat_w30_1",
+        "n": 4141,
+        "chi2": 72.86260863779931,
+        "p": 0.00534698017408681,
+        "log_loss": 2.2923112694760057,
+        "vs_uniform": -0.010273823518040182
+      },
+      {
+        "feature": "heat_w90_2",
+        "n": 4141,
+        "chi2": 104.28801116997857,
+        "p": 0.007699032225675015,
+        "log_loss": 2.288910913035556,
+        "vs_uniform": -0.013674179958489852
+      },
+      {
+        "feature": "heat_w90_0",
+        "n": 4141,
+        "chi2": 88.29560612055997,
+        "p": 0.01945903815304137,
+        "log_loss": 2.29080384682174,
+        "vs_uniform": -0.011781246172305693
+      }
+    ],
+    "any_beat_uniform": [
+      "heat_w30_1",
+      "heat_w90_0",
+      "heat_w90_1",
+      "heat_w90_2",
+      "heat_w90_3",
+      "heat_w90_4",
+      "heat_w90_5",
+      "heat_w90_6",
+      "heat_w90_8",
+      "heat_mom_0",
+      "heat_mom_1",
+      "heat_mom_2",
+      "heat_mom_3",
+      "heat_mom_5",
+      "heat_mom_6",
+      "heat_mom_7",
+      "cold_max_norm"
+    ]
+  },
+  "kalyan/close": {
+    "n_draws": 4143,
+    "features_checked": 39,
+    "best_by_p": [
+      {
+        "feature": "heat_mom_2",
+        "n": 4141,
+        "chi2": 103.14718729105634,
+        "p": 0.04905630336282847,
+        "log_loss": 2.2880711314305504,
+        "vs_uniform": -0.014513961563495492
+      },
+      {
+        "feature": "heat_w30_4",
+        "n": 4141,
+        "chi2": 60.56890931267261,
+        "p": 0.0604189359495032,
+        "log_loss": 2.293430150104278,
+        "vs_uniform": -0.009154942889767703
+      },
+      {
+        "feature": "coverage_w90",
+        "n": 4143,
+        "chi2": 15.442911005011418,
+        "p": 0.07946654195685639,
+        "log_loss": 2.2991098087870934,
+        "vs_uniform": -0.0034752842069525336
+      }
+    ],
+    "any_beat_uniform": [
+      "heat_w90_6",
+      "heat_w90_8",
+      "heat_w90_9",
+      "heat_mom_0",
+      "heat_mom_1",
+      "heat_mom_2",
+      "heat_mom_3",
+      "heat_mom_4",
+      "heat_mom_5",
+      "heat_mom_6",
+      "heat_mom_8",
+      "heat_mom_9"
+    ]
+  },
+  "main_bazar/open": {
+    "n_draws": 2660,
+    "features_checked": 39,
+    "best_by_p": [
+      {
+        "feature": "heat_mom_2",
+        "n": 2658,
+        "chi2": 126.31860695553148,
+        "p": 0.0009543041396744137,
+        "log_loss": 2.277850643079824,
+        "vs_uniform": -0.024734449914221912
+      },
+      {
+        "feature": "jodi_heat_w30_top1",
+        "n": 2658,
+        "chi2": 262.6991239415818,
+        "p": 0.0014179364602352883,
+        "log_loss": 4.557349181006996,
+        "vs_uniform": 2.2547640880129505
+      },
+      {
+        "feature": "heat_w90_4",
+        "n": 2658,
+        "chi2": 85.9048333954008,
+        "p": 0.029173525586574742,
+        "log_loss": 2.28500343190126,
+        "vs_uniform": -0.017581661092785694
+      }
+    ],
+    "any_beat_uniform": [
+      "heat_w30_1",
+      "heat_w30_2",
+      "heat_w30_5",
+      "heat_w30_6",
+      "heat_w30_7",
+      "heat_w90_0",
+      "heat_w90_1",
+      "heat_w90_2",
+      "heat_w90_3",
+      "heat_w90_4",
+      "heat_w90_5",
+      "heat_w90_6",
+      "heat_w90_7",
+      "heat_w90_8",
+      "heat_w90_9",
+      "heat_mom_0",
+      "heat_mom_1",
+      "heat_mom_2",
+      "heat_mom_3",
+      "heat_mom_4",
+      "heat_mom_5",
+      "heat_mom_6",
+      "heat_mom_7",
+      "heat_mom_8",
+      "heat_mom_9",
+      "cold_max_norm"
+    ]
+  },
+  "main_bazar/close": {
+    "n_draws": 2660,
+    "features_checked": 39,
+    "best_by_p": [
+      {
+        "feature": "jodi_heat_w30_top1",
+        "n": 2658,
+        "chi2": 262.6991239415818,
+        "p": 0.0014179364602352883,
+        "log_loss": 4.557349181006996,
+        "vs_uniform": 2.2547640880129505
+      },
+      {
+        "feature": "heat_mom_3",
+        "n": 2658,
+        "chi2": 99.5613005873642,
+        "p": 0.07908330920127482,
+        "log_loss": 2.282739260846633,
+        "vs_uniform": -0.019845832147412867
+      },
+      {
+        "feature": "heat_w90_9",
+        "n": 2658,
+        "chi2": 78.24302375967534,
+        "p": 0.09341455345351828,
+        "log_loss": 2.287182981107167,
+        "vs_uniform": -0.015402111886878789
+      }
+    ],
+    "any_beat_uniform": [
+      "heat_w30_0",
+      "heat_w30_1",
+      "heat_w30_2",
+      "heat_w30_5",
+      "heat_w90_1",
+      "heat_w90_2",
+      "heat_w90_3",
+      "heat_w90_4",
+      "heat_w90_5",
+      "heat_w90_6",
+      "heat_w90_7",
+      "heat_w90_8",
+      "heat_w90_9",
+      "heat_mom_0",
+      "heat_mom_1",
+      "heat_mom_2",
+      "heat_mom_3",
+      "heat_mom_4",
+      "heat_mom_5",
+      "heat_mom_6",
+      "heat_mom_7",
+      "heat_mom_8",
+      "heat_mom_9",
+      "cold_max_norm"
+    ]
+  }
+}

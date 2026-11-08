@@ -279,6 +279,7 @@ python -m src.cli.main [--dataset live|synthetic_null|synthetic_signal] <command
 
   init          [--market ...] [--rebuild]      create/migrate each market's database
   import-snapshots --input DIR [--raw-dir D]    load saved chart pages into `live`
+  import-bidding --market M --input FILE       load bidding quotes (CSV/JSON) into `live`
   synthetic     [--rebuild]                     regenerate the control world
   discover                                      probe the configured sources
   extract       [--market ...] / extract-all    crawl historical charts
@@ -315,8 +316,11 @@ python -m src.cli.main [--dataset live|synthetic_null|synthetic_signal] <command
 - cross-market lead-lag sweep (28 tests per pair), dependency battery, leakage validation, and
   the decisive conditional-model comparison;
 - forecasts and a scoring ledger;
-- ~70 tests covering parsing, storage, quality gates, mathematics, backtesting, cross-market
-  alignment and predictions — no network required.
+- opt-in side channels: the player-psychology channel (heat, cold streaks, coverage, jodi
+  heat - see `docs/PSYCHOLOGY_AND_BIDDING.md`) and the bidding-quote framework (schema v4,
+  `import-bidding`, inverse-rate pressure channel);
+- 106 tests covering parsing, storage, quality gates, mathematics, backtesting, cross-market
+  alignment, predictions, psychology and bidding — no network required.
 
 **Not executed, and not claimed:**
 
@@ -327,6 +331,8 @@ python -m src.cli.main [--dataset live|synthetic_null|synthetic_signal] <command
   been diffed against the first. The revision machinery itself is tested.
 - **No independent provider check.** Everything rests on one provider, hence
   `unverified_scrape`.
+- **No live bidding data.** All five sources reset the TLS connection from this environment;
+  the bidding framework is implemented and fixture-tested but no real quotes have been imported.
 - **No model was promoted**, so no forecast in this repository has demonstrated predictive value.
 
 See [`docs/RESULTS_synthetic_null.md`](docs/RESULTS_synthetic_null.md) and

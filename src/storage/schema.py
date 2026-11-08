@@ -12,7 +12,7 @@ the ones a given file has not yet seen.
 
 from __future__ import annotations
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 
 # ---------------------------------------------------------------------------
 # v1 - core record keeping
@@ -278,10 +278,55 @@ CREATE TABLE IF NOT EXISTS update_history (
 );
 """
 
+# ---------------------------------------------------------------------------
+# v4 - market-side bidding quotes (player money, not results)
+# ---------------------------------------------------------------------------
+_V4 = """
+CREATE TABLE IF NOT EXISTS bidding_quotes (
+    record_id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    market_id            TEXT    NOT NULL,
+    result_date          TEXT    NOT NULL,              -- ISO 'YYYY-MM-DD'
+    quote_side           TEXT    NOT NULL CHECK (quote_side IN ('open', 'close')),
+    ank                  INTEGER NOT NULL CHECK (ank BETWEEN 0 AND 9),
+    rate                 REAL    NOT NULL CHECK (rate > 0 AND rate <= 10),
+    volume               REAL,                          -- money quoted (nullable)
+    source_id            TEXT    NOT NULL,
+    source_url           TEXT,
+    source_timestamp     TEXT,
+    extraction_timestamp TEXT    NOT NULL,
+    dataset              TEXT    NOT NULL,
+    raw_payload          TEXT,                          -- verbatim feed snippet / JSON
+    notes                TEXT,
+    CHECK (volume IS NULL OR volume >= 0)
+);
+
+-- One quote per (market, date, side, ank). A revised quote updates the row;
+-- history of the quote itself is kept in raw_payload/source_timestamp.
+CREATE UNIQUE INDEX IF NOT EXISTS ux_bidding_market_date_side_ank
+    ON bidding_quotes (market_id, result_date, quote_side, ank);
+CREATE INDEX IF NOT EXISTS ix_bidding_date ON bidding_quotes (result_date);
+
+CREATE TABLE IF NOT EXISTS bidding_feed_runs (
+    run_id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    market_id      TEXT    NOT NULL,
+    source_id      TEXT    NOT NULL,
+    source_url     TEXT,
+    started_at     TEXT    NOT NULL,
+    finished_at    TEXT,
+    rows_read      INTEGER DEFAULT 0,
+    rows_inserted  INTEGER DEFAULT 0,
+    rows_updated   INTEGER DEFAULT 0,
+    rows_rejected  INTEGER DEFAULT 0,
+    error_text     TEXT,
+    notes          TEXT
+);
+"""
+
 MIGRATIONS: list[tuple[int, str, str]] = [
     (1, "core record keeping: results, revisions, sources, extraction runs, quality", _V1),
     (2, "analytics: features, method results, model registry, backtests, prediction ledger", _V2),
     (3, "cross-market layer and incremental update history", _V3),
+    (4, "market-side bidding quotes and feed-run audit", _V4),
 ]
 
 # Convenience views built after migrations.
@@ -316,5 +361,6 @@ REQUIRED_TABLES = [
     "cross_market_tests",
     "result_revisions",
     "update_history",
+    "bidding_quotes",
     "database_migrations",
 ]
