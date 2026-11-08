@@ -41,8 +41,12 @@ def render_forecast(forecast: Forecast) -> str:
     lines.append(f"- **Data cutoff:** {forecast.cutoff_date} "
                  f"({forecast.n_history} observed draws)")
     lines.append(f"- **Forecaster:** `{forecast.model_name}` - {model_note}")
-    lines.append(f"- **Dataset:** `{forecast.dataset}` "
-                 f"(synthetic control data - not real historical results)")
+    dataset_note = (
+        "real published results imported from the 2026-11-07 chart snapshots "
+        "(single-provider, unverified_scrape)"
+        if forecast.dataset == "live" else
+        "synthetic control data - not real historical results")
+    lines.append(f"- **Dataset:** `{forecast.dataset}` ({dataset_note})")
     lines.append(f"- **Feature version:** `{forecast.feature_version}`")
     lines.append("")
     lines.append("## Probability by outcome")
