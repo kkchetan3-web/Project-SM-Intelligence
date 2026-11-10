@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-08T18:22:13+00:00",
+ "generated_at": "2026-11-09T20:55:45+00:00",
  "note": "Raw snapshots supplied by the user (saved pages of dpbossss.com). They are kept out of version control by the data policy; this manifest is committed so every stored row can be traced to the exact file that produced it.",
  "files": [
   {
@@ -13,6 +13,16 @@
    "sha256": "21770b4553adfa504f732c5d425390fa414f7b11467b67a8e9aa4741b888924e"
   },
   {
+   "path": "raw/snapshots/kalyan_morning/jodi_b29243e4dae3.mhtml",
+   "bytes": 109140,
+   "sha256": "b29243e4dae386249d47a09d5ca9df295e9cc1d4e0e6bb85d98a4e6e9adfdea1"
+  },
+  {
+   "path": "raw/snapshots/kalyan_morning/panel_5eabb1a8c7bb.mhtml",
+   "bytes": 186140,
+   "sha256": "5eabb1a8c7bb31ec57438b6757de4998eef942d07bd1e10a1ed76e090033208d"
+  },
+  {
    "path": "raw/snapshots/main_bazar/jodi_13ebe7b5643a.mhtml",
    "bytes": 166062,
    "sha256": "13ebe7b5643af8327aa350489886920fe7fd29529f44a8f032a1bcc97a227c7a"
@@ -21,6 +31,26 @@
    "path": "raw/snapshots/main_bazar/panel_9bd9ac1335f2.mhtml",
    "bytes": 470548,
    "sha256": "9bd9ac1335f2981c8e0b4ffd63a7854d670ec8cb7f9e0b4f75b05c8da5ea74e5"
+  },
+  {
+   "path": "raw/snapshots/milan_morning/jodi_23625efc25bb.mhtml",
+   "bytes": 111210,
+   "sha256": "23625efc25bbfb6de5a87ca02cf2707fdcd848f41db643aaa0d16470acb9d9a7"
+  },
+  {
+   "path": "raw/snapshots/milan_morning/panel_1a8d4116a634.mhtml",
+   "bytes": 321238,
+   "sha256": "1a8d4116a634ef25c9a3de82631a145bd44638335ee056c73d38b62a5cf69e03"
+  },
+  {
+   "path": "raw/snapshots/sridevi/jodi_7fb0dd26aeda.mhtml",
+   "bytes": 135070,
+   "sha256": "7fb0dd26aeda7ad93426e3de659300f7cb8d3f8f8a71e87be345e5ae55ce0d05"
+  },
+  {
+   "path": "raw/snapshots/sridevi/panel_9fd0aa0322a5.mhtml",
+   "bytes": 362850,
+   "sha256": "9fd0aa0322a5c3f4884c8baac6cb5c39089a0b8f40ce0818a88a730078dcf1c8"
   }
  ]
 }

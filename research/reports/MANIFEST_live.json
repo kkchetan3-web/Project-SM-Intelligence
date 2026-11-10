@@ -1,20 +1,137 @@
 {
   "dataset": "live",
-  "generated_at": "2026-11-08T18:38:09+00:00",
-  "config_fingerprint": "de460bd3e53ea409",
-  "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_live.md",
-  "report_sha256": "f8e4e4e1954091621c2ef24e2ba807697e4d5111bfdd6ee3a566a2ff2999687c",
+  "generated_at": "2026-11-09T21:18:02+00:00",
+  "config_fingerprint": "162c606feb33876e",
+  "report": "research/reports/SECTION_22_REPORT_live.md",
+  "report_sha256": "f071876d45dd390b4f90e4f5ca5068c4cd8e6cc8578909e58e62e74b4ac0c993",
   "databases": {
     "kalyan": {
       "exists": true,
       "integrity": "ok",
       "row_counts": {
-        "historical_results": 2,
+        "historical_results": 4192,
         "source_records": 2,
         "extraction_runs": 2,
-        "data_quality": 5,
+        "data_quality": 73,
         "market_features": 0,
-        "method_results": 0,
+        "method_results": 1084,
+        "model_registry": 20,
+        "backtest_results": 20,
+        "predictions": 2,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 0,
+        "result_revisions": 0,
+        "update_history": 1,
+        "bidding_quotes": 0,
+        "database_migrations": 4
+      },
+      "coverage": {
+        "market_id": "kalyan",
+        "n_records": 4192,
+        "oldest": "2012-12-31",
+        "newest": "2026-11-05",
+        "span_days": 5058,
+        "missing_dates": 866,
+        "duplicate_dates": 0,
+        "coverage_pct": 82.88,
+        "by_year": {
+          "2012": 1,
+          "2013": 307,
+          "2014": 301,
+          "2015": 303,
+          "2016": 306,
+          "2017": 312,
+          "2018": 313,
+          "2019": 307,
+          "2020": 266,
+          "2021": 306,
+          "2022": 300,
+          "2023": 301,
+          "2024": 303,
+          "2025": 304,
+          "2026": 262
+        },
+        "by_component": {
+          "open_ank": 4192,
+          "close_ank": 4192,
+          "jodi": 4192,
+          "open_panna": 4094,
+          "close_panna": 4095
+        },
+        "distinct_verification_status": [
+          "unverified_scrape"
+        ],
+        "dataset": "live"
+      }
+    },
+    "main_bazar": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 2711,
+        "source_records": 2,
+        "extraction_runs": 2,
+        "data_quality": 73,
+        "market_features": 0,
+        "method_results": 1084,
+        "model_registry": 20,
+        "backtest_results": 20,
+        "predictions": 2,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 0,
+        "result_revisions": 0,
+        "update_history": 1,
+        "bidding_quotes": 0,
+        "database_migrations": 4
+      },
+      "coverage": {
+        "market_id": "main_bazar",
+        "n_records": 2711,
+        "oldest": "2015-12-28",
+        "newest": "2026-11-05",
+        "span_days": 3966,
+        "missing_dates": 1255,
+        "duplicate_dates": 0,
+        "coverage_pct": 68.36,
+        "by_year": {
+          "2015": 4,
+          "2016": 246,
+          "2017": 253,
+          "2018": 261,
+          "2019": 249,
+          "2020": 217,
+          "2021": 254,
+          "2022": 252,
+          "2023": 251,
+          "2024": 252,
+          "2025": 254,
+          "2026": 218
+        },
+        "by_component": {
+          "open_ank": 2711,
+          "close_ank": 2711,
+          "jodi": 2711,
+          "open_panna": 2661,
+          "close_panna": 2660
+        },
+        "distinct_verification_status": [
+          "unverified_scrape"
+        ],
+        "dataset": "live"
+      }
+    },
+    "kalyan_morning": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 1401,
+        "source_records": 2,
+        "extraction_runs": 2,
+        "data_quality": 73,
+        "market_features": 0,
+        "method_results": 778,
         "model_registry": 0,
         "backtest_results": 0,
         "predictions": 0,
@@ -27,23 +144,26 @@
         "database_migrations": 4
       },
       "coverage": {
-        "market_id": "kalyan",
-        "n_records": 2,
-        "oldest": "2026-11-02",
-        "newest": "2026-11-03",
-        "span_days": 2,
-        "missing_dates": 0,
+        "market_id": "kalyan_morning",
+        "n_records": 1401,
+        "oldest": "2023-01-02",
+        "newest": "2026-11-09",
+        "span_days": 1408,
+        "missing_dates": 7,
         "duplicate_dates": 0,
-        "coverage_pct": 100.0,
+        "coverage_pct": 99.5,
         "by_year": {
-          "2026": 2
+          "2023": 362,
+          "2024": 366,
+          "2025": 364,
+          "2026": 309
         },
         "by_component": {
-          "open_ank": 2,
-          "close_ank": 2,
-          "jodi": 2,
-          "open_panna": 2,
-          "close_panna": 2
+          "open_ank": 1401,
+          "close_ank": 1401,
+          "jodi": 1401,
+          "open_panna": 1401,
+          "close_panna": 1401
         },
         "distinct_verification_status": [
           "unverified_scrape"
@@ -51,12 +171,142 @@
         "dataset": "live"
       }
     },
-    "main_bazar": {
-      "exists": false
+    "milan_morning": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 2657,
+        "source_records": 2,
+        "extraction_runs": 2,
+        "data_quality": 73,
+        "market_features": 0,
+        "method_results": 778,
+        "model_registry": 0,
+        "backtest_results": 0,
+        "predictions": 0,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 0,
+        "result_revisions": 0,
+        "update_history": 1,
+        "bidding_quotes": 0,
+        "database_migrations": 4
+      },
+      "coverage": {
+        "market_id": "milan_morning",
+        "n_records": 2657,
+        "oldest": "2019-04-22",
+        "newest": "2026-11-09",
+        "span_days": 2759,
+        "missing_dates": 102,
+        "duplicate_dates": 0,
+        "coverage_pct": 96.3,
+        "by_year": {
+          "2019": 254,
+          "2020": 303,
+          "2021": 353,
+          "2022": 362,
+          "2023": 352,
+          "2024": 363,
+          "2025": 362,
+          "2026": 308
+        },
+        "by_component": {
+          "open_ank": 2657,
+          "close_ank": 2657,
+          "jodi": 2657,
+          "open_panna": 2650,
+          "close_panna": 2650
+        },
+        "distinct_verification_status": [
+          "unverified_scrape"
+        ],
+        "dataset": "live"
+      }
+    },
+    "sridevi": {
+      "exists": true,
+      "integrity": "ok",
+      "row_counts": {
+        "historical_results": 3109,
+        "source_records": 2,
+        "extraction_runs": 2,
+        "data_quality": 73,
+        "market_features": 0,
+        "method_results": 778,
+        "model_registry": 0,
+        "backtest_results": 0,
+        "predictions": 0,
+        "prediction_outcomes": 0,
+        "cross_market_features": 0,
+        "cross_market_tests": 0,
+        "result_revisions": 0,
+        "update_history": 1,
+        "bidding_quotes": 0,
+        "database_migrations": 4
+      },
+      "coverage": {
+        "market_id": "sridevi",
+        "n_records": 3109,
+        "oldest": "2018-03-05",
+        "newest": "2026-11-09",
+        "span_days": 3172,
+        "missing_dates": 63,
+        "duplicate_dates": 0,
+        "coverage_pct": 98.01,
+        "by_year": {
+          "2018": 300,
+          "2019": 365,
+          "2020": 324,
+          "2021": 362,
+          "2022": 362,
+          "2023": 361,
+          "2024": 363,
+          "2025": 362,
+          "2026": 310
+        },
+        "by_component": {
+          "open_ank": 3109,
+          "close_ank": 3109,
+          "jodi": 3109,
+          "open_panna": 3102,
+          "close_panna": 3102
+        },
+        "distinct_verification_status": [
+          "unverified_scrape"
+        ],
+        "dataset": "live"
+      }
     }
   },
   "methods": {
-    "per_market": {}
+    "per_market": {
+      "kalyan": {
+        "n_methods": 100,
+        "n_rows": 1084,
+        "n_significant_fdr": 17
+      },
+      "main_bazar": {
+        "n_methods": 100,
+        "n_rows": 1084,
+        "n_significant_fdr": 8
+      },
+      "kalyan_morning": {
+        "n_methods": 100,
+        "n_rows": 778,
+        "n_significant_fdr": 36
+      },
+      "milan_morning": {
+        "n_methods": 100,
+        "n_rows": 778,
+        "n_significant_fdr": 33
+      },
+      "sridevi": {
+        "n_methods": 100,
+        "n_rows": 778,
+        "n_significant_fdr": 40
+      }
+    }
   },
   "cross_market": {
     "headline": {
@@ -81,6 +331,31 @@
       "conclusion": "No cross-market relationship produced a demonstrable out-of-sample predictive improvement for either market. Markets are therefore modelled independently, and the cross-market layer remains an analytical overlay rather than an input to prediction."
     }
   },
-  "backtests": {},
+  "backtests": {
+    "kalyan": {
+      "backtest_rows": 20,
+      "ledger": {
+        "market": "kalyan",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    },
+    "main_bazar": {
+      "backtest_rows": 20,
+      "ledger": {
+        "market": "main_bazar",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    }
+  },
   "synthetic_notice": "All records in this dataset were produced by src/ingestion/synthetic_control.py and are not market history."
 }

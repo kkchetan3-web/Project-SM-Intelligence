@@ -46,6 +46,39 @@ sources:
     expected_format: "html_table"
     parser: "dpbossss_jodi_chart"
 
+  - source_id: "dpbossss_kalyan_morning"
+    market_id: "kalyan_morning"
+    authority: 10
+    kind: "primary"
+    base_url: "https://dpbossss.com/"
+    pages:
+      jodi_chart: "https://dpbossss.com/jodi-chart-record/kalyan-morning.php"
+      panel_chart: "https://dpbossss.com/panel-chart-record/kalyan-morning.php"
+    expected_format: "html_table"
+    parser: "dpbossss_jodi_chart"
+
+  - source_id: "dpbossss_milan_morning"
+    market_id: "milan_morning"
+    authority: 10
+    kind: "primary"
+    base_url: "https://dpbossss.com/"
+    pages:
+      jodi_chart: "https://dpbossss.com/jodi-chart-record/milan-morning.php"
+      panel_chart: "https://dpbossss.com/panel-chart-record/milan-morning.php"
+    expected_format: "html_table"
+    parser: "dpbossss_jodi_chart"
+
+  - source_id: "dpbossss_sridevi"
+    market_id: "sridevi"
+    authority: 10
+    kind: "primary"
+    base_url: "https://dpbossss.com/"
+    pages:
+      jodi_chart: "https://dpbossss.com/jodi-chart-record/sridevi.php"
+      panel_chart: "https://dpbossss.com/panel-chart-record/sridevi.php"
+    expected_format: "html_table"
+    parser: "dpbossss_jodi_chart"
+
   - source_id: "dpbossss_root"
     market_id: null
     authority: 9

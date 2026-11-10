@@ -46,11 +46,53 @@ markets:
     secondary_sources: ["sattamatka_sale", "sattadpbossmatka"]
     notes: "Configured from user-supplied URLs. No live data ingested in this environment (egress blocked)."
 
+  - market_id: "kalyan_morning"
+    display_name: "Kalyan Morning"
+    status: "configured"
+    components: ["open", "close", "jodi", "panna"]
+    targets:
+      open: {field: "open_ank", space: "ank"}
+      close: {field: "close_ank", space: "ank"}
+      jodi: {field: "jodi", space: "jodi"}
+    primary_source: "dpbossss_kalyan_morning"
+    secondary_sources: []
+    notes: "User-supplied MHTML snapshots (panel + jodi). Draws Mon–Sun (7 days/week). Last result 2026-11-09."
+
+  - market_id: "milan_morning"
+    display_name: "Milan Morning"
+    status: "configured"
+    components: ["open", "close", "jodi", "panna"]
+    targets:
+      open: {field: "open_ank", space: "ank"}
+      close: {field: "close_ank", space: "ank"}
+      jodi: {field: "jodi", space: "jodi"}
+    primary_source: "dpbossss_milan_morning"
+    secondary_sources: []
+    notes: "User-supplied MHTML snapshots (panel + jodi). Draws Mon–Sun (7 days/week). Last result 2026-11-09. Panel contained an archive/duplicate block (11 rows) that was removed during parsing."
+
+  - market_id: "sridevi"
+    display_name: "Sridevi"
+    status: "configured"
+    components: ["open", "close", "jodi", "panna"]
+    targets:
+      open: {field: "open_ank", space: "ank"}
+      close: {field: "close_ank", space: "ank"}
+      jodi: {field: "jodi", space: "jodi"}
+    primary_source: "dpbossss_sridevi"
+    secondary_sources: []
+    notes: "User-supplied MHTML snapshots (panel + jodi). Draws Mon–Sun (7 days/week). Last result 2026-11-09."
+
 # Cross-market pairs that the dependency engine is permitted to investigate.
 # Adding a market above requires adding its pairs here explicitly: relationships
 # are never inferred automatically.
 cross_market_pairs:
   - ["kalyan", "main_bazar"]
+  - ["kalyan", "kalyan_morning"]
+  - ["kalyan", "milan_morning"]
+  - ["kalyan", "sridevi"]
+  - ["kalyan_morning", "milan_morning"]
+  - ["kalyan_morning", "sridevi"]
+  - ["milan_morning", "sridevi"]
 
 # Cross-market publication precedence, declared as an ASSUMPTION.
 #
@@ -63,3 +105,9 @@ cross_market_pairs:
 # whether the channel was used. Remove this entry and the channel disappears.
 cross_open_precedence:
   - ["kalyan", "main_bazar"]
+  - ["kalyan_morning", "kalyan"]
+  - ["milan_morning", "kalyan"]
+  - ["sridevi", "kalyan"]
+  - ["kalyan_morning", "main_bazar"]
+  - ["milan_morning", "main_bazar"]
+  - ["sridevi", "main_bazar"]

@@ -1,9 +1,11 @@
 {
  "market_id": "main_bazar",
- "panel_weeks": 561,
- "panel_cells": 2803,
+ "panel_weeks": 560,
+ "panel_cells": 2798,
  "jodi_rows": 561,
- "panel_problems": [],
+ "panel_problems": [
+  "removed archive/duplicate row: '23/03/2020 to 08/05/2020'"
+ ],
  "jodi_problems": [
   "row 185: 4 cells for 5 weekdays"
  ],
@@ -12,63 +14,68 @@
    "label": "11/05/2020 to 15/05/2020",
    "start": "2020-05-11",
    "repairs": [
-    "label '11/05/2020 to 15/05/2020': 49-day gap after 2020-03-23 - the page skips 6 whole week(s) here"
+    "label '11/05/2020 to 15/05/2020': 56-day gap after 2020-03-16 - the page skips 7 whole week(s) here"
    ]
   }
  ],
  "alignment": {
-  "matched_by": "index",
-  "panel_weeks": 561,
-  "jodi_rows": 561
+  "matched_by": "tail",
+  "panel_weeks": 560,
+  "jodi_rows": 561,
+  "note": "row counts differ; both grids are newest-last, so the jodi grid is aligned to the last N panel weeks and the leading weeks are reported as single-source"
  },
  "status_counts": {
-  "agrees": 2655,
+  "jodi_chart_differs": 952,
   "single_source": 143,
-  "panel_internal_mismatch": 5
+  "partial_panna_recovered": 51,
+  "agrees": 1650,
+  "panel_internal_mismatch": 2
  },
  "conflicts": [
   {
    "date": "2016-08-10",
    "panel_jodi": "01",
-   "jodi_chart": "01",
+   "jodi_chart": "04",
    "panna_arithmetic": "71",
    "used": "71",
    "notes": [
     "printed jodi 01 != panna arithmetic 71",
-    "jodi chart 01 != panna arithmetic 71"
+    "jodi chart 04 != panel 01",
+    "jodi chart 04 != panna arithmetic 71"
    ]
   },
   {
    "date": "2016-12-29",
    "panel_jodi": "51",
-   "jodi_chart": "51",
+   "jodi_chart": "84",
    "panna_arithmetic": "52",
    "used": "52",
    "notes": [
     "printed jodi 51 != panna arithmetic 52",
-    "jodi chart 51 != panna arithmetic 52"
+    "jodi chart 84 != panel 51",
+    "jodi chart 84 != panna arithmetic 52"
    ]
   },
   {
    "date": "2017-01-19",
    "panel_jodi": "24",
-   "jodi_chart": "24",
+   "jodi_chart": null,
    "panna_arithmetic": "21",
    "used": "21",
    "notes": [
-    "printed jodi 24 != panna arithmetic 21",
-    "jodi chart 24 != panna arithmetic 21"
+    "printed jodi 24 != panna arithmetic 21"
    ]
   },
   {
    "date": "2017-02-06",
    "panel_jodi": "72",
-   "jodi_chart": "72",
+   "jodi_chart": "80",
    "panna_arithmetic": "79",
    "used": "79",
    "notes": [
     "printed jodi 72 != panna arithmetic 79",
-    "jodi chart 72 != panna arithmetic 79"
+    "jodi chart 80 != panel 72",
+    "jodi chart 80 != panna arithmetic 79"
    ]
   },
   {
@@ -85,9 +92,9 @@
  ],
  "duplicate_dates": [],
  "weekday_mismatch": [],
- "n_days": 2803,
- "n_usable": 2660,
- "n_missing": 143,
+ "n_days": 2798,
+ "n_usable": 2711,
+ "n_missing": 87,
  "first_date": "2015-12-28",
  "last_date": "2026-11-05",
  "n_open_panna": 2661,
@@ -114,8 +121,8 @@
   }
  ],
  "import": {
-  "rows_built": 2660,
-  "inserted": 2660,
+  "rows_built": 2711,
+  "inserted": 2711,
   "revised": 0,
   "rejected": 0,
   "rejected_examples": [],
@@ -128,6 +135,6 @@
    1,
    2
   ],
-  "at": "2026-11-08T18:22:13+00:00"
+  "at": "2026-11-09T20:55:45+00:00"
  }
 }

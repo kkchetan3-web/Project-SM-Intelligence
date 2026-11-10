@@ -61,8 +61,14 @@ def discover_snapshots(directory: str | Path) -> dict[str, dict[str, Path]]:
                      if any(word in lowered for word in words)), None)
         if kind is None:
             continue
-        if "main" in lowered and ("bazar" in lowered or "bazar" in lowered):
+        if "main" in lowered and "bazar" in lowered:
             market = "main_bazar"
+        elif "kalyan morning" in lowered:
+            market = "kalyan_morning"
+        elif "milan morning" in lowered:
+            market = "milan_morning"
+        elif "sridevi" in lowered:
+            market = "sridevi"
         elif "kalyan" in lowered:
             market = "kalyan"
         else:

@@ -211,7 +211,9 @@ def date_readings(token: str) -> list[DateReading]:
             tag = "day-first" if order == 0 else "month-first"
             if year_shift:
                 tag += f" year{year_shift:+d}"
-            for offset, offset_cost in ((0, 0.0), (-1, 0.4), (1, 0.4), (-2, 0.9), (2, 0.9)):
+            for offset, offset_cost in ((0, 0.0), (-1, 0.4), (1, 0.4), (-2, 0.9), (2, 0.9),
+                                        (-3, 1.2), (3, 1.2), (-4, 1.6), (4, 1.6),
+                                        (-5, 2.0), (5, 2.0)):
                 add(base + dt.timedelta(days=offset), year_cost + order * 0.5 + offset_cost, tag)
     return sorted(out.values(), key=lambda r: (r.cost, r.date))
 
@@ -413,8 +415,21 @@ class PanelParse:
         return sum(len(w.cells) for w in self.weeks)
 
 
+#: Abbreviated weekday names some pages use in their table headers.
+_WEEKDAY_ABBREV = {
+    "mo": "Mon", "tu": "Tue", "we": "Wed", "th": "Thu",
+    "fr": "Fri", "sa": "Sat", "su": "Sun",
+}
+
+
 def _header_weekdays(header_cells: list[str]) -> list[str]:
-    days = [c for c in (_clean(h) for h in header_cells) if c in WEEKDAYS]
+    days = []
+    for raw in header_cells:
+        cell = _clean(raw)
+        if cell in WEEKDAYS:
+            days.append(cell)
+        elif len(cell) == 2 and cell[:2].lower() in _WEEKDAY_ABBREV:
+            days.append(_WEEKDAY_ABBREV[cell[:2].lower()])
     return days or list(WEEKDAYS[:6])
 
 
@@ -454,10 +469,61 @@ def parse_panel_html(html: str) -> PanelParse:
             ))
         raw_weeks.append((label, parsed_cells))
 
-    starts, repairs = resolve_week_starts([label for label, _ in raw_weeks], weekdays[0])
+    # --- deduplicate archive rows -----------------------------------------
+    # The dpbossss panel pages sometimes embed an archive block that repeats
+    # later weeks (identical label *and* identical cell data) plus a few rows
+    # with a corrupted label.  Those rows break the chronological flow and
+    # make the DP dater pick a wrong year for the whole page.  We remove:
+    #   1. rows that are exact duplicates of a later row (same label + data)
+    #   2. rows whose two date tokens span more than 30 days (corrupted label)
+    #   3. rows whose label matches a later row (near-duplicate, data differs)
+    dedup_removed: list[str] = []
+    keep: list[bool] = [True] * len(raw_weeks)
+    for i in range(len(raw_weeks)):
+        if not keep[i]:
+            continue
+        label_i, cells_i = raw_weeks[i]
+        # 2. corrupted label (span > 30 days)
+        tokens = [m.group(0) for m in _DATE_TOKEN.finditer(label_i)]
+        if len(tokens) >= 2:
+            d1 = date_readings(tokens[0])[0].date
+            d2 = date_readings(tokens[1])[0].date
+            if abs((d2 - d1).days - 7) > 30:
+                keep[i] = False
+                dedup_removed.append(label_i)
+                continue
+        # 1. exact duplicate of a later row
+        for j in range(i + 1, len(raw_weeks)):
+            if not keep[j]:
+                continue
+            label_j, cells_j = raw_weeks[j]
+            if label_i != label_j:
+                continue
+            same_data = all(c1.raw == c2.raw
+                            for c1, c2 in zip(cells_i, cells_j))
+            if same_data:
+                keep[i] = False
+                dedup_removed.append(label_i)
+                break
+        if not keep[i]:
+            continue
+        # 3. same label as a later row (data differs)
+        for j in range(i + 1, len(raw_weeks)):
+            if not keep[j]:
+                continue
+            if raw_weeks[j][0] == label_i:
+                keep[i] = False
+                dedup_removed.append(label_i)
+                break
+
+    cleaned_weeks = [(label, cells) for k, (label, cells) in zip(keep, raw_weeks) if k]
+    for lbl in dedup_removed:
+        problems.append(f"removed archive/duplicate row: {lbl!r}")
+
+    starts, repairs = resolve_week_starts([label for label, _ in cleaned_weeks], weekdays[0])
 
     weeks: list[PanelWeek] = []
-    for (label, cells), start, repair_list in zip(raw_weeks, starts, repairs):
+    for (label, cells), start, repair_list in zip(cleaned_weeks, starts, repairs):
         if start is None:
             problems.append(f"unusable date label {label!r}")
             continue
