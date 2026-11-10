@@ -1,0 +1,67 @@
+{
+ "market_id": "kalyan_morning",
+ "panel_weeks": 202,
+ "panel_cells": 1408,
+ "jodi_rows": 478,
+ "panel_problems": [],
+ "jodi_problems": [],
+ "week_repairs": [],
+ "alignment": {
+  "matched_by": "tail",
+  "panel_weeks": 202,
+  "jodi_rows": 478,
+  "note": "row counts differ; both grids are newest-last, so the jodi grid is aligned to the last N panel weeks and the leading weeks are reported as single-source"
+ },
+ "status_counts": {
+  "agrees": 1401,
+  "single_source": 7
+ },
+ "conflicts": [],
+ "duplicate_dates": [],
+ "weekday_mismatch": [],
+ "n_days": 1408,
+ "n_usable": 1401,
+ "n_missing": 7,
+ "first_date": "2023-01-02",
+ "last_date": "2026-11-09",
+ "n_open_panna": 1401,
+ "n_close_panna": 1401,
+ "n_conflicts": 0,
+ "sources": [
+  {
+   "kind": "panel",
+   "path": "/tmp/arena-coding-uploads/Kalyan Morning Panel Chart _ Daily Panel History.txt",
+   "url": "https://dpbossss.com/panel-chart-record/kalyan-morning.php",
+   "saved_at": "Mon, 09 Nov 2026 20:15:55 GMT",
+   "sha256": "5eabb1a8c7bb31ec57438b6757de4998eef942d07bd1e10a1ed76e090033208d",
+   "byte_size": 186140,
+   "title": "Kalyan Morning Panel Chart | Daily Panel History"
+  },
+  {
+   "kind": "jodi",
+   "path": "/tmp/arena-coding-uploads/Kalyan Morning Jodi Chart _ Matka Jodi Result.txt",
+   "url": "https://dpbossss.com/jodi-chart-record/kalyan-morning.php",
+   "saved_at": "Mon, 09 Nov 2026 20:16:11 GMT",
+   "sha256": "b29243e4dae386249d47a09d5ca9df295e9cc1d4e0e6bb85d98a4e6e9adfdea1",
+   "byte_size": 109140,
+   "title": "Kalyan Morning Jodi Chart | Matka Jodi Result"
+  }
+ ],
+ "import": {
+  "rows_built": 1401,
+  "inserted": 1401,
+  "revised": 0,
+  "rejected": 0,
+  "rejected_examples": [],
+  "source_id": "dpbossss_kalyan_morning",
+  "raw_paths": [
+   "data/raw/snapshots/kalyan_morning/panel_5eabb1a8c7bb.mhtml",
+   "data/raw/snapshots/kalyan_morning/jodi_b29243e4dae3.mhtml"
+  ],
+  "run_ids": [
+   1,
+   2
+  ],
+  "at": "2026-11-09T20:53:00+00:00"
+ }
+}

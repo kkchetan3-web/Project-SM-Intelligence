@@ -3,7 +3,7 @@
 
 **Dataset:** `live` - Real extracted market records. Populated only by the ingestion pipeline.
 
-**Generated:** 2026-11-09T21:18:02+00:00
+**Generated:** 2026-11-10T05:11:15+00:00
 
 > **Read this first.** These are real published results for Kalyan and Main Bazar, supplied as saved copies of the source pages on 2026-11-07 and dated by the parser (see `docs/DATA_SNAPSHOT_2026-11-07.md`). They are single-provider and marked `unverified_scrape`. The platform finds structure in the *distribution* of these draws and **no** out-of-sample predictability: on every market and target nothing beat the uniform forecast, and no model was promoted. That is the finding, and it is reported as such.
 
@@ -18,7 +18,7 @@
 | Dataset | `live` |
 | Dataset root | `/home/user/Project-SM-Intelligence/data/databases` |
 | Schema version | 3 |
-| Generated at (UTC) | 2026-11-09T21:18:01+00:00 |
+| Generated at (UTC) | 2026-11-10T05:11:14+00:00 |
 
 ### Source reachability
 
@@ -65,15 +65,15 @@ This report therefore describes the real published history of these markets. It 
 | historical_results | 4192 | 2711 | 1401 | 2657 | 3109 |
 | source_records | 2 | 2 | 2 | 2 | 2 |
 | extraction_runs | 2 | 2 | 2 | 2 | 2 |
-| data_quality | 73 | 73 | 73 | 73 | 73 |
+| data_quality | 107 | 107 | 107 | 107 | 107 |
 | market_features | 0 | 0 | 0 | 0 | 0 |
-| method_results | 1084 | 1084 | 778 | 778 | 778 |
-| model_registry | 20 | 20 | 0 | 0 | 0 |
-| backtest_results | 20 | 20 | 0 | 0 | 0 |
-| predictions | 2 | 2 | 0 | 0 | 0 |
+| method_results | 1084 | 1084 | 1084 | 1084 | 1084 |
+| model_registry | 60 | 60 | 40 | 40 | 40 |
+| backtest_results | 60 | 60 | 40 | 40 | 40 |
+| predictions | 2 | 2 | 2 | 2 | 2 |
 | prediction_outcomes | 0 | 0 | 0 | 0 | 0 |
 | cross_market_features | 0 | 0 | 0 | 0 | 0 |
-| cross_market_tests | 0 | 0 | 0 | 0 | 0 |
+| cross_market_tests | 112 | 28 | 84 | 84 | 84 |
 | result_revisions | 0 | 0 | 0 | 0 | 0 |
 | update_history | 1 | 1 | 1 | 1 | 1 |
 | bidding_quotes | 0 | 0 | 0 | 0 | 0 |
@@ -175,8 +175,8 @@ A surviving p-value is evidence of *association in this sample*. It is not evide
 ### kalyan_morning
 
 - Methods with stored results: **100**
-- Stored metric rows: **778**
-- (method, target) computations at full sample: **149**
+- Stored metric rows: **1084**
+- (method, target) computations at full sample: **199**
 
 | Cat | Name | Methods | With results |
 |---|---|---|---|
@@ -189,33 +189,33 @@ A surviving p-value is evidence of *association in this sample*. It is not evide
 | G | Machine Learning | 12 | 12 |
 | H | Advanced Probability, Ensembles and Validation | 16 | 16 |
 
-36 finding(s) survive Benjamini-Hochberg at alpha=0.05. Showing up to 15:
+38 finding(s) survive Benjamini-Hochberg at alpha=0.05. Showing up to 15:
 
 | Method | Target | Metric | Value | p (FDR) | Effect size |
 |---|---|---|---|---|---|
-| M009 | close | chi2_statistic | 33.2541 | 6.96e-04 | 0.1541 |
-| M009 | close | p_value | 0.00012 | 6.96e-04 | nan |
-| M019 | open | chi2_vs_constant_hazard | 26.71263 | 5.92e-04 | nan |
-| M023 | open | transition_chi2 | 124.46869 | 7.71e-03 | 0.0994 |
-| M027 | close | joint_chi2 | 134.30142 | 9.80e-04 | 0.1032 |
-| M027 | close | mutual_information_bits | 0.0707 | 1.56e-02 | nan |
-| M031 | open | mutual_information_bits | 0.07122 | 6.08e-03 | nan |
-| M031 | open | excess_over_null | 0.02911 | 6.08e-03 | nan |
-| M035 | close | correlation_MA5 | 0.07119 | 3.15e-02 | nan |
-| M037 | open | correlation_EMA50 | -0.06951 | 3.99e-02 | nan |
-| M045 | close | innovation_ljungbox_p | 3e-05 | 4.22e-04 | nan |
-| M047 | close | chi2_mod7 | 24.4247 | 2.18e-03 | nan |
-| M048 | close | digital_root_chi2 | 33.2541 | 6.96e-04 | nan |
-| M049 | close | digit_sum_chi2 | 97.25799 | 6.26e-10 | nan |
-| M049 | open | digit_sum_chi2 | 74.74118 | 2.30e-06 | nan |
+| M009 | close | chi2_statistic | 33.2541 | 7.79e-04 | 0.1541 |
+| M009 | close | p_value | 0.00012 | 7.79e-04 | nan |
+| M019 | open | chi2_vs_constant_hazard | 26.71263 | 6.65e-04 | nan |
+| M023 | open | transition_chi2 | 124.46869 | 8.66e-03 | 0.0994 |
+| M027 | close | joint_chi2 | 134.30142 | 1.10e-03 | 0.1032 |
+| M027 | close | mutual_information_bits | 0.0707 | 1.75e-02 | nan |
+| M031 | open | mutual_information_bits | 0.07122 | 6.83e-03 | nan |
+| M031 | open | excess_over_null | 0.02911 | 6.83e-03 | nan |
+| M035 | close | correlation_MA5 | 0.07119 | 3.53e-02 | nan |
+| M037 | open | correlation_EMA50 | -0.06951 | 4.48e-02 | nan |
+| M045 | close | innovation_ljungbox_p | 3e-05 | 4.73e-04 | nan |
+| M047 | close | chi2_mod7 | 24.4247 | 2.44e-03 | nan |
+| M048 | close | digital_root_chi2 | 33.2541 | 7.79e-04 | nan |
+| M049 | close | digit_sum_chi2 | 97.25799 | 7.01e-10 | nan |
+| M049 | open | digit_sum_chi2 | 74.74118 | 2.58e-06 | nan |
 
 A surviving p-value is evidence of *association in this sample*. It is not evidence of exploitable predictability: the cross-validated backtest in section F is the arbiter of that.
 
 ### milan_morning
 
 - Methods with stored results: **100**
-- Stored metric rows: **778**
-- (method, target) computations at full sample: **149**
+- Stored metric rows: **1084**
+- (method, target) computations at full sample: **199**
 
 | Cat | Name | Methods | With results |
 |---|---|---|---|
@@ -228,33 +228,33 @@ A surviving p-value is evidence of *association in this sample*. It is not evide
 | G | Machine Learning | 12 | 12 |
 | H | Advanced Probability, Ensembles and Validation | 16 | 16 |
 
-33 finding(s) survive Benjamini-Hochberg at alpha=0.05. Showing up to 15:
+35 finding(s) survive Benjamini-Hochberg at alpha=0.05. Showing up to 15:
 
 | Method | Target | Metric | Value | p (FDR) | Effect size |
 |---|---|---|---|---|---|
-| M009 | close | chi2_statistic | 29.03312 | 4.80e-03 | 0.1045 |
-| M009 | close | p_value | 0.00064 | 4.80e-03 | nan |
-| M010 | open | halves_chi2 | 23.83331 | 2.32e-02 | 0.0947 |
-| M013 | open | most_overdue_hit_rate | 0.07959 | 3.59e-03 | nan |
-| M027 | close | joint_chi2 | 114.53476 | 3.94e-02 | 0.0692 |
-| M027 | close | mutual_information_bits | 0.03243 | 3.57e-02 | nan |
-| M035 | open | correlation_MA5 | 0.07201 | 2.52e-03 | nan |
-| M035 | open | correlation_MA10 | 0.06823 | 3.59e-03 | nan |
-| M036 | open | correlation_WMA10 | 0.05388 | 2.54e-02 | nan |
-| M037 | open | correlation_EMA10 | 0.05475 | 2.32e-02 | nan |
-| M037 | open | correlation_EMA20 | 0.06817 | 3.59e-03 | nan |
-| M037 | open | correlation_EMA50 | 0.05099 | 3.68e-02 | nan |
-| M045 | open | innovation_ljungbox_p | 0.00315 | 1.91e-02 | nan |
-| M047 | close | chi2_mod7 | 27.23033 | 1.97e-03 | nan |
-| M048 | close | digital_root_chi2 | 29.03312 | 4.80e-03 | nan |
+| M009 | close | chi2_statistic | 29.03312 | 5.37e-03 | 0.1045 |
+| M009 | close | p_value | 0.00064 | 5.37e-03 | nan |
+| M010 | open | halves_chi2 | 23.83331 | 2.61e-02 | 0.0947 |
+| M013 | open | most_overdue_hit_rate | 0.07959 | 4.04e-03 | nan |
+| M027 | close | joint_chi2 | 114.53476 | 4.42e-02 | 0.0692 |
+| M027 | close | mutual_information_bits | 0.03243 | 4.00e-02 | nan |
+| M035 | open | correlation_MA5 | 0.07201 | 2.83e-03 | nan |
+| M035 | open | correlation_MA10 | 0.06823 | 4.04e-03 | nan |
+| M036 | open | correlation_WMA10 | 0.05388 | 2.85e-02 | nan |
+| M037 | open | correlation_EMA10 | 0.05475 | 2.61e-02 | nan |
+| M037 | open | correlation_EMA20 | 0.06817 | 4.04e-03 | nan |
+| M037 | open | correlation_EMA50 | 0.05099 | 4.14e-02 | nan |
+| M045 | open | innovation_ljungbox_p | 0.00315 | 2.15e-02 | nan |
+| M047 | close | chi2_mod7 | 27.23033 | 2.20e-03 | nan |
+| M048 | close | digital_root_chi2 | 29.03312 | 5.37e-03 | nan |
 
 A surviving p-value is evidence of *association in this sample*. It is not evidence of exploitable predictability: the cross-validated backtest in section F is the arbiter of that.
 
 ### sridevi
 
 - Methods with stored results: **100**
-- Stored metric rows: **778**
-- (method, target) computations at full sample: **149**
+- Stored metric rows: **1084**
+- (method, target) computations at full sample: **199**
 
 | Cat | Name | Methods | With results |
 |---|---|---|---|
@@ -267,25 +267,25 @@ A surviving p-value is evidence of *association in this sample*. It is not evide
 | G | Machine Learning | 12 | 12 |
 | H | Advanced Probability, Ensembles and Validation | 16 | 16 |
 
-40 finding(s) survive Benjamini-Hochberg at alpha=0.05. Showing up to 15:
+42 finding(s) survive Benjamini-Hochberg at alpha=0.05. Showing up to 15:
 
 | Method | Target | Metric | Value | p (FDR) | Effect size |
 |---|---|---|---|---|---|
-| M009 | close | chi2_statistic | 33.40913 | 8.50e-04 | 0.1037 |
-| M009 | close | p_value | 0.00011 | 8.50e-04 | nan |
-| M013 | close | most_overdue_hit_rate | 0.0835 | 1.23e-02 | nan |
-| M013 | open | most_overdue_hit_rate | 0.08155 | 2.55e-03 | nan |
-| M022 | close | best_split_statistic | 29.38923 | 4.37e-02 | nan |
-| M022 | close | split_permutation_p | 0.0099 | 4.37e-02 | nan |
-| M023 | open | transition_chi2 | 115.72791 | 2.84e-02 | 0.0643 |
-| M031 | open | mutual_information_bits | 0.02648 | 3.98e-02 | nan |
-| M031 | open | excess_over_null | 0.00753 | 3.98e-02 | nan |
-| M035 | open | correlation_MA10 | 0.0468 | 3.52e-02 | nan |
-| M037 | open | correlation_EMA5 | 0.04928 | 2.74e-02 | nan |
-| M037 | open | correlation_EMA10 | 0.04945 | 2.74e-02 | nan |
-| M037 | open | correlation_EMA20 | 0.04343 | 4.91e-02 | nan |
-| M047 | close | chi2_mod7 | 23.08106 | 5.25e-03 | nan |
-| M048 | close | digital_root_chi2 | 33.40913 | 8.50e-04 | nan |
+| M009 | close | chi2_statistic | 33.40913 | 9.52e-04 | 0.1037 |
+| M009 | close | p_value | 0.00011 | 9.52e-04 | nan |
+| M013 | close | most_overdue_hit_rate | 0.0835 | 1.37e-02 | nan |
+| M013 | open | most_overdue_hit_rate | 0.08155 | 2.87e-03 | nan |
+| M022 | close | best_split_statistic | 29.38923 | 4.42e-02 | nan |
+| M022 | close | split_permutation_p | 0.0099 | 4.42e-02 | nan |
+| M023 | open | transition_chi2 | 115.72791 | 3.19e-02 | 0.0643 |
+| M028 | close | cramers_v_lag1 | 0.0716 | 2.36e-02 | nan |
+| M031 | open | mutual_information_bits | 0.02648 | 4.28e-02 | nan |
+| M031 | open | excess_over_null | 0.00753 | 4.28e-02 | nan |
+| M035 | open | correlation_MA10 | 0.0468 | 3.95e-02 | nan |
+| M037 | open | correlation_EMA5 | 0.04928 | 3.07e-02 | nan |
+| M037 | open | correlation_EMA10 | 0.04945 | 3.07e-02 | nan |
+| M047 | close | chi2_mod7 | 23.08106 | 5.88e-03 | nan |
+| M048 | close | digital_root_chi2 | 33.40913 | 9.52e-04 | nan |
 
 A surviving p-value is evidence of *association in this sample*. It is not evidence of exploitable predictability: the cross-validated backtest in section F is the arbiter of that.
 
@@ -294,25 +294,127 @@ A surviving p-value is evidence of *association in this sample*. It is not evide
 
 - Leakage validation: **PASS**
   - kalyan/open: 3 foreign features, causality verified=True, same-day foreign open used=False
-  - kalyan/close: 3 foreign features, causality verified=True, same-day foreign open used=False
+  - kalyan/close: 6 foreign features, causality verified=True, same-day foreign open used=True
   - main_bazar/open: 3 foreign features, causality verified=True, same-day foreign open used=False
   - main_bazar/close: 6 foreign features, causality verified=True, same-day foreign open used=True
+  - kalyan_morning/open: 3 foreign features, causality verified=True, same-day foreign open used=False
+  - kalyan_morning/close: 3 foreign features, causality verified=True, same-day foreign open used=False
+  - milan_morning/open: 3 foreign features, causality verified=True, same-day foreign open used=False
+  - milan_morning/close: 3 foreign features, causality verified=True, same-day foreign open used=False
+  - sridevi/open: 3 foreign features, causality verified=True, same-day foreign open used=False
+  - sridevi/close: 3 foreign features, causality verified=True, same-day foreign open used=False
 
 ### kalyan vs main_bazar
 
 - Lag tests across 4 component pairs x 7 lags: **28**
 - Significant after Holm correction: **0**
-- Strongest association: r=close vs close at lag 0 (Cramer's V = 0.0665, p_adj = 0.9815940759299747)
+- Strongest association: r=close vs close at lag 0 (Cramer's V = 0.0650, p_adj = 1.0)
   - Verdict: no meaningful evidence detected
 
 **Decisive test - does the other market improve the forecast?**
 
 | Market | Target | Domestic only LL | With foreign LL | Improvement [95% CI] | Verdict |
 |---|---|---|---|---|---|
-| kalyan | open | 2.45293 | 2.46415 | -0.01122 [+0.0052, +0.0171] | no improvement: foreign features do not help this market |
-| kalyan | close | 2.45787 | 2.47056 | -0.01270 [+0.0063, +0.0189] | no improvement: foreign features do not help this market |
-| main_bazar | open | 2.52275 | 2.53417 | -0.01143 [+0.0056, +0.0173] | no improvement: foreign features do not help this market |
-| main_bazar | close | 2.49885 | 2.51861 | -0.01976 [+0.0110, +0.0274] | no improvement: foreign features do not help this market |
+| kalyan | open | 2.44431 | 2.45870 | -0.01439 [+0.0081, +0.0213] | no improvement: foreign features do not help this market |
+| kalyan | close | 2.46895 | 2.51126 | -0.04231 [+0.0281, +0.0599] | no improvement: foreign features do not help this market |
+| main_bazar | open | 2.51015 | 2.52119 | -0.01104 [+0.0058, +0.0172] | no improvement: foreign features do not help this market |
+| main_bazar | close | 2.48432 | 2.50173 | -0.01742 [+0.0104, +0.0245] | no improvement: foreign features do not help this market |
+
+### kalyan vs kalyan_morning
+
+- Lag tests across 4 component pairs x 7 lags: **28**
+- Significant after Holm correction: **0**
+- Strongest association: r=close vs close at lag -1 (Cramer's V = 0.0990, p_adj = 1.0)
+  - Verdict: no meaningful evidence detected
+
+**Decisive test - does the other market improve the forecast?**
+
+| Market | Target | Domestic only LL | With foreign LL | Improvement [95% CI] | Verdict |
+|---|---|---|---|---|---|
+| kalyan | open | 2.44431 | 2.45870 | -0.01439 [+0.0081, +0.0213] | no improvement: foreign features do not help this market |
+| kalyan | close | 2.46895 | 2.51126 | -0.04231 [+0.0281, +0.0599] | no improvement: foreign features do not help this market |
+| kalyan_morning | open | 2.59497 | 2.61033 | -0.01536 [+0.0032, +0.0281] | no improvement: foreign features do not help this market |
+| kalyan_morning | close | 2.62591 | 2.64937 | -0.02346 [+0.0102, +0.0367] | no improvement: foreign features do not help this market |
+
+### kalyan vs milan_morning
+
+- Lag tests across 4 component pairs x 7 lags: **28**
+- Significant after Holm correction: **0**
+- Strongest association: r=open vs open at lag 2 (Cramer's V = 0.0710, p_adj = 1.0)
+  - Verdict: no meaningful evidence detected
+
+**Decisive test - does the other market improve the forecast?**
+
+| Market | Target | Domestic only LL | With foreign LL | Improvement [95% CI] | Verdict |
+|---|---|---|---|---|---|
+| kalyan | open | 2.44431 | 2.45870 | -0.01439 [+0.0081, +0.0213] | no improvement: foreign features do not help this market |
+| kalyan | close | 2.46895 | 2.51126 | -0.04231 [+0.0281, +0.0599] | no improvement: foreign features do not help this market |
+| milan_morning | open | 2.55393 | 2.56129 | -0.00736 [+0.0021, +0.0123] | no improvement: foreign features do not help this market |
+| milan_morning | close | 2.52841 | 2.53859 | -0.01018 [+0.0026, +0.0180] | no improvement: foreign features do not help this market |
+
+### kalyan vs sridevi
+
+- Lag tests across 4 component pairs x 7 lags: **28**
+- Significant after Holm correction: **0**
+- Strongest association: r=close vs close at lag -1 (Cramer's V = 0.0716, p_adj = 0.11825468898195877)
+  - Verdict: no meaningful evidence detected
+
+**Decisive test - does the other market improve the forecast?**
+
+| Market | Target | Domestic only LL | With foreign LL | Improvement [95% CI] | Verdict |
+|---|---|---|---|---|---|
+| kalyan | open | 2.44431 | 2.45870 | -0.01439 [+0.0081, +0.0213] | no improvement: foreign features do not help this market |
+| kalyan | close | 2.46895 | 2.51126 | -0.04231 [+0.0281, +0.0599] | no improvement: foreign features do not help this market |
+| sridevi | open | 2.47081 | 2.48133 | -0.01052 [+0.0049, +0.0164] | no improvement: foreign features do not help this market |
+| sridevi | close | 2.49579 | 2.50539 | -0.00959 [+0.0049, +0.0146] | no improvement: foreign features do not help this market |
+
+### kalyan_morning vs milan_morning
+
+- Lag tests across 4 component pairs x 7 lags: **28**
+- Significant after Holm correction: **0**
+- Strongest association: r=open vs open at lag -1 (Cramer's V = 0.0913, p_adj = 1.0)
+  - Verdict: no meaningful evidence detected
+
+**Decisive test - does the other market improve the forecast?**
+
+| Market | Target | Domestic only LL | With foreign LL | Improvement [95% CI] | Verdict |
+|---|---|---|---|---|---|
+| kalyan_morning | open | 2.59497 | 2.61033 | -0.01536 [+0.0032, +0.0281] | no improvement: foreign features do not help this market |
+| kalyan_morning | close | 2.62591 | 2.64937 | -0.02346 [+0.0102, +0.0367] | no improvement: foreign features do not help this market |
+| milan_morning | open | 2.55393 | 2.56129 | -0.00736 [+0.0021, +0.0123] | no improvement: foreign features do not help this market |
+| milan_morning | close | 2.52841 | 2.53859 | -0.01018 [+0.0026, +0.0180] | no improvement: foreign features do not help this market |
+
+### kalyan_morning vs sridevi
+
+- Lag tests across 4 component pairs x 7 lags: **28**
+- Significant after Holm correction: **0**
+- Strongest association: r=close vs open at lag -1 (Cramer's V = 0.0946, p_adj = 0.363629760285619)
+  - Verdict: no meaningful evidence detected
+
+**Decisive test - does the other market improve the forecast?**
+
+| Market | Target | Domestic only LL | With foreign LL | Improvement [95% CI] | Verdict |
+|---|---|---|---|---|---|
+| kalyan_morning | open | 2.59497 | 2.61033 | -0.01536 [+0.0032, +0.0281] | no improvement: foreign features do not help this market |
+| kalyan_morning | close | 2.62591 | 2.64937 | -0.02346 [+0.0102, +0.0367] | no improvement: foreign features do not help this market |
+| sridevi | open | 2.47081 | 2.48133 | -0.01052 [+0.0049, +0.0164] | no improvement: foreign features do not help this market |
+| sridevi | close | 2.49579 | 2.50539 | -0.00959 [+0.0049, +0.0146] | no improvement: foreign features do not help this market |
+
+### milan_morning vs sridevi
+
+- Lag tests across 4 component pairs x 7 lags: **28**
+- Significant after Holm correction: **0**
+- Strongest association: r=close vs open at lag -2 (Cramer's V = 0.0695, p_adj = 0.2582157469869909)
+  - Verdict: no meaningful evidence detected
+
+**Decisive test - does the other market improve the forecast?**
+
+| Market | Target | Domestic only LL | With foreign LL | Improvement [95% CI] | Verdict |
+|---|---|---|---|---|---|
+| milan_morning | open | 2.55393 | 2.56129 | -0.00736 [+0.0021, +0.0123] | no improvement: foreign features do not help this market |
+| milan_morning | close | 2.52841 | 2.53859 | -0.01018 [+0.0026, +0.0180] | no improvement: foreign features do not help this market |
+| sridevi | open | 2.47081 | 2.48133 | -0.01052 [+0.0049, +0.0164] | no improvement: foreign features do not help this market |
+| sridevi | close | 2.49579 | 2.50539 | -0.00959 [+0.0049, +0.0146] | no improvement: foreign features do not help this market |
 
 **Conclusion.** No cross-market relationship produced a demonstrable out-of-sample predictive improvement for either market. Markets are therefore modelled independently, and the cross-market layer remains an analytical overlay rather than an input to prediction.
 
@@ -322,28 +424,28 @@ A surviving p-value is evidence of *association in this sample*. It is not evide
 
 | Target | Models | Best log loss | Predictions evaluated |
 |---|---|---|---|
-| close | 10 | 2.30738 | 3792 |
-| open | 10 | 2.30772 | 3792 |
+| close | 30 | 2.30738 | 3792 |
+| open | 30 | 2.30772 | 3792 |
 
 **close: best 5 configurations by log loss**
 
 | Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
 |---|---|---|---|---|---|
 | svm | 2.30738 | 0.90096 | 0.1047 | 0.3035 | 0.5061 |
+| svm | 2.30738 | 0.90096 | 0.1047 | 0.3035 | 0.5061 |
+| svm | 2.30738 | 0.90096 | 0.1047 | 0.3035 | 0.5061 |
 | catboost | 2.32138 | 0.90381 | 0.1084 | 0.3051 | 0.5061 |
-| random_forest | 2.33021 | 0.90550 | 0.0978 | 0.2983 | 0.4979 |
-| knn | 2.38230 | 0.91288 | 0.0986 | 0.2893 | 0.4850 |
-| xgboost | 2.44250 | 0.93374 | 0.0936 | 0.3030 | 0.5074 |
+| catboost | 2.32138 | 0.90381 | 0.1084 | 0.3051 | 0.5061 |
 
 **open: best 5 configurations by log loss**
 
 | Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
 |---|---|---|---|---|---|
 | svm | 2.30772 | 0.90103 | 0.1063 | 0.3128 | 0.5071 |
+| svm | 2.30772 | 0.90103 | 0.1063 | 0.3128 | 0.5071 |
+| svm | 2.30772 | 0.90103 | 0.1063 | 0.3128 | 0.5071 |
 | catboost | 2.32450 | 0.90465 | 0.0957 | 0.3014 | 0.5092 |
-| random_forest | 2.32877 | 0.90529 | 0.1057 | 0.2991 | 0.4987 |
-| knn | 2.36982 | 0.91083 | 0.1026 | 0.3014 | 0.5082 |
-| xgboost | 2.42517 | 0.92934 | 0.1068 | 0.3209 | 0.5227 |
+| catboost | 2.32450 | 0.90465 | 0.0957 | 0.3014 | 0.5092 |
 
 **Baselines on the identical evaluation window**
 
@@ -372,28 +474,28 @@ Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0
 
 | Target | Models | Best log loss | Predictions evaluated |
 |---|---|---|---|
-| close | 10 | 2.30870 | 2311 |
-| open | 10 | 2.30697 | 2311 |
+| close | 30 | 2.30870 | 2311 |
+| open | 30 | 2.30697 | 2311 |
 
 **close: best 5 configurations by log loss**
 
 | Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
 |---|---|---|---|---|---|
 | svm | 2.30870 | 0.90119 | 0.0982 | 0.3025 | 0.4955 |
+| svm | 2.30870 | 0.90119 | 0.0982 | 0.3025 | 0.4955 |
+| svm | 2.30870 | 0.90119 | 0.0982 | 0.3025 | 0.4955 |
 | catboost | 2.33047 | 0.90569 | 0.0939 | 0.2986 | 0.4937 |
-| random_forest | 2.33302 | 0.90621 | 0.0922 | 0.2934 | 0.4890 |
-| knn | 2.38840 | 0.91280 | 0.0930 | 0.2951 | 0.4898 |
-| xgboost | 2.47509 | 0.93947 | 0.0952 | 0.2903 | 0.4903 |
+| catboost | 2.33047 | 0.90569 | 0.0939 | 0.2986 | 0.4937 |
 
 **open: best 5 configurations by log loss**
 
 | Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
 |---|---|---|---|---|---|
 | svm | 2.30697 | 0.90083 | 0.1051 | 0.3051 | 0.4972 |
+| svm | 2.30697 | 0.90083 | 0.1051 | 0.3051 | 0.4972 |
+| svm | 2.30697 | 0.90083 | 0.1051 | 0.3051 | 0.4972 |
 | catboost | 2.32922 | 0.90533 | 0.0978 | 0.2934 | 0.4976 |
-| random_forest | 2.33383 | 0.90624 | 0.0995 | 0.2860 | 0.4846 |
-| knn | 2.37962 | 0.91155 | 0.1034 | 0.3025 | 0.4929 |
-| xgboost | 2.50655 | 0.94707 | 0.0978 | 0.2994 | 0.4937 |
+| catboost | 2.32922 | 0.90533 | 0.0978 | 0.2934 | 0.4976 |
 
 **Baselines on the identical evaluation window**
 
@@ -420,15 +522,153 @@ Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0
 
 ### kalyan_morning
 
-No walk-forward backtest results are stored for this market.
+| Target | Models | Best log loss | Predictions evaluated |
+|---|---|---|---|
+| close | 20 | 2.30598 | 1051 |
+| open | 20 | 2.31050 | 1051 |
+
+**close: best 5 configurations by log loss**
+
+| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
+|---|---|---|---|---|---|
+| svm | 2.30598 | 0.90076 | 0.1018 | 0.3378 | 0.5395 |
+| svm | 2.30598 | 0.90076 | 0.1018 | 0.3378 | 0.5395 |
+| random_forest | 2.32777 | 0.90553 | 0.1047 | 0.3226 | 0.5157 |
+| random_forest | 2.32777 | 0.90553 | 0.1047 | 0.3226 | 0.5157 |
+| catboost | 2.33580 | 0.90732 | 0.1161 | 0.3045 | 0.5128 |
+
+**open: best 5 configurations by log loss**
+
+| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
+|---|---|---|---|---|---|
+| svm | 2.31050 | 0.90162 | 0.1113 | 0.3130 | 0.5138 |
+| svm | 2.31050 | 0.90162 | 0.1113 | 0.3130 | 0.5138 |
+| catboost | 2.32646 | 0.90505 | 0.1056 | 0.3273 | 0.5328 |
+| catboost | 2.32646 | 0.90505 | 0.1056 | 0.3273 | 0.5328 |
+| random_forest | 2.33653 | 0.90639 | 0.1142 | 0.3226 | 0.5195 |
+
+**Baselines on the identical evaluation window**
+
+| Target | Baseline | Log loss | Brier |
+|---|---|---|---|
+| close | frequency | 2.29962 | 0.89946 |
+| close | bayes | 2.29962 | 0.89946 |
+| close | bayes_jeffreys | 2.29971 | 0.89948 |
+| close | uniform | 2.30259 | 0.90000 |
+| close | markov1 | 2.34030 | 0.90671 |
+| close | rolling | 2.35585 | 0.90927 |
+| close | recency | 2.43180 | 0.92067 |
+| open | uniform | 2.30259 | 0.90000 |
+| open | frequency | 2.30406 | 0.90028 |
+| open | bayes | 2.30406 | 0.90028 |
+| open | bayes_jeffreys | 2.30414 | 0.90030 |
+| open | markov1 | 2.32938 | 0.90434 |
+| open | rolling | 2.36118 | 0.91079 |
+| open | recency | 2.42974 | 0.92179 |
+
+Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0.5. Any model above those numbers has removed signal, not added it. A candidate that only matches the uniform floor has learned nothing; a candidate below it would be the first genuine finding in this project.
+
+**Prediction ledger:** forecasts exist but none has been resolved yet.
 
 ### milan_morning
 
-No walk-forward backtest results are stored for this market.
+| Target | Models | Best log loss | Predictions evaluated |
+|---|---|---|---|
+| close | 20 | 2.30970 | 2257 |
+| open | 20 | 2.30763 | 2257 |
+
+**close: best 5 configurations by log loss**
+
+| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
+|---|---|---|---|---|---|
+| svm | 2.30970 | 0.90138 | 0.1086 | 0.3177 | 0.5264 |
+| svm | 2.30970 | 0.90138 | 0.1086 | 0.3177 | 0.5264 |
+| catboost | 2.32866 | 0.90568 | 0.1006 | 0.3159 | 0.5166 |
+| catboost | 2.32866 | 0.90568 | 0.1006 | 0.3159 | 0.5166 |
+| random_forest | 2.33480 | 0.90662 | 0.1103 | 0.3101 | 0.5024 |
+
+**open: best 5 configurations by log loss**
+
+| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
+|---|---|---|---|---|---|
+| svm | 2.30763 | 0.90098 | 0.1006 | 0.3106 | 0.5135 |
+| svm | 2.30763 | 0.90098 | 0.1006 | 0.3106 | 0.5135 |
+| random_forest | 2.33293 | 0.90604 | 0.1028 | 0.3048 | 0.5135 |
+| random_forest | 2.33293 | 0.90604 | 0.1028 | 0.3048 | 0.5135 |
+| catboost | 2.33683 | 0.90726 | 0.1010 | 0.2964 | 0.5038 |
+
+**Baselines on the identical evaluation window**
+
+| Target | Baseline | Log loss | Brier |
+|---|---|---|---|
+| close | uniform | 2.30259 | 0.90000 |
+| close | frequency | 2.30428 | 0.90035 |
+| close | bayes | 2.30428 | 0.90035 |
+| close | bayes_jeffreys | 2.30435 | 0.90036 |
+| close | markov1 | 2.33642 | 0.90632 |
+| close | rolling | 2.36761 | 0.91157 |
+| close | recency | 2.42898 | 0.92049 |
+| open | uniform | 2.30259 | 0.90000 |
+| open | frequency | 2.30466 | 0.90040 |
+| open | bayes | 2.30466 | 0.90040 |
+| open | bayes_jeffreys | 2.30470 | 0.90041 |
+| open | markov1 | 2.32848 | 0.90463 |
+| open | rolling | 2.36890 | 0.91143 |
+| open | recency | 2.41001 | 0.91671 |
+
+Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0.5. Any model above those numbers has removed signal, not added it. A candidate that only matches the uniform floor has learned nothing; a candidate below it would be the first genuine finding in this project.
+
+**Prediction ledger:** forecasts exist but none has been resolved yet.
 
 ### sridevi
 
-No walk-forward backtest results are stored for this market.
+| Target | Models | Best log loss | Predictions evaluated |
+|---|---|---|---|
+| close | 20 | 2.30321 | 2709 |
+| open | 20 | 2.30817 | 2709 |
+
+**close: best 5 configurations by log loss**
+
+| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
+|---|---|---|---|---|---|
+| svm | 2.30321 | 0.90006 | 0.1141 | 0.3385 | 0.5312 |
+| svm | 2.30321 | 0.90006 | 0.1141 | 0.3385 | 0.5312 |
+| catboost | 2.31905 | 0.90340 | 0.1026 | 0.3119 | 0.5172 |
+| catboost | 2.31905 | 0.90340 | 0.1026 | 0.3119 | 0.5172 |
+| random_forest | 2.32978 | 0.90514 | 0.1137 | 0.3145 | 0.5127 |
+
+**open: best 5 configurations by log loss**
+
+| Model | Log loss | Brier | Accuracy | Top-3 | Top-5 |
+|---|---|---|---|---|---|
+| svm | 2.30817 | 0.90109 | 0.1052 | 0.3034 | 0.5150 |
+| svm | 2.30817 | 0.90109 | 0.1052 | 0.3034 | 0.5150 |
+| catboost | 2.32395 | 0.90470 | 0.1015 | 0.2949 | 0.5120 |
+| catboost | 2.32395 | 0.90470 | 0.1015 | 0.2949 | 0.5120 |
+| random_forest | 2.32532 | 0.90483 | 0.0997 | 0.3116 | 0.5175 |
+
+**Baselines on the identical evaluation window**
+
+| Target | Baseline | Log loss | Brier |
+|---|---|---|---|
+| close | uniform | 2.30259 | 0.90000 |
+| close | frequency | 2.30315 | 0.90007 |
+| close | bayes | 2.30315 | 0.90007 |
+| close | bayes_jeffreys | 2.30320 | 0.90008 |
+| close | markov1 | 2.33547 | 0.90631 |
+| close | rolling | 2.37774 | 0.91272 |
+| close | recency | 2.43651 | 0.92172 |
+| open | uniform | 2.30259 | 0.90000 |
+| open | frequency | 2.30487 | 0.90046 |
+| open | bayes | 2.30487 | 0.90046 |
+| open | bayes_jeffreys | 2.30491 | 0.90047 |
+| open | markov1 | 2.32523 | 0.90424 |
+| open | rolling | 2.36539 | 0.91170 |
+| open | recency | 2.42217 | 0.91925 |
+
+Uniform reference: log loss 2.30259, Brier 0.9, accuracy 0.1, top-3 0.3, top-5 0.5. Any model above those numbers has removed signal, not added it. A candidate that only matches the uniform floor has learned nothing; a candidate below it would be the first genuine finding in this project.
+
+**Prediction ledger:** forecasts exist but none has been resolved yet.
 
 
 ## G. Limitations, negative results and honest conclusions
@@ -442,7 +682,7 @@ No walk-forward backtest results are stored for this market.
 - `milan_morning` database initialised (schema 3) with 2657 historical rows.
 - `sridevi` database initialised (schema 3) with 3109 historical rows.
 - Data-quality checks executed per market.
-- The 100-method suite executed; `kalyan` 100 methods / 1084 metric rows, `main_bazar` 100 methods / 1084 metric rows, `kalyan_morning` 100 methods / 778 metric rows, `milan_morning` 100 methods / 778 metric rows, `sridevi` 100 methods / 778 metric rows.
+- The 100-method suite executed; `kalyan` 100 methods / 1084 metric rows, `main_bazar` 100 methods / 1084 metric rows, `kalyan_morning` 100 methods / 1084 metric rows, `milan_morning` 100 methods / 1084 metric rows, `sridevi` 100 methods / 1084 metric rows.
 - Cross-market lead-lag sweep, dependency battery, leakage validation and conditional-model test executed.
 - Walk-forward backtests executed and stored per market and target.
 - Next-draw forecasts generated and stored in the prediction ledger.
@@ -458,10 +698,10 @@ No walk-forward backtest results are stored for this market.
 
 - `kalyan`: 17 finding(s) survive FDR control at alpha=0.05 (these are real draws, so a survivor is a property of the data that survived correction - it is not by itself evidence of predictability, and part F is the arbiter).
 - `main_bazar`: 8 finding(s) survive FDR control at alpha=0.05 (these are real draws, so a survivor is a property of the data that survived correction - it is not by itself evidence of predictability, and part F is the arbiter).
-- `kalyan_morning`: 36 finding(s) survive FDR control at alpha=0.05 (these are real draws, so a survivor is a property of the data that survived correction - it is not by itself evidence of predictability, and part F is the arbiter).
-- `milan_morning`: 33 finding(s) survive FDR control at alpha=0.05 (these are real draws, so a survivor is a property of the data that survived correction - it is not by itself evidence of predictability, and part F is the arbiter).
-- `sridevi`: 40 finding(s) survive FDR control at alpha=0.05 (these are real draws, so a survivor is a property of the data that survived correction - it is not by itself evidence of predictability, and part F is the arbiter).
-- Cross-market: 0 of 28 lag tests survive Holm correction; 0 conditional-model test(s) showed a demonstrated out-of-sample improvement.
+- `kalyan_morning`: 38 finding(s) survive FDR control at alpha=0.05 (these are real draws, so a survivor is a property of the data that survived correction - it is not by itself evidence of predictability, and part F is the arbiter).
+- `milan_morning`: 35 finding(s) survive FDR control at alpha=0.05 (these are real draws, so a survivor is a property of the data that survived correction - it is not by itself evidence of predictability, and part F is the arbiter).
+- `sridevi`: 42 finding(s) survive FDR control at alpha=0.05 (these are real draws, so a survivor is a property of the data that survived correction - it is not by itself evidence of predictability, and part F is the arbiter).
+- Cross-market: 0 of 196 lag tests survive Holm correction; 0 conditional-model test(s) showed a demonstrated out-of-sample improvement.
 - The surviving findings are distributional properties of the published draws - panna digit structure, digit-sum shape, repeated-panel rates - not serial dependence that a forecast can use: the walk-forward test in part F puts every candidate model at or above the uniform floor.
 
 ### Standing caveats

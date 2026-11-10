@@ -1,9 +1,9 @@
 {
   "dataset": "live",
-  "generated_at": "2026-11-09T21:18:02+00:00",
+  "generated_at": "2026-11-10T05:11:15+00:00",
   "config_fingerprint": "162c606feb33876e",
   "report": "research/reports/SECTION_22_REPORT_live.md",
-  "report_sha256": "f071876d45dd390b4f90e4f5ca5068c4cd8e6cc8578909e58e62e74b4ac0c993",
+  "report_sha256": "a7b8ff09ca546c4f3d4dea1689793bbfee279cb7f65f6c7da38469495a4eb727",
   "databases": {
     "kalyan": {
       "exists": true,
@@ -12,15 +12,15 @@
         "historical_results": 4192,
         "source_records": 2,
         "extraction_runs": 2,
-        "data_quality": 73,
+        "data_quality": 107,
         "market_features": 0,
         "method_results": 1084,
-        "model_registry": 20,
-        "backtest_results": 20,
+        "model_registry": 60,
+        "backtest_results": 60,
         "predictions": 2,
         "prediction_outcomes": 0,
         "cross_market_features": 0,
-        "cross_market_tests": 0,
+        "cross_market_tests": 112,
         "result_revisions": 0,
         "update_history": 1,
         "bidding_quotes": 0,
@@ -72,15 +72,15 @@
         "historical_results": 2711,
         "source_records": 2,
         "extraction_runs": 2,
-        "data_quality": 73,
+        "data_quality": 107,
         "market_features": 0,
         "method_results": 1084,
-        "model_registry": 20,
-        "backtest_results": 20,
+        "model_registry": 60,
+        "backtest_results": 60,
         "predictions": 2,
         "prediction_outcomes": 0,
         "cross_market_features": 0,
-        "cross_market_tests": 0,
+        "cross_market_tests": 28,
         "result_revisions": 0,
         "update_history": 1,
         "bidding_quotes": 0,
@@ -129,15 +129,15 @@
         "historical_results": 1401,
         "source_records": 2,
         "extraction_runs": 2,
-        "data_quality": 73,
+        "data_quality": 107,
         "market_features": 0,
-        "method_results": 778,
-        "model_registry": 0,
-        "backtest_results": 0,
-        "predictions": 0,
+        "method_results": 1084,
+        "model_registry": 40,
+        "backtest_results": 40,
+        "predictions": 2,
         "prediction_outcomes": 0,
         "cross_market_features": 0,
-        "cross_market_tests": 0,
+        "cross_market_tests": 84,
         "result_revisions": 0,
         "update_history": 1,
         "bidding_quotes": 0,
@@ -178,15 +178,15 @@
         "historical_results": 2657,
         "source_records": 2,
         "extraction_runs": 2,
-        "data_quality": 73,
+        "data_quality": 107,
         "market_features": 0,
-        "method_results": 778,
-        "model_registry": 0,
-        "backtest_results": 0,
-        "predictions": 0,
+        "method_results": 1084,
+        "model_registry": 40,
+        "backtest_results": 40,
+        "predictions": 2,
         "prediction_outcomes": 0,
         "cross_market_features": 0,
-        "cross_market_tests": 0,
+        "cross_market_tests": 84,
         "result_revisions": 0,
         "update_history": 1,
         "bidding_quotes": 0,
@@ -231,15 +231,15 @@
         "historical_results": 3109,
         "source_records": 2,
         "extraction_runs": 2,
-        "data_quality": 73,
+        "data_quality": 107,
         "market_features": 0,
-        "method_results": 778,
-        "model_registry": 0,
-        "backtest_results": 0,
-        "predictions": 0,
+        "method_results": 1084,
+        "model_registry": 40,
+        "backtest_results": 40,
+        "predictions": 2,
         "prediction_outcomes": 0,
         "cross_market_features": 0,
-        "cross_market_tests": 0,
+        "cross_market_tests": 84,
         "result_revisions": 0,
         "update_history": 1,
         "bidding_quotes": 0,
@@ -293,39 +293,39 @@
       },
       "kalyan_morning": {
         "n_methods": 100,
-        "n_rows": 778,
-        "n_significant_fdr": 36
+        "n_rows": 1084,
+        "n_significant_fdr": 38
       },
       "milan_morning": {
         "n_methods": 100,
-        "n_rows": 778,
-        "n_significant_fdr": 33
+        "n_rows": 1084,
+        "n_significant_fdr": 35
       },
       "sridevi": {
         "n_methods": 100,
-        "n_rows": 778,
-        "n_significant_fdr": 40
+        "n_rows": 1084,
+        "n_significant_fdr": 42
       }
     }
   },
   "cross_market": {
     "headline": {
-      "n_lag_tests": 28,
+      "n_lag_tests": 196,
       "n_significant_after_holm": 0,
-      "n_conditional_tests": 4,
+      "n_conditional_tests": 28,
       "n_demonstrated_predictive_improvements": 0,
       "strongest_association": {
         "pair": [
           "kalyan",
-          "main_bazar"
+          "kalyan_morning"
         ],
         "components": [
           "close",
           "close"
         ],
-        "lag": 0,
-        "cramers_v": 0.06652548264106707,
-        "p_adjusted": 0.9815940759299747,
+        "lag": -1,
+        "cramers_v": 0.09896261752437852,
+        "p_adjusted": 1.0,
         "verdict": "no meaningful evidence detected"
       },
       "conclusion": "No cross-market relationship produced a demonstrable out-of-sample predictive improvement for either market. Markets are therefore modelled independently, and the cross-market layer remains an analytical overlay rather than an input to prediction."
@@ -333,7 +333,7 @@
   },
   "backtests": {
     "kalyan": {
-      "backtest_rows": 20,
+      "backtest_rows": 60,
       "ledger": {
         "market": "kalyan",
         "available": true,
@@ -345,9 +345,45 @@
       }
     },
     "main_bazar": {
-      "backtest_rows": 20,
+      "backtest_rows": 60,
       "ledger": {
         "market": "main_bazar",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    },
+    "kalyan_morning": {
+      "backtest_rows": 40,
+      "ledger": {
+        "market": "kalyan_morning",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    },
+    "milan_morning": {
+      "backtest_rows": 40,
+      "ledger": {
+        "market": "milan_morning",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    },
+    "sridevi": {
+      "backtest_rows": 40,
+      "ledger": {
+        "market": "sridevi",
         "available": true,
         "target": "all",
         "n_forecasts": 2,

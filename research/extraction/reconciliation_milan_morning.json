@@ -1,0 +1,102 @@
+{
+ "market_id": "milan_morning",
+ "panel_weeks": 388,
+ "panel_cells": 2710,
+ "jodi_rows": 375,
+ "panel_problems": [
+  "removed archive/duplicate row: '16/03/2020 to 22/03/2020'",
+  "removed archive/duplicate row: '23/03/2020 to 17/05/2020'",
+  "removed archive/duplicate row: '18/05/2020 to 24/05/2020'",
+  "removed archive/duplicate row: '25/05/2020 to 31/05/2020'",
+  "removed archive/duplicate row: '01/06/2020 to 07/06/2020'",
+  "removed archive/duplicate row: '04/06/2020 to 14/06/2020'",
+  "removed archive/duplicate row: '15/06/2020 to 21/06/2020'",
+  "removed archive/duplicate row: '22/06/2020 to 28/06/2020'",
+  "removed archive/duplicate row: '29/06/2020 to 05/07/2020'",
+  "removed archive/duplicate row: '06/07/2020 to 12/07/2020'",
+  "removed archive/duplicate row: '13/07/2020 to 19/07/2020'"
+ ],
+ "jodi_problems": [],
+ "week_repairs": [
+  {
+   "label": "11/05/2020 to 17/05/2020",
+   "start": "2020-05-11",
+   "repairs": [
+    "label '11/05/2020 to 17/05/2020': 56-day gap after 2020-03-16 - the page skips 7 whole week(s) here"
+   ]
+  }
+ ],
+ "alignment": {
+  "matched_by": "tail",
+  "panel_weeks": 388,
+  "jodi_rows": 375,
+  "note": "row counts differ; both grids are newest-last, so the jodi grid is aligned to the last N panel weeks and the leading weeks are reported as single-source"
+ },
+ "status_counts": {
+  "single_source": 148,
+  "jodi_chart_differs": 301,
+  "partial_panna_recovered": 7,
+  "agrees": 2253,
+  "panel_internal_mismatch": 1
+ },
+ "conflicts": [
+  {
+   "date": "2020-12-21",
+   "panel_jodi": "86",
+   "jodi_chart": "86",
+   "panna_arithmetic": "83",
+   "used": "83",
+   "notes": [
+    "printed jodi 86 != panna arithmetic 83",
+    "jodi chart 86 != panna arithmetic 83"
+   ]
+  }
+ ],
+ "duplicate_dates": [],
+ "weekday_mismatch": [],
+ "n_days": 2710,
+ "n_usable": 2657,
+ "n_missing": 53,
+ "first_date": "2019-04-22",
+ "last_date": "2026-11-09",
+ "n_open_panna": 2650,
+ "n_close_panna": 2650,
+ "n_conflicts": 1,
+ "sources": [
+  {
+   "kind": "panel",
+   "path": "/tmp/arena-coding-uploads/Milan Morning Panel Chart _ Historical Panel Records.txt",
+   "url": "https://dpbossss.com/panel-chart-record/milan-morning.php",
+   "saved_at": "Mon, 09 Nov 2026 20:17:34 GMT",
+   "sha256": "1a8d4116a634ef25c9a3de82631a145bd44638335ee056c73d38b62a5cf69e03",
+   "byte_size": 321238,
+   "title": "Milan Morning Panel Chart | Historical Panel Records"
+  },
+  {
+   "kind": "jodi",
+   "path": "/tmp/arena-coding-uploads/Milan Morning Jodi Chart _ Complete Result History.txt",
+   "url": "https://dpbossss.com/jodi-chart-record/milan-morning.php",
+   "saved_at": "Mon, 09 Nov 2026 20:17:39 GMT",
+   "sha256": "23625efc25bbfb6de5a87ca02cf2707fdcd848f41db643aaa0d16470acb9d9a7",
+   "byte_size": 111210,
+   "title": "Milan Morning Jodi Chart | Complete Result History"
+  }
+ ],
+ "import": {
+  "rows_built": 2657,
+  "inserted": 2657,
+  "revised": 0,
+  "rejected": 0,
+  "rejected_examples": [],
+  "source_id": "dpbossss_milan_morning",
+  "raw_paths": [
+   "data/raw/snapshots/milan_morning/panel_1a8d4116a634.mhtml",
+   "data/raw/snapshots/milan_morning/jodi_23625efc25bb.mhtml"
+  ],
+  "run_ids": [
+   1,
+   2
+  ],
+  "at": "2026-11-09T20:53:04+00:00"
+ }
+}
