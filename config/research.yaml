@@ -1,0 +1,71 @@
+# =============================================================================
+# Research / validation configuration
+# =============================================================================
+
+targets:
+  - open
+  - close
+
+# ---- Walk-forward design -----------------------------------------------------
+walk_forward:
+  # `expanding`: train on everything up to the cutoff (preferred; most data).
+  # `rolling`  : train on the last `window` observations.
+  scheme: "expanding"
+  rolling_window: 500
+  # First prediction index: never predict before this many training rows exist.
+  min_train_size: 400
+  # Gap between the newest training row and the predicted row, in observations.
+  # 1 is the correct value for a strictly-sequential draw: the prediction for
+  # date t may use results up to and including t-1.
+  embargo: 1
+  # Hold out the final fraction of the timeline from ALL model selection.
+  final_holdout_fraction: 0.20
+  refit_every: 20          # refit cadence in prediction steps (cost control)
+
+# ---- Metrics -----------------------------------------------------------------
+metrics:
+  primary: "log_loss"
+  secondary: ["brier", "accuracy", "top3", "top5"]
+  # Bootstrap settings for confidence intervals on metric differences.
+  bootstrap:
+    n_resamples: 1000
+    confidence: 0.95
+    block_size: 5          # moving-block bootstrap preserves local dependence
+
+# ---- Multiple testing --------------------------------------------------------
+multiple_testing:
+  alpha: 0.05
+  fdr_method: "benjamini_hochberg"
+  fwer_method: "holm"
+
+# ---- Model selection ---------------------------------------------------------
+model_selection:
+  # A candidate must beat the strongest baseline on out-of-sample log loss by at
+  # least this much to be selectable. Anything less is retained only as a
+  # research note, never promoted to the prediction engine.
+  min_log_loss_improvement: 0.002
+  require_calibration_slope_in: [0.80, 1.25]
+  require_stability_across_folds: true
+
+# ---- Methods -----------------------------------------------------------------
+methods:
+  # Signals whose theoretical support is 10 states are sparse; keep smoothing on.
+  laplace_alpha: 1.0
+  jeffreys_alpha: 0.5
+  rolling_windows: [25, 50, 100, 250]
+  ewm_lambdas: [0.90, 0.95, 0.98, 0.99]
+  markov_max_order: 3
+  entropy_log_base: 2
+  ljung_box_lags: [5, 10, 20]
+  runs_test_alpha: 0.05
+  change_point_penalty: 10.0
+  # Monte Carlo / permutation budgets (documented in every method record).
+  n_permutations: 999
+  n_bootstrap: 1000
+  n_monte_carlo_sequences: 300
+
+# ---- Reporting ---------------------------------------------------------------
+reporting:
+  figures_dpi: 130
+  figure_format: "png"
+  top_k_report: [1, 3, 5]

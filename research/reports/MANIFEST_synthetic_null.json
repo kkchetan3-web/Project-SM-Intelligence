@@ -1,0 +1,43 @@
+{
+  "dataset": "synthetic_null",
+  "generated_at": "2026-11-07T15:31:59+00:00",
+  "config_fingerprint": "b73fc8be2b9e1c5b",
+  "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_synthetic_null.md",
+  "report_sha256": "88a062f4dea10eac1bbc1bd5cde4157a9a55523239d82aeb75c8a2b090ad41a7",
+  "databases": {
+    "kalyan": {
+      "exists": false
+    },
+    "main_bazar": {
+      "exists": false
+    }
+  },
+  "methods": {
+    "per_market": {}
+  },
+  "cross_market": {
+    "headline": {
+      "n_lag_tests": 28,
+      "n_significant_after_holm": 0,
+      "n_conditional_tests": 4,
+      "n_demonstrated_predictive_improvements": 0,
+      "strongest_association": {
+        "pair": [
+          "kalyan",
+          "main_bazar"
+        ],
+        "components": [
+          "close",
+          "close"
+        ],
+        "lag": 0,
+        "cramers_v": 0.05931473592454964,
+        "p_adjusted": 1.0,
+        "verdict": "no meaningful evidence detected"
+      },
+      "conclusion": "No cross-market relationship produced a demonstrable out-of-sample predictive improvement for either market. Markets are therefore modelled independently, and the cross-market layer remains an analytical overlay rather than an input to prediction."
+    }
+  },
+  "backtests": {},
+  "synthetic_notice": "All records in this dataset were produced by src/ingestion/synthetic_control.py and are not market history."
+}

@@ -1,0 +1,43 @@
+{
+  "dataset": "synthetic_signal",
+  "generated_at": "2026-11-07T15:32:01+00:00",
+  "config_fingerprint": "263ce938d3e5cfd4",
+  "report": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_synthetic_signal.md",
+  "report_sha256": "81298cf6973b07899190370a43cd847cd5956fa073a9aed0d61cf4de834baf55",
+  "databases": {
+    "kalyan": {
+      "exists": false
+    },
+    "main_bazar": {
+      "exists": false
+    }
+  },
+  "methods": {
+    "per_market": {}
+  },
+  "cross_market": {
+    "headline": {
+      "n_lag_tests": 28,
+      "n_significant_after_holm": 3,
+      "n_conditional_tests": 4,
+      "n_demonstrated_predictive_improvements": 1,
+      "strongest_association": {
+        "pair": [
+          "kalyan",
+          "main_bazar"
+        ],
+        "components": [
+          "open",
+          "close"
+        ],
+        "lag": 0,
+        "cramers_v": 0.18442614931844134,
+        "p_adjusted": 1.3527471736980569e-148,
+        "verdict": "statistically supported; the same-date association is admissible ONLY because markets.yaml declares kalyan.open published before main_bazar.close - an assumption, not a verified timestamp"
+      },
+      "conclusion": "1 conditional-model tests showed a demonstrated out-of-sample improvement; those features are eligible for the prediction engine subject to re-confirmation on untouched periods."
+    }
+  },
+  "backtests": {},
+  "synthetic_notice": "All records in this dataset were produced by src/ingestion/synthetic_control.py and are not market history."
+}

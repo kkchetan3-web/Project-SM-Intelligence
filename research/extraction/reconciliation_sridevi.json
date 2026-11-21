@@ -1,0 +1,92 @@
+{
+ "market_id": "sridevi",
+ "panel_weeks": 448,
+ "panel_cells": 3128,
+ "jodi_rows": 449,
+ "panel_problems": [
+  "removed archive/duplicate row: '12/10/2020 to 22/11/2020'"
+ ],
+ "jodi_problems": [],
+ "week_repairs": [
+  {
+   "label": "23/11/2020 to 29/11/2020",
+   "start": "2020-11-23",
+   "repairs": [
+    "label '23/11/2020 to 29/11/2020': 49-day gap after 2020-10-05 - the page skips 6 whole week(s) here"
+   ]
+  }
+ ],
+ "alignment": {
+  "matched_by": "tail",
+  "panel_weeks": 448,
+  "jodi_rows": 449,
+  "note": "row counts differ; both grids are newest-last, so the jodi grid is aligned to the last N panel weeks and the leading weeks are reported as single-source"
+ },
+ "status_counts": {
+  "jodi_chart_differs": 911,
+  "agrees": 2175,
+  "single_source": 35,
+  "partial_panna_recovered": 7
+ },
+ "conflicts": [
+  {
+   "date": "2020-04-06",
+   "panel_jodi": "69",
+   "jodi_chart": "39",
+   "panna_arithmetic": "61",
+   "used": "61",
+   "notes": [
+    "printed jodi 69 != panna arithmetic 61",
+    "jodi chart 39 != panel 69",
+    "jodi chart 39 != panna arithmetic 61"
+   ]
+  }
+ ],
+ "duplicate_dates": [],
+ "weekday_mismatch": [],
+ "n_days": 3128,
+ "n_usable": 3109,
+ "n_missing": 19,
+ "first_date": "2018-03-05",
+ "last_date": "2026-11-09",
+ "n_open_panna": 3102,
+ "n_close_panna": 3102,
+ "n_conflicts": 1,
+ "sources": [
+  {
+   "kind": "panel",
+   "path": "/tmp/arena-coding-uploads/Sridevi Panel Chart _ Daily Panel History.txt",
+   "url": "https://dpbossss.com/panel-chart-record/sridevi.php?full_chart",
+   "saved_at": "Mon, 09 Nov 2026 20:17:46 GMT",
+   "sha256": "9fd0aa0322a5c3f4884c8baac6cb5c39089a0b8f40ce0818a88a730078dcf1c8",
+   "byte_size": 362850,
+   "title": "Sridevi Panel Chart | Daily Panel History"
+  },
+  {
+   "kind": "jodi",
+   "path": "/tmp/arena-coding-uploads/Sridevi Jodi Chart _ Live Jodi Matka Record.txt",
+   "url": "https://dpbossss.com/jodi-chart-record/sridevi.php",
+   "saved_at": "Mon, 09 Nov 2026 20:17:53 GMT",
+   "sha256": "7fb0dd26aeda7ad93426e3de659300f7cb8d3f8f8a71e87be345e5ae55ce0d05",
+   "byte_size": 135070,
+   "title": "Sridevi Jodi Chart | Live Jodi Matka Record"
+  }
+ ],
+ "import": {
+  "rows_built": 3109,
+  "inserted": 3109,
+  "revised": 0,
+  "rejected": 0,
+  "rejected_examples": [],
+  "source_id": "dpbossss_sridevi",
+  "raw_paths": [
+   "data/raw/snapshots/sridevi/panel_9fd0aa0322a5.mhtml",
+   "data/raw/snapshots/sridevi/jodi_7fb0dd26aeda.mhtml"
+  ],
+  "run_ids": [
+   1,
+   2
+  ],
+  "at": "2026-11-09T20:53:08+00:00"
+ }
+}

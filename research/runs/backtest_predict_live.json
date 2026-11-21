@@ -1,0 +1,1406 @@
+{
+  "dataset": "live",
+  "markets": [
+    "kalyan",
+    "main_bazar",
+    "kalyan_morning",
+    "milan_morning",
+    "sridevi"
+  ],
+  "started_at": "2026-11-10T04:14:20Z",
+  "backtest": {
+    "status": "ok",
+    "seconds": 2226.3,
+    "payload": {
+      "kalyan/open": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.302585092994046,
+        "models": {
+          "logistic": {
+            "log_loss": 2.458704266240062,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.45870 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.13524, 0.17961] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.326 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.3287680347904467,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32877 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01913, 0.03327] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.453 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.593466928439992,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.59347 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.26371, 0.31841] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.118 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.369822560311066,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.36982 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.05106, 0.08500] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.006 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 7.6847007520901816,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (7.68470 vs 2.30259)",
+              "paired block-bootstrap 95% CI [5.14659, 5.61742] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.025 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.766655090448906,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.76666 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.42768, 0.49722] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.150 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.425168088073296,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.42517 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.10461, 0.14168] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.210 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.616310020889092,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.61631 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.28555, 0.34028] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.112 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.324499160783677,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32450 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01551, 0.02857] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.915 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.307718942580114,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.30772 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.00177, 0.00860] includes zero",
+              "improvement does not hold across folds (2/5)",
+              "calibration slope -1.222 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      },
+      "kalyan/close": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.302585092994046,
+        "models": {
+          "logistic": {
+            "log_loss": 2.5112627511670045,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.51126 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.18241, 0.23552] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.196 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.330208319182085,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33021 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.02088, 0.03452] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.275 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.6011345931003422,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.60113 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.27009, 0.32570] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.173 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.3823037273969425,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.38230 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.06321, 0.10033] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.250 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 7.373007729221566,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (7.37301 vs 2.30259)",
+              "paired block-bootstrap 95% CI [4.81860, 5.30550] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.008 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.8521308698797565,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.85213 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.50469, 0.59374] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.005 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.4424991771069804,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.44250 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.12186, 0.15702] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.012 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.613992544848789,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.61399 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.28468, 0.33891] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.003 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.321379573938657,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32138 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01218, 0.02537] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.029 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.3073834300716034,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.30738 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.00188, 0.00760] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -2.806 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      },
+      "main_bazar/open": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.3025850929940455,
+        "models": {
+          "logistic": {
+            "log_loss": 2.52118795186236,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.52119 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.18720, 0.24862] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.262 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.333825465570211,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33383 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.02217, 0.04086] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.153 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.680404311556114,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.68040 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.33431, 0.41948] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.127 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.3796182061939213,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.37962 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.05517, 0.10521] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.040 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 9.08140677692888,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (9.08141 vs 2.30259)",
+              "paired block-bootstrap 95% CI [6.47489, 7.08979] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.031 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.829892723852486,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.82989 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.47611, 0.57658] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.014 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.506547182478889,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.50655 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.17675, 0.23108] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.342 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.700739244579474,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.70074 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.35638, 0.43864] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.052 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.3292146374516025,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32921 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01783, 0.03561] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.439 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.306973702283128,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.30697 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.00047, 0.00904] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 1.359 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      },
+      "main_bazar/close": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.3025850929940455,
+        "models": {
+          "logistic": {
+            "log_loss": 2.501733826038365,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.50173 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.17020, 0.22935] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.008 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.333015116986677,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33302 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.02176, 0.03998] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.097 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.6662516957150526,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.66625 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.32657, 0.40140] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.263 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.388403918215166,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.38840 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.06330, 0.11356] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.391 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 9.083897426884445,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (9.08390 vs 2.30259)",
+              "paired block-bootstrap 95% CI [6.45352, 7.07719] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.162 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.7928627754487,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.79286 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.44367, 0.53883] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.118 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.4750910246966433,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.47509 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.14956, 0.19603] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.151 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.657632861884003,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.65763 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.31762, 0.39402] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.056 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.3304668390315886,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33047 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01940, 0.03694] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.088 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.3087000800229123,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.30870 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.00262, 0.00946] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.966 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      },
+      "kalyan_morning/open": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.302585092994046,
+        "models": {
+          "logistic": {
+            "log_loss": 2.610333049259625,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.61033 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.24960, 0.36899] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.043 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.3365333680196945,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33653 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01678, 0.05116] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.294 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.7374048777991074,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.73740 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.36690, 0.50066] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.142 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.3378707673347168,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33787 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01252, 0.05996] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.877 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 11.867185888452378,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (11.86719 vs 2.30259)",
+              "paired block-bootstrap 95% CI [9.00175, 10.04476] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.156 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.8957481701100427,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.89575 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.50914, 0.67728] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.003 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.466824236255776,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.46682 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.12168, 0.20595] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.359 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.7154788591246986,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.71548 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.35174, 0.47588] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.223 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.3264587363911535,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32646 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.00523, 0.04147] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.035 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.3105036113517126,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.31050 vs 2.30259)",
+              "paired block-bootstrap 95% CI [-0.00108, 0.01771] includes zero",
+              "improvement does not hold across folds (1/5)",
+              "calibration slope -0.260 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      },
+      "kalyan_morning/close": {
+        "best_baseline": "frequency",
+        "baseline_log_loss": 2.2996168582187617,
+        "models": {
+          "logistic": {
+            "log_loss": 2.6493692619194955,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.64937 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.29311, 0.40971] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.357 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.327767317195486,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.32777 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.01330, 0.04547] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.585 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.808012848144588,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.80801 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.43947, 0.58051] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.190 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.3738992400099117,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.37390 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.04986, 0.09566] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.228 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 10.98304178778727,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (10.98304 vs 2.29962)",
+              "paired block-bootstrap 95% CI [8.25072, 9.18722] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.026 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.8476288143580826,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.84763 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.46682, 0.63559] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.022 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.5738656544756267,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.57387 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.23022, 0.31821] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.073 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.849915570851991,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.84992 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.48135, 0.61759] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.025 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.3357976864547108,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.33580 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.02056, 0.05240] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.363 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.305983348149539,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (frequency) on out-of-sample log loss (2.30598 vs 2.29962)",
+              "paired block-bootstrap 95% CI [0.00102, 0.01249] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.693 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      },
+      "milan_morning/open": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.3025850929940455,
+        "models": {
+          "logistic": {
+            "log_loss": 2.5612923034010686,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.56129 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.22013, 0.29342] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.267 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.3329334332964264,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33293 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01894, 0.04153] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.033 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.68826488949098,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.68826 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.34499, 0.42526] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.351 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.389108068239286,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.38911 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.05508, 0.12298] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.463 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 8.470182654400709,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (8.47018 vs 2.30259)",
+              "paired block-bootstrap 95% CI [5.85993, 6.49926] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.233 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.8552666341963175,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.85527 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.49039, 0.61289] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.079 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.4942967134904546,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.49430 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.16291, 0.22182] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.574 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.7158728303845905,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.71587 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.37173, 0.45761] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.122 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.336826726085263,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33683 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.02361, 0.04390] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -1.772 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.3076264079217053,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.30763 vs 2.30259)",
+              "paired block-bootstrap 95% CI [-0.00104, 0.01062] includes zero",
+              "improvement does not hold across folds (1/5)"
+            ]
+          }
+        }
+      },
+      "milan_morning/close": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.3025850929940455,
+        "models": {
+          "logistic": {
+            "log_loss": 2.538592387106363,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.53859 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.20302, 0.27063] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.198 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.3348019365428123,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.33480 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.02052, 0.04434] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.204 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.7252898395594127,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.72529 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.37904, 0.46808] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.110 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.3843565218748743,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.38436 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.05242, 0.12215] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.759 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 9.007313048042164,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (9.00731 vs 2.30259)",
+              "paired block-bootstrap 95% CI [6.37647, 7.01943] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.181 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.8395662067527248,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.83957 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.49041, 0.58692] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.012 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.506727237103476,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.50673 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.17710, 0.23461] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.323 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.710985255743291,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.71099 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.36636, 0.44982] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.017 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.3286609276851915,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32866 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01454, 0.03793] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.176 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.309696713283832,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.30970 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.00074, 0.01379] includes zero",
+              "improvement does not hold across folds (2/5)",
+              "calibration slope -1.164 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      },
+      "sridevi/open": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.3025850929940455,
+        "models": {
+          "logistic": {
+            "log_loss": 2.481332621465861,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.48133 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.15177, 0.20416] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.175 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.325324260275097,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32532 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01294, 0.03257] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.196 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.6399933434293,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.63999 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.30394, 0.37140] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.065 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.372893109603985,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.37289 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.04917, 0.09726] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.200 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 8.865668800930441,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (8.86567 vs 2.30259)",
+              "paired block-bootstrap 95% CI [6.24186, 6.84901] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.057 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.8032088804949473,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.80321 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.45922, 0.54102] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.057 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.477417898777384,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.47742 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.15310, 0.19889] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.258 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.6783581739635394,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.67836 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.33933, 0.41567] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.049 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.323953402446827,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32395 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01250, 0.02997] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.160 is outside [0.80, 1.25]"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.308173937528642,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.30817 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.00069, 0.01047] includes zero",
+              "improvement does not hold across folds (1/5)",
+              "calibration slope -0.922 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      },
+      "sridevi/close": {
+        "best_baseline": "uniform",
+        "baseline_log_loss": 2.3025850929940455,
+        "models": {
+          "logistic": {
+            "log_loss": 2.505385606504952,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.50539 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.17609, 0.23482] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.115 is outside [0.80, 1.25]"
+            ]
+          },
+          "random_forest": {
+            "log_loss": 2.3297766536370377,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.32978 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.01756, 0.03754] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.604 is outside [0.80, 1.25]"
+            ]
+          },
+          "gradient_boosting": {
+            "log_loss": 2.637484097560796,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.63748 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.29969, 0.37651] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.175 is outside [0.80, 1.25]"
+            ]
+          },
+          "knn": {
+            "log_loss": 2.388117450794498,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.38812 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.05583, 0.12265] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.575 is outside [0.80, 1.25]"
+            ]
+          },
+          "naive_bayes": {
+            "log_loss": 8.44359122289269,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (8.44359 vs 2.30259)",
+              "paired block-bootstrap 95% CI [5.83527, 6.43453] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope 0.044 is outside [0.80, 1.25]"
+            ]
+          },
+          "mlp": {
+            "log_loss": 2.8208095979981853,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.82081 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.47178, 0.56768] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.024 is outside [0.80, 1.25]"
+            ]
+          },
+          "xgboost": {
+            "log_loss": 2.479093101076173,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.47909 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.15308, 0.20381] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.127 is outside [0.80, 1.25]"
+            ]
+          },
+          "lightgbm": {
+            "log_loss": 2.6848102068837325,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.68481 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.34593, 0.42266] includes zero",
+              "improvement does not hold across folds (0/5)",
+              "calibration slope -0.146 is outside [0.80, 1.25]"
+            ]
+          },
+          "catboost": {
+            "log_loss": 2.3190463408230215,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.31905 vs 2.30259)",
+              "paired block-bootstrap 95% CI [0.00649, 0.02635] includes zero",
+              "improvement does not hold across folds (0/5)"
+            ]
+          },
+          "svm": {
+            "log_loss": 2.303208273002555,
+            "promoted": false,
+            "reasons": [
+              "does not beat the best baseline (uniform) on out-of-sample log loss (2.30321 vs 2.30259)",
+              "paired block-bootstrap 95% CI [-0.00523, 0.00712] includes zero",
+              "improvement does not hold across folds (2/5)",
+              "calibration slope 0.215 is outside [0.80, 1.25]"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cross_market": {
+    "status": "ok",
+    "seconds": 1180.7,
+    "payload": {
+      "leakage_ok": true,
+      "headline": {
+        "n_lag_tests": 196,
+        "n_significant_after_holm": 0,
+        "n_conditional_tests": 28,
+        "n_demonstrated_predictive_improvements": 0,
+        "strongest_association": {
+          "pair": [
+            "kalyan",
+            "kalyan_morning"
+          ],
+          "components": [
+            "close",
+            "close"
+          ],
+          "lag": -1,
+          "cramers_v": 0.09896261752437852,
+          "p_adjusted": 1.0,
+          "verdict": "no meaningful evidence detected"
+        },
+        "conclusion": "No cross-market relationship produced a demonstrable out-of-sample predictive improvement for either market. Markets are therefore modelled independently, and the cross-market layer remains an analytical overlay rather than an input to prediction."
+      }
+    }
+  },
+  "predict": {
+    "status": "ok",
+    "seconds": 6.0,
+    "payload": {
+      "kalyan/open": {
+        "target_date": "2026-11-06",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-05 (4192 draws); forecast for 2026-11-06",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge"
+        ]
+      },
+      "kalyan/close": {
+        "target_date": "2026-11-06",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-05 (4192 draws); forecast for 2026-11-06",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge",
+          "same-day Open not supplied, so Open-derived features were excluded from this forecast; supply it once the Open is published (--open-ank) to use them",
+          "same-day kalyan_morning Open not supplied, so the declared cross-market channel was excluded; it is only usable once kalyan_morning has published (--foreign-open-ank)"
+        ]
+      },
+      "main_bazar/open": {
+        "target_date": "2026-11-06",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-05 (2711 draws); forecast for 2026-11-06",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge"
+        ]
+      },
+      "main_bazar/close": {
+        "target_date": "2026-11-06",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-05 (2711 draws); forecast for 2026-11-06",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge",
+          "same-day Open not supplied, so Open-derived features were excluded from this forecast; supply it once the Open is published (--open-ank) to use them",
+          "same-day kalyan Open not supplied, so the declared cross-market channel was excluded; it is only usable once kalyan has published (--foreign-open-ank)"
+        ]
+      },
+      "kalyan_morning/open": {
+        "target_date": "2026-11-10",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-09 (1401 draws); forecast for 2026-11-10",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge"
+        ]
+      },
+      "kalyan_morning/close": {
+        "target_date": "2026-11-10",
+        "mode": "baseline_fallback",
+        "model": "frequency",
+        "top3": [
+          [
+            "1",
+            0.12048192771084337
+          ],
+          [
+            "2",
+            0.11906449326718639
+          ],
+          [
+            "0",
+            0.11835577604535791
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-09 (1401 draws); forecast for 2026-11-10",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge",
+          "same-day Open not supplied, so Open-derived features were excluded from this forecast; supply it once the Open is published (--open-ank) to use them"
+        ]
+      },
+      "milan_morning/open": {
+        "target_date": "2026-11-10",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-09 (2657 draws); forecast for 2026-11-10",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge"
+        ]
+      },
+      "milan_morning/close": {
+        "target_date": "2026-11-10",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-09 (2657 draws); forecast for 2026-11-10",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge",
+          "same-day Open not supplied, so Open-derived features were excluded from this forecast; supply it once the Open is published (--open-ank) to use them"
+        ]
+      },
+      "sridevi/open": {
+        "target_date": "2026-11-10",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-09 (3109 draws); forecast for 2026-11-10",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge"
+        ]
+      },
+      "sridevi/close": {
+        "target_date": "2026-11-10",
+        "mode": "baseline_fallback",
+        "model": "uniform",
+        "top3": [
+          [
+            "0",
+            0.1
+          ],
+          [
+            "1",
+            0.1
+          ],
+          [
+            "2",
+            0.1
+          ]
+        ],
+        "notes": [
+          "history through 2026-11-09 (3109 draws); forecast for 2026-11-10",
+          "no candidate model beat the best baseline out of sample, so this forecast is the baseline distribution; it carries no demonstrated predictive edge",
+          "same-day Open not supplied, so Open-derived features were excluded from this forecast; supply it once the Open is published (--open-ank) to use them"
+        ]
+      }
+    }
+  },
+  "ledger": {
+    "status": "ok",
+    "seconds": 0.9,
+    "payload": {
+      "kalyan": {
+        "market": "kalyan",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      },
+      "main_bazar": {
+        "market": "main_bazar",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      },
+      "kalyan_morning": {
+        "market": "kalyan_morning",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      },
+      "milan_morning": {
+        "market": "milan_morning",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      },
+      "sridevi": {
+        "market": "sridevi",
+        "available": true,
+        "target": "all",
+        "n_forecasts": 2,
+        "n_resolved": 0,
+        "n_pending": 2,
+        "reason": "forecasts exist but none has been resolved yet"
+      }
+    }
+  },
+  "report": {
+    "status": "ok",
+    "seconds": 0.7,
+    "payload": {
+      "path": "/home/user/Project-SM-Intelligence/research/reports/SECTION_22_REPORT_live.md"
+    }
+  },
+  "elapsed_seconds": 3414.7,
+  "finished_at": "2026-11-10T05:11:15Z"
+}
